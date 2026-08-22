@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://compressimageto20kb.online/sitemap.xml
