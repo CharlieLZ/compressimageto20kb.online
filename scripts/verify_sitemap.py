@@ -14,8 +14,15 @@ def main() -> int:
     errors: list[str] = []
     index = (ROOT / "index.html").read_text(encoding="utf-8")
     robots = (ROOT / "robots.txt").read_text(encoding="utf-8")
+    not_found_path = ROOT / "404.html"
     expected_url = f"{ORIGIN}/"
     expected_sitemap = f"Sitemap: {ORIGIN}/sitemap.xml"
+
+    try:
+        not_found = not_found_path.read_text(encoding="utf-8")
+    except OSError as exc:
+        errors.append(f"missing top-level 404.html: {exc}")
+        not_found = ""
 
     try:
         sitemap = ElementTree.parse(ROOT / "sitemap.xml").getroot()
@@ -36,6 +43,13 @@ def main() -> int:
     declarations = [line.strip() for line in robots.splitlines() if line.lower().startswith("sitemap:")]
     if declarations != [expected_sitemap]:
         errors.append(f"robots.txt expected exactly {expected_sitemap!r}, got {declarations!r}")
+    if not_found:
+        if '<meta name="robots" content="noindex,follow">' not in not_found:
+            errors.append("404.html must be noindex,follow")
+        if 'href="/"' not in not_found:
+            errors.append("404.html must link back to the homepage")
+        if 'rel="canonical"' in not_found:
+            errors.append("404.html must not canonicalize missing URLs to the homepage")
 
     if errors:
         print("Sitemap verification failed:")
