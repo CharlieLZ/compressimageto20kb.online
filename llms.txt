@@ -1,0 +1,20 @@
+# PixelPress — Compress JPG to 20KB Online
+
+> PixelPress is a free, browser-based JPG compressor for strict upload limits such as 20KB. Choose a JPG, pick a target size, and download a smaller image without login, payment, or server upload.
+
+PixelPress is one page, https://compressimageto20kb.online/. Compression runs inside the browser with the Canvas API, so the selected JPG is never uploaded to a server and the result is downloaded directly from the tab. The tool accepts JPG/JPEG files only, up to 50MB each, and never asks for an account.
+
+Target-size presets: 10KB, 20KB, 30KB, 40KB, 50KB, 100KB, 200KB, 500KB, 1MB and 2MB. Quality modes: Balanced quality (default), Keep more detail, and Prefer smaller output. Several JPG files can be compressed in one run and collected together with Download ZIP.
+
+Every result is reported as Target reached, Closest match, or Already under target. A very detailed photo may not reach a tiny target without visible damage, so the tool returns the closest clean result instead of a broken image. The page has no login, pricing, checkout, or support pages.
+
+## Core pages
+- [PixelPress JPG compressor](https://compressimageto20kb.online/): the whole tool lives on this single page: upload panel, target sizes, quality settings, guide, FAQ and downloads.
+
+## Tool sections
+- [Upload and file list](https://compressimageto20kb.online/#compressor): choose or drop JPG files, run Compress All, download single results or a ZIP.
+- [Target-size presets](https://compressimageto20kb.online/#sizes): switch between the ten presets from 10KB to 2MB without leaving the page.
+- [Why compress JPG to 20KB](https://compressimageto20kb.online/#why): when a strict 20KB limit helps and how the compressor trades detail for size.
+- [JPG compression guide](https://compressimageto20kb.online/#guide): 16 short sections on target size, source preparation, privacy, quality modes and result status.
+- [Feature highlights](https://compressimageto20kb.online/#features): browser based, fast downloads, help built in, private by design.
+- [JPG compressor FAQ](https://compressimageto20kb.online/#faq): 8 questions on uploads, batch compression, supported file types, quality and cost.

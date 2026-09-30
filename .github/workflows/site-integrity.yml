@@ -7,7 +7,7 @@ permissions:
   contents: read
 
 jobs:
-  sitemap:
+  discovery:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -16,3 +16,4 @@ jobs:
         with:
           python-version: "3.13"
       - run: python3 scripts/verify_sitemap.py
+      - run: python3 scripts/verify_seo_discovery.py
