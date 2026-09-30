@@ -30,7 +30,7 @@ Several JPG files can be added at once. Compress All processes them in one run, 
 
 - Target reached: the compressed JPG is within the selected limit.
 - Closest match: the image resisted the exact target, so the smallest clean result is offered instead.
-- Already under target: the source JPG was already smaller than the chosen limit.
+- Already under target: the source JPG was already inside the selected limit with a small margin, so it is passed through without re-encoding.
 
 PixelPress avoids destroying an image just to hit a number, so exact 20KB output is not guaranteed for very detailed photos.
 

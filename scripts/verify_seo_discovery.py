@@ -13,7 +13,9 @@ Contract (single change point: AI_CRAWLERS):
   absolute Sitemap line; no Crawl-delay.
 - llms.txt (llmstxt.org): single H1 first, blockquote summary, H2 file lists,
   `## Optional` last when present, 5-40 absolute canonical links and every link
-  points at a real route or an existing in-page anchor.
+  points at a real route or an existing in-page anchor. The SPEC's 10-40 range
+  assumes a multi-page site: this site serves exactly one 200 route, and its
+  seven real anchors are the only honest links (anything else would 404).
 - llms-full.txt: same H1 first, non-trivial body, no HTML, links resolve too.
 - sitemap.xml: parses, canonical host only, only routes that exist on the page.
 """
@@ -121,6 +123,8 @@ def main() -> int:
 
     def link_targets(body: str, label: str) -> list[str]:
         links = re.findall(r"\[[^\]]+\]\((https?://[^)\s]+)\)", body)
+        # Lower bound 5, not the SPEC's 10: this site has one live route and seven real
+        # anchors, so padding to ten would mean linking URLs that 404 (see module docstring).
         check(5 <= len(links) <= 40, f"{label}: expected 5-40 links, found {len(links)}")
         for url in links:
             check(url.startswith(f"{ORIGIN}/") or url == ORIGIN, f"{label}: link is not an absolute canonical URL: {url}")
