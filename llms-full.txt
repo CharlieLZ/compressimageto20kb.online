@@ -1,0 +1,68 @@
+# PixelPress — Compress JPG to 20KB Online
+
+> PixelPress is a free, browser-based JPG compressor for strict upload limits such as 20KB. Choose a JPG, pick a target size, and download a smaller image without login, payment, or server upload.
+
+PixelPress is one page, https://compressimageto20kb.online/. Everything — upload panel, target sizes, quality settings, guide, FAQ and downloads — lives on that single homepage, so there is no second step and no account screen. The whole workflow is free: no login, no payment, and no server upload of the selected JPG.
+
+Compression runs locally in the browser. The file is read with browser image features, drawn onto a canvas, re-encoded as JPEG, and handed back as a download in the same tab. The tool accepts JPG/JPEG files only, up to 50MB each.
+
+## How to compress a JPG to 20KB
+
+1. Open https://compressimageto20kb.online/ and choose a JPG, or drag one into the upload area.
+2. Keep the 20KB preset selected, or pick another target size.
+3. Press Compress All and download the optimized JPG, or use Download ZIP for a batch.
+
+## Target sizes
+
+Ten presets are available on the same page: 10KB, 20KB, 30KB, 40KB, 50KB, 100KB, 200KB, 500KB, 1MB and 2MB. The compressor resizes the image to the preset's fit box before tuning JPEG quality; the page states the 20KB preset uses a 600×450 fit before quality tuning, and the other presets work the same way with their own fit box. Presets with no fit box keep the original dimensions when possible. Choose 20KB for strict upload limits, 50KB or 100KB when text or faces must stay clear, and larger presets when fine detail matters more than file size.
+
+## Quality modes
+
+- Balanced quality: the default, a middle ground between clarity and size.
+- Keep more detail: better when a face, label or product edge must stay readable.
+- Prefer smaller output: lets the compressor reduce more aggressively when the limit matters more than texture.
+
+## Batch compression and ZIP export
+
+Several JPG files can be added at once. Compress All processes them in one run, the file list keeps each original size, target size, result size and status side by side, and Download ZIP collects the compressed results into a single archive.
+
+## Result statuses
+
+- Target reached: the compressed JPG is within the selected limit.
+- Closest match: the image resisted the exact target, so the smallest clean result is offered instead.
+- Already under target: the source JPG was already smaller than the chosen limit.
+
+PixelPress avoids destroying an image just to hit a number, so exact 20KB output is not guaranteed for very detailed photos.
+
+## Limits and supported files
+
+JPG and JPEG only (this is a focused JPG compressor, not a general converter); up to 50MB per file; multiple files per run. Unsupported files are skipped with a short explanation instead of being silently converted.
+
+## Privacy and analytics
+
+Image compression happens locally in the browser, so JPG files do not need to be uploaded to any server and no account is required. The homepage does load Google Analytics (GA4) and an analytics script at click.pageview.click for page statistics; that is page-level analytics, not image transfer.
+
+## Cost, accounts and support
+
+PixelPress is free to use. There is no login, no payment flow, no pricing page, no checkout and no support portal — the guide on the page states that the site keeps the full workflow in one place on purpose.
+
+## FAQ
+
+- How do I compress JPG to 20KB online? Choose a JPG, keep the 20KB preset selected, click Compress All, and download the optimized result; the whole compressor runs inside the single page.
+- Does PixelPress upload my JPG files? No. The selected JPG is processed locally with browser features, and the compressed JPG is created in the tab.
+- Can every JPG reach exactly 20KB? No. Very detailed photos may need more downscaling than looks acceptable, so the tool shows Target reached when possible and Closest match otherwise.
+- Can I compress several JPG files? Yes. Add multiple JPG files, press Compress All, then use Download ZIP.
+- What file types are supported? JPG and JPEG only, on purpose, to avoid fake converter pages.
+- Which target size should I choose? 20KB for strict limits, 50KB for clearer small photos, 100KB for images with text, larger presets when detail matters more.
+- Will compression reduce quality? Yes. Every small JPG target trades some detail for file size; the aim is the smallest JPG that still communicates the image.
+- Is this page free to use? Yes, free with no login, no payment flow and no extra pages required for the core feature.
+
+## Links
+
+- [PixelPress JPG compressor](https://compressimageto20kb.online/): the single page with the whole tool.
+- [Upload and file list](https://compressimageto20kb.online/#compressor): add JPG files, compress, download one result or a ZIP.
+- [Target-size presets](https://compressimageto20kb.online/#sizes): the ten presets from 10KB to 2MB.
+- [Why compress JPG to 20KB](https://compressimageto20kb.online/#why): the trade-off behind a strict size target.
+- [JPG compression guide](https://compressimageto20kb.online/#guide): target size, quality modes, privacy, batch work and result status.
+- [Feature highlights](https://compressimageto20kb.online/#features): browser based, fast downloads, help built in, private by design.
+- [JPG compressor FAQ](https://compressimageto20kb.online/#faq): the eight questions answered on the page.
