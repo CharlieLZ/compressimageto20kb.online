@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="t">
+  <title id="t">PixelPress</title>
+  <rect width="64" height="64" rx="14" fill="#101827"/>
+  <path d="M12 13L38.6 32L12 51Z" fill="#2487eb"/>
+  <path d="M33 13L52 32L33 51Z" fill="#5cd510"/>
+</svg>
