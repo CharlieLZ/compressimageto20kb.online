@@ -23,7 +23,7 @@ assert(latest, 'No production Pages deployment');
 assert.equal(latest.deployment_trigger?.metadata?.commit_hash, sha, 'Production Pages SHA differs');
 assert.equal(latest.latest_stage?.status, 'success', 'Production Pages deployment did not succeed');
 const preview = new URL(latest.url);
-assert.match(preview.hostname, /^[a-z0-9-]+\.compressimageto20kb-online\.pages\.dev$/);
+assert.equal(preview.hostname.split('.').slice(1).join('.'), 'compressimageto20kb-online-cr6.pages.dev', 'Unexpected Pages preview host');
 const html = await (await page(new URL('/admin/', preview), 200)).text();
 assert.match(html, /Admin overview/, 'Admin artifact missing');
 assert.match(html, /noindex/, 'Admin artifact is indexable');
