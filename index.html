@@ -346,6 +346,13 @@ button:disabled{opacity:.45;cursor:not-allowed}h1,h2,h3,p{margin-top:0}svg,img{d
   const esc=s=>String(s).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");
   const uid=()=>Math.random().toString(36).slice(2)+Date.now().toString(36);
   const currentPreset=()=>presets[state.target];
+  function track(name,properties={}){
+    if(navigator.doNotTrack==="1"||navigator.globalPrivacyControl===true)return;
+    const query=new URLSearchParams(window.location.search);
+    const data={...properties,qa_internal:query.get("qa")==="1"||query.get("utm_source")==="qa-internal"};
+    try{if(typeof window.gtag==="function")window.gtag("event",name,data)}catch{console.warn("Compression analytics unavailable: google")}
+    try{if(typeof window.plausible==="function")window.plausible(name,{props:data})}catch{console.warn("Compression analytics unavailable: plausible")}
+  }
   const outputName=name=>uniqueSafeName(name.replace(/\.[^.]+$/,'')+"-"+currentPreset().label.toLowerCase()+".jpg");
   function showToast(message){dom.toast.textContent=message;dom.toast.classList.add("show");clearTimeout(showToast.timer);showToast.timer=setTimeout(()=>dom.toast.classList.remove("show"),3200)}
   function showModal(title,html){dom.modalTitle.textContent=title;dom.modalBody.innerHTML=html;dom.modal.classList.add("open");$("closeModal").focus()}
@@ -363,15 +370,46 @@ button:disabled{opacity:.45;cursor:not-allowed}h1,h2,h3,p{margin-top:0}svg,img{d
     state.files.forEach(item=>{const statusClass=item.status==="working"?"work":item.status==="done"?"done":item.status==="error"?"err":"";const saved=item.resultSize&&item.file.size?` · ${Math.max(0,100-Math.round(item.resultSize/item.file.size*100))}% smaller`:"";const li=document.createElement("li");li.className="file-row";li.innerHTML=`<div class="thumb"><img src="${item.preview}" alt="Preview for compress JPG to ${currentPreset().label}"></div><div class="name"><strong title="${esc(item.file.name)}">${esc(item.file.name)}</strong><span>${esc(item.dim||"Image pending")}</span></div><div class="meta"><span class="label">Original</span><span class="value">${fmt(item.file.size)}</span></div><div class="meta"><span class="label">Target</span><span class="value">${currentPreset().label}</span></div><div class="stat"><span class="label">Result</span><span class="value">${item.resultSize?fmt(item.resultSize)+saved:"-"}</span><div class="bar"><span style="width:${item.progress||0}%"></span></div><span class="status ${statusClass}">${esc(item.text||"Ready")}</span>${item.note?`<span class="result-note">${esc(item.note)}</span>`:""}</div><div class="acts"><button class="act primary" data-compress="${item.id}">Compress</button><button class="act success" data-download="${item.id}" ${item.url?"":"disabled"}>Download</button><button class="act danger" data-remove="${item.id}">Remove</button></div>`;dom.list.appendChild(li)});
     dom.list.querySelectorAll("[data-compress]").forEach(btn=>btn.addEventListener("click",()=>compressOne(btn.dataset.compress)));dom.list.querySelectorAll("[data-download]").forEach(btn=>btn.addEventListener("click",()=>downloadOne(btn.dataset.download)));dom.list.querySelectorAll("[data-remove]").forEach(btn=>btn.addEventListener("click",()=>removeOne(btn.dataset.remove)));
   }
-  function addFiles(fileList){const files=Array.from(fileList||[]);if(!files.length)return;const skipped=[],added=[];files.forEach(file=>{const isJpg=file.type==="image/jpeg"||/\.jpe?g$/i.test(file.name);if(!isJpg){skipped.push(file.name);return}if(file.size>state.maxFileSize){skipped.push(`${file.name} (over 50MB)`);return}const item={id:uid(),file,preview:URL.createObjectURL(file),url:"",blob:null,resultSize:null,status:"ready",text:"Ready",dim:"",progress:0,outputDim:"",note:""};state.files.push(item);added.push(item)});renderFiles();added.forEach(readDimensions);if(added.length)showToast(`${added.length} JPG file${added.length>1?"s":""} added.`);if(skipped.length)showModal("Unsupported files",`<p>This homepage compresses JPG/JPEG images only. Skipped: ${esc(skipped.join(", "))}.</p>`)}
+  function addFiles(fileList){const files=Array.from(fileList||[]);if(!files.length)return;const skipped=[],added=[];files.forEach(file=>{const isJpg=file.type==="image/jpeg"||/\.jpe?g$/i.test(file.name);if(!isJpg){skipped.push(file.name);return}if(file.size>state.maxFileSize){skipped.push(`${file.name} (over 50MB)`);return}const item={id:uid(),file,preview:URL.createObjectURL(file),url:"",blob:null,resultSize:null,status:"ready",text:"Ready",dim:"",progress:0,outputDim:"",note:""};state.files.push(item);added.push(item)});renderFiles();added.forEach(readDimensions);if(added.length){showToast(`${added.length} JPG file${added.length>1?"s":""} added.`);track("image_selected",{file_count:added.length})}if(skipped.length)showModal("Unsupported files",`<p>This homepage compresses JPG/JPEG images only. Skipped: ${esc(skipped.join(", "))}.</p>`)}
   function readDimensions(item){const img=new Image();img.onload=()=>{item.dim=`${img.naturalWidth}×${img.naturalHeight}`;renderFiles()};img.onerror=()=>{item.dim="Preview unavailable";renderFiles()};img.src=item.preview}
   function removeOne(id){const index=state.files.findIndex(f=>f.id===id);if(index<0)return;const item=state.files.splice(index,1)[0];URL.revokeObjectURL(item.preview);if(item.url)URL.revokeObjectURL(item.url);renderFiles()}
   function clearAll(){state.files.forEach(item=>{URL.revokeObjectURL(item.preview);if(item.url)URL.revokeObjectURL(item.url)});state.files=[];renderFiles();showToast("File list cleared.")}
   function updateItem(id,patch){const item=state.files.find(f=>f.id===id);if(!item)return null;Object.assign(item,patch);renderFiles();return item}
-  async function compressOne(id){const item=state.files.find(f=>f.id===id);if(!item||item.status==="working")return;updateItem(id,{status:"working",text:"Reading image",progress:10,note:""});try{const target=currentPreset();const result=await compressImage(item.file,target,state.mode,progress=>updateItem(id,{status:"working",text:progress.label,progress:progress.value}));if(item.url)URL.revokeObjectURL(item.url);const url=URL.createObjectURL(result.blob);const hit=result.blob.size<=target.bytes;const label=result.already?"Already under target":hit?"Target reached":"Closest match";const note=hit?`${fmt(result.blob.size)} is within the ${target.label} limit.`:`This image needs heavier reduction to reach ${target.label}; downloaded file is the smallest clean result found.`;updateItem(id,{status:"done",text:`${label} at ${result.width}×${result.height}`,blob:result.blob,resultSize:result.blob.size,url,progress:100,outputDim:`${result.width}×${result.height}`,note})}catch(error){updateItem(id,{status:"error",text:error&&error.message?error.message:"Compression failed",progress:0,note:""})}}
-  async function compressAll(){if(!state.files.length){showToast("Choose JPG files first.");return}state.working=true;for(const item of [...state.files])await compressOne(item.id);state.working=false;showToast("Compression complete.")}
-  function downloadOne(id){const item=state.files.find(f=>f.id===id);if(!item||!item.url){showToast("Compress the file first.");return}downloadBlob(item.blob,outputName(item.file.name))}
-  async function downloadZip(){if(!state.files.length){showToast("Choose JPG files first.");return}const pending=state.files.filter(f=>!f.blob&&f.status!=="working");if(pending.length){showToast("Compressing files before ZIP...");for(const item of pending)await compressOne(item.id)}const ready=state.files.filter(f=>f.blob);if(!ready.length){showToast("No compressed files are ready yet.");return}try{showToast("Preparing ZIP...");const entries=ready.map(item=>({name:outputName(item.file.name),blob:item.blob}));const zip=await makeZip(entries);downloadBlob(zip,"pixelpress-compressed-jpgs.zip")}catch(error){showModal("ZIP failed",`<p>${esc(error&&error.message?error.message:"Could not create ZIP file.")}</p>`)}}
+  async function compressOne(id){
+    const item=state.files.find(f=>f.id===id);
+    if(!item||item.status==="working")return;
+    const target=currentPreset(),mode=state.mode;
+    resetResult(item);
+    updateItem(id,{status:"working",text:"Reading image",progress:10});
+    track("compression_start",{target_kb:target.bytes/1024});
+    try{
+      const result=await compressImage(item.file,target,mode,progress=>updateItem(id,{status:"working",text:progress.label,progress:progress.value}));
+      if(!state.files.includes(item))return;
+      if(currentPreset()!==target||state.mode!==mode){
+        resetResult(item);renderFiles();showToast("Settings changed. Compress again with the new settings.");return;
+      }
+      const url=URL.createObjectURL(result.blob),hit=result.blob.size<=target.bytes;
+      const label=result.already?"Already under target":hit?"Target reached":"Closest match";
+      const note=hit?`${fmt(result.blob.size)} is within the ${target.label} limit.`:`This image needs heavier reduction to reach ${target.label}; downloaded file is the smallest clean result found.`;
+      updateItem(id,{status:"done",text:`${label} at ${result.width}×${result.height}`,blob:result.blob,resultSize:result.blob.size,url,progress:100,outputDim:`${result.width}×${result.height}`,note});
+      track("compression_complete",{target_kb:target.bytes/1024,within_target:hit});
+    }catch(error){
+      if(!state.files.includes(item))return;
+      updateItem(id,{status:"error",text:error&&error.message?error.message:"Compression failed",progress:0,note:""});
+      console.warn("Image compression failed",error);
+      track("compression_error",{target_kb:target.bytes/1024});
+    }
+  }
+  async function compressAll(){
+    if(state.working)return;
+    if(!state.files.length){showToast("Choose JPG files first.");return}
+    state.working=true;
+    try{for(const item of [...state.files])await compressOne(item.id)}finally{state.working=false}
+    const failed=state.files.filter(item=>item.status==="error").length;
+    showToast(failed?`${failed} file(s) could not be compressed. Check the file results.`:"Compression finished. Check each file result.");
+  }
+  function downloadOne(id){const item=state.files.find(f=>f.id===id);if(!item||!item.url){showToast("Compress the file first.");return}downloadBlob(item.blob,outputName(item.file.name));track("file_download",{format:"jpg",file_count:1,target_kb:currentPreset().bytes/1024})}
+  async function downloadZip(){if(!state.files.length){showToast("Choose JPG files first.");return}const pending=state.files.filter(f=>!f.blob&&f.status!=="working");if(pending.length){showToast("Compressing files before ZIP...");for(const item of pending)await compressOne(item.id)}const ready=state.files.filter(f=>f.blob);if(!ready.length){showToast("No compressed files are ready yet.");return}try{showToast("Preparing ZIP...");const entries=ready.map(item=>({name:outputName(item.file.name),blob:item.blob}));const zip=await makeZip(entries);downloadBlob(zip,"pixelpress-compressed-jpgs.zip");track("file_download",{format:"zip",file_count:ready.length,target_kb:currentPreset().bytes/1024})}catch(error){showModal("ZIP failed",`<p>${esc(error&&error.message?error.message:"Could not create ZIP file.")}</p>`)}}
   function downloadBlob(blob,name){const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1500);a.remove()}
   async function loadImage(file){
     if("createImageBitmap" in window){
