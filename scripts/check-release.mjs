@@ -36,11 +36,17 @@ assert.deepEqual(app.destinations.map(({type,uri}) => ({type,uri})), [
   {type: 'public', uri: 'compressimageto20kb.online/admin'}, {type: 'public', uri: 'www.compressimageto20kb.online/admin'}
 ]);
 assert.equal(app.policies?.[0]?.id, policy.id);
-await page('https://compressimageto20kb.online/', 200);
+const homepage=await (await page('https://compressimageto20kb.online/',200)).text();
+assert(homepage.includes(`<meta name="build-sha" content="${sha}">`),'Homepage SHA differs');
+assert.match(homepage,/compression_complete/);
+const health=await (await page('https://compressimageto20kb.online/api/health',200)).json();
+assert.equal(health.ok,true);
+assert.equal(health.service,'compressimageto20kb-online');
+assert.equal(health.buildSha,sha,'Production health SHA differs');
 for (const url of ['https://compressimageto20kb.online/admin', 'https://compressimageto20kb.online/admin/', 'https://compressimageto20kb.online/admin/index.html', 'https://www.compressimageto20kb.online/admin/']) {
   const response = await page(url, 302);
   const login = new URL(response.headers.get('location') ?? '', url);
   assert.equal(login.hostname, 'charlie0simmon.cloudflareaccess.com');
   assert.match(login.pathname, /^\/cdn-cgi\/access\/login\//);
 }
-console.log(JSON.stringify({status: 'pass', sha, deploymentId: latest.id, previewUrl: latest.url, accessAppId: app.id, publicPaths: 1, protectedPaths: 4}));
+console.log(JSON.stringify({status: 'pass', sha, healthSha:health.buildSha, deploymentId: latest.id, previewUrl: latest.url, accessAppId: app.id, publicPaths: 2, protectedPaths: 4}));
