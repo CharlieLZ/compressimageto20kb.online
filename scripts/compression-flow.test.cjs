@@ -79,6 +79,31 @@ test('privacy signals and tracker exceptions cannot block local processing', asy
   }
 });
 
+test('click, drag, and paste selection record the upload method without file data',()=>{
+  const p=fixture();
+  p.api.addFiles([{name:'paste-photo.jpg',type:'image/jpeg',size:1000}],'paste');
+  p.api.addFiles([{name:'drag-photo.jpg',type:'image/jpeg',size:1000}],'drag');
+  p.api.addFiles([{name:'click-photo.jpg',type:'image/jpeg',size:1000}],'click');
+  assert.deepEqual(p.events.map(e=>e[2].method),['paste','drag','click']);
+  assert(p.events.every(e=>e[1]==='image_selected'));
+  assert.doesNotMatch(JSON.stringify(p.events),/paste-photo|drag-photo|click-photo|blob:|fake/);
+});
+
+test('compress all exposes a disabled loading state and ignores a duplicate run', async()=>{
+  const p=fixture(),item=p.add();let release;
+  p.context.window.createImageBitmap=true;
+  p.context.createImageBitmap=()=>new Promise(resolve=>{release=()=>resolve({width:40,height:30,close(){}});});
+  const pending=p.api.compressAll();
+  assert.equal(p.get('compressAllBtn').disabled,true);
+  assert.equal(p.get('compressAllBtn').textContent,'Compressing…');
+  await p.api.compressAll();
+  release();await pending;
+  assert.equal(item.status,'done');
+  assert.equal(p.events.filter(e=>e[1]==='compression_start').length,1);
+  assert.equal(p.get('compressAllBtn').disabled,false);
+  assert.equal(p.get('compressAllBtn').textContent,'Compress All');
+});
+
 test('unsupported files and duplicate active clicks do not fabricate success', async()=>{
   const p=fixture();p.add({name:'note.txt',type:'text/plain',size:12});
   assert.equal(p.api.state.files.length,0);assert.equal(p.events.length,0);

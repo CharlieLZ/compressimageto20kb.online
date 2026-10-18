@@ -6,7 +6,7 @@ const sha=process.env.CF_PAGES_COMMIT_SHA||execFileSync('git',['rev-parse','HEAD
 if(!/^[a-f0-9]{40}$/.test(sha))throw new Error('A full Git SHA is required for this build');
 const output=new URL('dist/',root);
 await mkdir(output,{recursive:true});
-const publicFiles=new Set(['favicon.ico','favicon.svg','apple-touch-icon.png','icon-192.png','icon-512.png','manifest.webmanifest','og-image.png','robots.txt','sitemap.xml','llms.txt','llms-full.txt']);
+const publicFiles=new Set(['favicon.ico','favicon.svg','apple-touch-icon.png','icon-192.png','icon-512.png','manifest.webmanifest','og-image.png','robots.txt','sitemap.xml','llms.txt','llms-full.txt','funnel-events.js']);
 let pages=0;
 async function copyPublic(directory=''){
   for(const entry of await readdir(new URL(directory||'.',root),{withFileTypes:true})){
