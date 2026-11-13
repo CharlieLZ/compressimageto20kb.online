@@ -83,6 +83,7 @@ main{display:block}
 .gtool button:disabled{opacity:.5}
 .gtool output,.gtool .gtool-status{display:block;margin-top:14px;font-size:15px;color:#1e293b;line-height:1.6}
 .gtool .gtool-result{margin-top:12px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;font-size:14px}
+.gtool .gtool-result[hidden],.gtool .gtool-result a[hidden]{display:none}
 .gtool .gtool-result a{display:inline-flex;align-items:center;min-height:42px;padding:0 14px;border-radius:var(--radius);background:var(--green-dark);color:#fff;font-weight:800}
 .gtool .gtool-result a:hover{text-decoration:none;background:#347f39}
 .gtool .gtool-error{color:#9a1c1c;font-weight:700}
