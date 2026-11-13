@@ -21,31 +21,37 @@
   var MESSAGES = {
     en: {
       working: 'Compressing in this browser…',
+      progress: 'Compressing pass {n} ({w}×{h})…',
       hit: 'Target reached: {size} at {w}×{h}.',
+      hitConverted: 'Target reached: {size} at {w}×{h}. Converted from {format} to real JPEG bytes.',
       miss: 'Closest clean result: {size} at {w}×{h}. This image resists the {target} target without visible damage.',
-      already: 'Already under {target}: {size}. The original file was kept unchanged.',
-      type: 'Choose a JPG or JPEG file. Other image formats are not accepted by this tool.',
+      already: 'Already under {target}: {size}. Genuine JPEG kept unchanged; its metadata is preserved.',
+      type: 'This file is not a JPEG and could not be opened. Choose a JPG/JPEG, or a PNG/WebP file this browser can convert.',
       big: 'That file is larger than 50 MB. Use the homepage compressor for files up to 50 MB, or resize the photo first.',
       decode: 'This browser could not open that JPG. Try another file or a different browser.',
       encode: 'JPEG export is unavailable in this browser. Use a current Chrome, Edge, Firefox or Safari.',
       download: 'Download {size} JPG',
       dpi: 'Enter pixel dimensions and a DPI value between 1 and 2400.',
       print: 'Enter a print size and a DPI value between 1 and 2400.',
-      budget: 'Enter a positive limit and at least one file.'
+      budget: 'Enter a positive limit and at least one file.',
+      overhead: 'Overhead and reserved space exceed the limit; no bytes are left for files.'
     },
     zh: {
       working: '正在浏览器本地压缩……',
+      progress: '正在压缩第 {n} 轮（{w}×{h}）……',
       hit: '已达到目标：{size}，尺寸 {w}×{h}。',
+      hitConverted: '已达到目标：{size}，尺寸 {w}×{h}。已由 {format} 转换为真正的 JPEG 字节。',
       miss: '最接近的清晰结果：{size}，尺寸 {w}×{h}。这张图片在不明显损坏画质的前提下难以压到 {target}。',
-      already: '已小于 {target}：{size}。原文件保持不变。',
-      type: '请选择 JPG 或 JPEG 文件，本工具不接受其他图片格式。',
+      already: '已小于 {target}：{size}。这是真正的 JPEG，原文件保持不变，元数据也保留。',
+      type: '这个文件不是 JPEG，也无法打开。请选择 JPG/JPEG，或浏览器能够转换的 PNG/WebP 文件。',
       big: '文件超过 50 MB。请先缩小照片，或使用首页压缩器处理 50 MB 以内的文件。',
       decode: '浏览器无法打开这张 JPG，请换一个文件或浏览器重试。',
       encode: '当前浏览器不支持导出 JPEG，请使用最新版 Chrome、Edge、Firefox 或 Safari。',
       download: '下载 {size} 的 JPG',
       dpi: '请输入像素尺寸，以及 1 到 2400 之间的 DPI。',
       print: '请输入打印尺寸，以及 1 到 2400 之间的 DPI。',
-      budget: '请输入正数上限和至少一个文件。'
+      budget: '请输入正数上限和至少一个文件。',
+      overhead: '开销和预留空间已经超过上限，没有剩余字节分给文件。'
     }
   };
 
@@ -151,15 +157,49 @@
     });
   }
 
-  async function compressJpg(file, presetKey, onProgress) {
+  async function readHead(file) {
+    if (!file || typeof file.slice !== 'function') return new Uint8Array(0);
+    var head = file.slice(0, 12);
+    if (!head || typeof head.arrayBuffer !== 'function') return new Uint8Array(0);
+    try {
+      return new Uint8Array(await head.arrayBuffer());
+    } catch (error) {
+      return new Uint8Array(0);
+    }
+  }
+
+  function detectImageFormat(bytes) {
+    if (!bytes || bytes.length < 3) return '';
+    if (bytes[0] === 0xFF && bytes[1] === 0xD8 && bytes[2] === 0xFF) return 'jpeg';
+    if (bytes[0] === 0x89 && bytes[1] === 0x50 && bytes[2] === 0x4E && bytes[3] === 0x47) return 'png';
+    if (bytes[0] === 0x52 && bytes[1] === 0x49 && bytes[2] === 0x46 && bytes[3] === 0x46 &&
+        bytes[8] === 0x57 && bytes[9] === 0x45 && bytes[10] === 0x42 && bytes[11] === 0x50) return 'webp';
+    if (bytes[0] === 0x47 && bytes[1] === 0x49 && bytes[2] === 0x46) return 'gif';
+    if (bytes[0] === 0x42 && bytes[1] === 0x4D) return 'bmp';
+    return '';
+  }
+
+  function formatLabel(format) {
+    return {jpeg: 'JPEG', png: 'PNG', webp: 'WebP', gif: 'GIF', bmp: 'BMP'}[format] || 'image';
+  }
+
+  async function compressJpg(file, presetKey, onProgress, lang) {
     var preset = PRESETS[presetKey] || PRESETS['20kb'];
-    if (!file || !(file.type === 'image/jpeg' || /\.jpe?g$/i.test(file.name || ''))) throw new Error('type');
+    if (!file) throw new Error('type');
     if (file.size > MAX_INPUT_BYTES) throw new Error('big');
     if (!HTMLCanvasElement.prototype.toBlob) throw new Error('encode');
-    if (file.size <= preset.bytes * 0.98) {
-      return {blob: file, width: 0, height: 0, already: true, hit: true};
+    var format = detectImageFormat(await readHead(file));
+    var genuineJpeg = format === 'jpeg';
+    var image;
+    try {
+      image = await loadImage(file);
+    } catch (error) {
+      throw new Error(genuineJpeg ? 'decode' : 'type');
     }
-    var image = await loadImage(file);
+    if (genuineJpeg && file.size <= preset.bytes * 0.98) {
+      if (image.close) image.close();
+      return {blob: file, width: 0, height: 0, already: true, hit: true, converted: false, sourceFormat: 'jpeg'};
+    }
     try {
       var first = fitDims(image.width, image.height, preset.maxW, preset.maxH);
       var width = first.width;
@@ -170,12 +210,13 @@
       for (var round = 0; round < 8; round++) {
         for (var q = 0; q < qualities.length; q++) {
           attempts++;
-          if (onProgress) onProgress('Compressing pass ' + attempts + ' (' + width + '×' + height + ')');
+          if (onProgress) onProgress(message(lang, 'progress', {n: attempts, w: width, h: height}));
           var blob = await encodeJpeg(image, width, height, qualities[q]);
           var candidate = {blob: blob, width: width, height: height, quality: qualities[q]};
           if (!smallest || blob.size < smallest.blob.size) smallest = candidate;
           if (blob.size <= preset.bytes) {
-            return {blob: blob, width: width, height: height, already: false, hit: true, attempts: attempts};
+            return {blob: blob, width: width, height: height, already: false, hit: true, attempts: attempts,
+              converted: !genuineJpeg, sourceFormat: format || 'unknown'};
           }
         }
         if (width <= 16 || height <= 16) break;
@@ -184,6 +225,9 @@
       }
       smallest.hit = false;
       smallest.attempts = attempts;
+      smallest.already = false;
+      smallest.converted = !genuineJpeg;
+      smallest.sourceFormat = format || 'unknown';
       return smallest;
     } finally {
       if (image.close) image.close();
@@ -243,7 +287,7 @@
       run.disabled = true;
       setStatus(status, message(lang, 'working'), '');
       try {
-        var out = await compressJpg(file, preset.value, function (progress) { setStatus(status, progress, ''); });
+        var out = await compressJpg(file, preset.value, function (progress) { setStatus(status, progress, ''); }, lang);
         if (lastUrl) URL.revokeObjectURL(lastUrl);
         lastUrl = URL.createObjectURL(out.blob);
         var label = out.blob.size > 0 ? fmtBytes(out.blob.size) : fmtBytes(file.size);
@@ -255,7 +299,7 @@
         }
         if (result) result.hidden = false;
         if (out.already) setStatus(status, message(lang, 'already', {target: PRESETS[preset.value].label, size: label}), 'ok');
-        else if (out.hit) setStatus(status, message(lang, 'hit', {size: label, w: out.width, h: out.height}), 'ok');
+        else if (out.hit) setStatus(status, message(lang, out.converted ? 'hitConverted' : 'hit', {size: label, w: out.width, h: out.height, format: formatLabel(out.sourceFormat)}), 'ok');
         else setStatus(status, message(lang, 'miss', {size: label, w: out.width, h: out.height, target: PRESETS[preset.value].label}), 'warn');
       } catch (error) {
         var key = error && error.message === 'type' ? 'type' : error && error.message === 'big' ? 'big' : error && error.message === 'encode' ? 'encode' : 'decode';
@@ -308,7 +352,7 @@
       try {
         var budget = uploadBudget(limit.value, files.value, overhead ? overhead.value : 0, reserved ? reserved.value : 0);
         if (!(budget.perFileKB > 0)) {
-          output.textContent = message(lang, 'budget');
+          output.textContent = message(lang, budget.usableKB > 0 ? 'budget' : 'overhead');
           output.className = 'gtool-status gtool-error';
           return;
         }
@@ -342,6 +386,8 @@
     pixelsForPrint: pixelsForPrint,
     uploadBudget: uploadBudget,
     compressJpg: compressJpg,
+    detectImageFormat: detectImageFormat,
+    formatLabel: formatLabel,
     message: message,
     init: init
   };
