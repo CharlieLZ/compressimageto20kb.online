@@ -7,15 +7,16 @@ if(!/^[a-f0-9]{40}$/.test(sha))throw new Error('A full Git SHA is required for t
 const output=new URL('dist/',root);
 await mkdir(output,{recursive:true});
 const publicFiles=new Set(['favicon.ico','favicon.svg','apple-touch-icon.png','icon-192.png','icon-512.png','manifest.webmanifest','og-image.png','robots.txt','sitemap.xml','llms.txt','llms-full.txt','funnel-events.js']);
+const pageSections=new Set(['admin','guides','zh']);
 let pages=0;
 async function copyPublic(directory=''){
   for(const entry of await readdir(new URL(directory||'.',root),{withFileTypes:true})){
     const path=directory+entry.name;
     if(entry.isDirectory()){
-      if(directory||entry.name!=='admin')continue;
+      if(!directory&&!pageSections.has(entry.name))continue;
       await mkdir(new URL(path+'/',output),{recursive:true});
       await copyPublic(path+'/');
-    }else if(entry.isFile()&&(entry.name.endsWith('.html')||(!directory&&publicFiles.has(entry.name)))){
+    }else if(entry.isFile()&&(entry.name.endsWith('.html')||(directory&&/\.(css|js)$/.test(entry.name))||(!directory&&publicFiles.has(entry.name)))){
       if(entry.name.endsWith('.html')){
         const html=await readFile(new URL(path,root),'utf8');
         if(!/<head>/i.test(html))throw new Error(`Missing head: ${path}`);

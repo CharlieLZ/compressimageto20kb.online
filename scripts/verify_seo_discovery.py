@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
-"""Verify the discovery contract: robots.txt, llms.txt, llms-full.txt, sitemap.xml.
+"""Verify the discovery contract: robots.txt, llms.txt, llms-full.txt and sitemap.xml.
 
 Usage: python3 scripts/verify_seo_discovery.py
-
-Exit 0 = every contract below holds, 1 = at least one violation.
 
 Contract (single change point: AI_CRAWLERS):
 - robots.txt: one `*` group and one AI group; the AI group names every UA in
@@ -12,12 +10,10 @@ Contract (single change point: AI_CRAWLERS):
   no rule blocks render assets (/_next, *.js, *.css, *.json$); exactly one
   absolute Sitemap line; no Crawl-delay.
 - llms.txt (llmstxt.org): single H1 first, blockquote summary, H2 file lists,
-  `## Optional` last when present, 5-40 absolute canonical links and every link
-  points at a real route or an existing in-page anchor. The SPEC's 10-40 range
-  assumes a multi-page site: this site serves exactly one 200 route, and its
-  seven real anchors are the only honest links (anything else would 404).
+  `## Optional` last when present, 5-40 absolute canonical links, every link
+  resolves to an existing route (fragments must exist on that page).
 - llms-full.txt: same H1 first, non-trivial body, no HTML, links resolve too.
-- sitemap.xml: parses, canonical host only, only routes that exist on the page.
+- sitemap.xml: parses, canonical host only, exactly the routes that exist.
 """
 from __future__ import annotations
 
@@ -26,9 +22,11 @@ import sys
 from pathlib import Path
 from xml.etree import ElementTree
 
-ROOT = Path(__file__).resolve().parents[1]
-ORIGIN = "https://compressimageto20kb.online"
-HOST = "compressimageto20kb.online"
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import site_routes  # noqa: E402
+
+ROOT = site_routes.ROOT
+ORIGIN = site_routes.ORIGIN
 SITEMAP_NS = "http://www.sitemaps.org/schemas/sitemap/0.9"
 
 # Single source of truth for the AI crawler group (ADR-B1): revert = delete this group.
@@ -88,8 +86,6 @@ def main() -> int:
             errors.append(f"missing {name}: {exc}")
             return ""
 
-    index = read("index.html")
-    page_ids = set(re.findall(r'id="([A-Za-z][\w-]*)"', index))
     robots_text = read("robots.txt")
     groups, sitemaps = parse_robots(robots_text)
 
@@ -108,7 +104,7 @@ def main() -> int:
             and sorted(set(ai["allow"])) == sorted(set(star["allow"])),
             "AI group rules must repeat the * group verbatim (RFC 9309)",
         )
-        check(sorted(set(star["disallow"])) == sorted(set(PRIVATE_PATHS)), f"* Disallow list should be exactly {PRIVATE_PATHS}, got {star['disallow']}")
+        check(sorted(set(star["disallow"])) == sorted(PRIVATE_PATHS), f"* Disallow list should be exactly {PRIVATE_PATHS}, got {star['disallow']}")
         for path in LLMS_PATHS:
             check(path in star["allow"] and path in ai["allow"], f"{path} is not explicitly allowed in every group")
         blocked = [r for g in (star, ai) for r in g["disallow"] if any(path.startswith(r.rstrip("*$")) for path in LLMS_PATHS)]
@@ -121,23 +117,30 @@ def main() -> int:
     check(sitemaps == [f"{ORIGIN}/sitemap.xml"], f"robots.txt must declare exactly {ORIGIN}/sitemap.xml, got {sitemaps!r}")
     check("crawl-delay" not in robots_text.lower(), "robots.txt must not set Crawl-delay")
 
+    def ids_for(path: str) -> set[str]:
+        relative = site_routes.ROUTES.get(path)
+        if not relative:
+            return set()
+        return set(re.findall(r'id="([A-Za-z][\w-]*)"', (ROOT / relative).read_text(encoding="utf-8")))
+
     def link_targets(body: str, label: str) -> list[str]:
         links = re.findall(r"\[[^\]]+\]\((https?://[^)\s]+)\)", body)
-        # Lower bound 5, not the SPEC's 10: this site has one live route and seven real
-        # anchors, so padding to ten would mean linking URLs that 404 (see module docstring).
         check(5 <= len(links) <= 40, f"{label}: expected 5-40 links, found {len(links)}")
         for url in links:
             check(url.startswith(f"{ORIGIN}/") or url == ORIGIN, f"{label}: link is not an absolute canonical URL: {url}")
-            parsed = re.match(rf"^{re.escape(ORIGIN)}/(?:#([\w-]+))?$", url)
-            check(parsed is not None, f"{label}: link points outside the single live route: {url}")
-            if parsed and parsed.group(1):
-                anchor = parsed.group(1)
-                check(anchor in page_ids, f"{label}: anchor #{anchor} does not exist in index.html")
-            check("?utm_" not in url and "?" not in url, f"{label}: tracking or query parameter in link: {url}")
+            base, _, fragment = url.partition("#")
+            check(base == ORIGIN or base.startswith(ORIGIN + "/"), f"{label}: link points outside this origin: {url}")
+            path = "/" if base == ORIGIN else base[len(ORIGIN):]
+            check(path in site_routes.ROUTES, f"{label}: link points at an unknown route: {url}")
+            if path in site_routes.ROUTES:
+                check((ROOT / site_routes.ROUTES[path]).is_file(), f"{label}: route file missing: {url}")
+            if fragment:
+                check(fragment in ids_for(path), f"{label}: anchor #{fragment} does not exist on {path}")
+            check("?" not in url, f"{label}: query parameter in link: {url}")
         return links
 
     llms = read("llms.txt")
-    llms_lines = [line for line in llms.splitlines()]
+    llms_lines = llms.splitlines()
     first = next((line for line in llms_lines if line.strip()), "")
     check(first.startswith("# ") and len(first) > 3, f"llms.txt first line must be the H1, got {first[:60]!r}")
     check(sum(1 for line in llms_lines if line.startswith("# ")) == 1, "llms.txt must contain exactly one H1")
@@ -162,14 +165,17 @@ def main() -> int:
     except (ElementTree.ParseError, OSError) as exc:
         locs = []
         errors.append(f"invalid sitemap.xml: {exc}")
-    check(locs == [f"{ORIGIN}/"], f"sitemap.xml must list only the canonical homepage, got {locs!r}")
+    expected = site_routes.expected_sitemap_urls()
+    check(set(locs) == set(expected), f"sitemap.xml must list exactly the existing routes, got {len(locs)} URLs vs {len(expected)} routes")
+    for loc in locs:
+        check(loc.startswith(f"{ORIGIN}/"), f"sitemap.xml contains a non-canonical host: {loc}")
 
     if errors:
         print("SEO discovery verification failed:")
         for error in errors:
             print(f"- {error}")
         return 1
-    print(f"SEO discovery verification passed: robots groups parity, {len(AI_CRAWLERS)} AI crawlers, llms.txt + llms-full.txt links, canonical sitemap")
+    print(f"SEO discovery verification passed: robots groups parity, {len(AI_CRAWLERS)} AI crawlers, llms link resolution, {len(expected)} sitemap routes")
     return 0
 
 
