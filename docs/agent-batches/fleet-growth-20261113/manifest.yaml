@@ -1,12 +1,14 @@
 project: compressimageto20kb.online
-task: FG-040
-branch: growth/fleet-20261113
-worktree: /Users/project/1B/sites/2026/compressimageto20kb.online/.worktrees/fleet-growth-20261113
-base_sha: 316997315b86023d19b0a17aae07c15995ab06a5
+task: FG-040 (revision r2)
+branch: growth/fleet-r2-20261113
+worktree: /Users/project/1B/sites/2026/compressimageto20kb.online/.worktrees/fleet-growth-r2-20261113
+base_sha: c2c51dea9d17cfebcb4b62cb00a955ed04f6a3b5
 scope:
   - bilingual guide library (10 English + 10 Simplified Chinese articles)
   - working embedded browser tools (JPG compressor, print-size calculator, upload budget)
-  - sitemap/discovery build and verifier expansion
+  - extensionless canonical/hreflang/sitemap/internal URLs
+  - byte-signature JPEG validation and localized progress/invalid states
+  - sitemap/discovery/routing build and verifier expansion
 invariants:
   homepage_title: unchanged
   homepage_description: unchanged
@@ -17,5 +19,6 @@ verification:
   - python3 scripts/verify_guides.py
   - python3 scripts/verify_sitemap.py
   - python3 scripts/verify_seo_discovery.py
+  - python3 scripts/verify_routing.py
   - node scripts/build-static.mjs
 deployment: coordinator-only
