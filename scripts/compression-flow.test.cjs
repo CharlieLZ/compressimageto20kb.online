@@ -28,8 +28,8 @@ function fileWith(bytes, { name = 'private-photo.jpg', type = 'image/jpeg' } = {
 function fixture({ privacy = false, trackerFails = false } = {}) {
   const elements = new Map(), events = [], downloads = [], urls = [];
   function element() {
-    return {value:'',innerHTML:'',textContent:'',dataset:{},classList:{add(){},remove(){},toggle(){}},handlers:{},
-      addEventListener(name,fn){this.handlers[name]=fn;},querySelectorAll(){return [];},appendChild(){},focus(){},remove(){},
+    return {children:[],value:'',innerHTML:'',textContent:'',dataset:{},classList:{add(){},remove(){},toggle(){}},handlers:{},
+      addEventListener(name,fn){this.handlers[name]=fn;},querySelectorAll(){return [];},appendChild(child){this.children.push(child);},focus(){},remove(){},
       click(){if(this.download) downloads.push(this.download);else return this.handlers.click?.();}};
   }
   function canvas() {
@@ -172,3 +172,15 @@ test('homepage keeps a genuine under-target JPEG byte-identical', async()=>{
   assert.match(item.text,/Already under target/);
   assert.doesNotMatch(item.note,/Converted/);
 });
+
+ test('file results label larger conversions and unchanged originals honestly', async()=>{
+  for (const magic of [PNG, JPEG]) {
+    const p=fixture(), item=p.add(fileWith(bytesWith(magic, 1000)));
+    p.context.window.createImageBitmap=true;
+    p.context.createImageBitmap=async()=>({width:500,height:500,close(){}});
+    await p.api.compressOne(item.id);
+    const visible=p.get('fileList').children.at(-1).innerHTML;
+    if(magic===PNG){assert(item.resultSize>item.file.size);assert.match(visible,/% larger/);assert.doesNotMatch(visible,/% smaller/);}
+    else {assert.equal(item.resultSize,item.file.size);assert.match(visible,/Same size/);}
+  }
+ });
