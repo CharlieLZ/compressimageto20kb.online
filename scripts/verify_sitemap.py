@@ -139,10 +139,10 @@ def main() -> int:
                 pair = "/zh/guides/" if relative == "guides/index.html" else "/guides/"
             elif relative.startswith("zh/"):
                 check(language == "zh-Hans", f"{label}: language must be zh-Hans, got {language!r}")
-                pair = "/guides/" + relative.removeprefix("zh/guides/")
+                pair = "/guides/" + Path(relative).stem
             else:
                 check(language == "en", f"{label}: language must be en, got {language!r}")
-                pair = "/zh/guides/" + relative.removeprefix("guides/")
+                pair = "/zh/guides/" + Path(relative).stem
             pair_url = f"{ORIGIN}{pair}"
             check(f'hreflang="zh-Hans"' in html and f'hreflang="en"' in html and 'hreflang="x-default"' in html,
                   f"{label}: missing bilingual hreflang alternates")

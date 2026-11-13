@@ -7,10 +7,10 @@
 <meta content="看清 JPG 上传限制：KB 与字节的差别、单文件上限与总上限、尺寸规则，并提供批量上传预算计算器。全部在浏览器本地计算。" name="description"/>
 <meta content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" name="robots"/>
 <meta content="#2487eb" name="theme-color"/>
-<link href="https://compressimageto20kb.online/zh/guides/jpg-upload-size-limits.html" rel="canonical"/>
-<link href="https://compressimageto20kb.online/guides/jpg-upload-size-limits.html" hreflang="en" rel="alternate"/>
-<link href="https://compressimageto20kb.online/zh/guides/jpg-upload-size-limits.html" hreflang="zh-Hans" rel="alternate"/>
-<link href="https://compressimageto20kb.online/guides/jpg-upload-size-limits.html" hreflang="x-default" rel="alternate"/>
+<link href="https://compressimageto20kb.online/zh/guides/jpg-upload-size-limits" rel="canonical"/>
+<link href="https://compressimageto20kb.online/guides/jpg-upload-size-limits" hreflang="en" rel="alternate"/>
+<link href="https://compressimageto20kb.online/zh/guides/jpg-upload-size-limits" hreflang="zh-Hans" rel="alternate"/>
+<link href="https://compressimageto20kb.online/guides/jpg-upload-size-limits" hreflang="x-default" rel="alternate"/>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon.svg" rel="icon" sizes="any" type="image/svg+xml"/>
 <link href="/apple-touch-icon.png" rel="apple-touch-icon"/>
@@ -18,7 +18,7 @@
 <meta content="article" property="og:type"/>
 <meta content="JPG 上传大小限制详解" property="og:title"/>
 <meta content="单文件与总量上限、字节换算、尺寸规则和预算计算器。" property="og:description"/>
-<meta content="https://compressimageto20kb.online/zh/guides/jpg-upload-size-limits.html" property="og:url"/>
+<meta content="https://compressimageto20kb.online/zh/guides/jpg-upload-size-limits" property="og:url"/>
 <meta content="PixelPress" property="og:site_name"/>
 <meta content="https://compressimageto20kb.online/og-image.png" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
@@ -34,29 +34,29 @@
   "@graph": [
     {
       "@type": "Article",
-      "@id": "https://compressimageto20kb.online/zh/guides/jpg-upload-size-limits.html#article",
+      "@id": "https://compressimageto20kb.online/zh/guides/jpg-upload-size-limits#article",
       "headline": "JPG 上传大小限制：20KB、20,000 字节与总量",
       "description": "单文件与总量上限、字节换算、尺寸规则和预算计算器。",
       "inLanguage": "zh-Hans",
       "datePublished": "2026-11-14",
       "dateModified": "2026-11-14",
-      "mainEntityOfPage": "https://compressimageto20kb.online/zh/guides/jpg-upload-size-limits.html",
+      "mainEntityOfPage": "https://compressimageto20kb.online/zh/guides/jpg-upload-size-limits",
       "author": {"@type": "Organization", "name": "PixelPress", "url": "https://compressimageto20kb.online/"},
       "publisher": {"@type": "Organization", "name": "PixelPress", "url": "https://compressimageto20kb.online/"},
       "isPartOf": {"@id": "https://compressimageto20kb.online/#website"}
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://compressimageto20kb.online/zh/guides/jpg-upload-size-limits.html#breadcrumb",
+      "@id": "https://compressimageto20kb.online/zh/guides/jpg-upload-size-limits#breadcrumb",
       "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "首页", "item": "https://compressimageto20kb.online/"},
         {"@type": "ListItem", "position": 2, "name": "中文指南", "item": "https://compressimageto20kb.online/zh/guides/"},
-        {"@type": "ListItem", "position": 3, "name": "上传大小限制", "item": "https://compressimageto20kb.online/zh/guides/jpg-upload-size-limits.html"}
+        {"@type": "ListItem", "position": 3, "name": "上传大小限制", "item": "https://compressimageto20kb.online/zh/guides/jpg-upload-size-limits"}
       ]
     },
     {
       "@type": "FAQPage",
-      "@id": "https://compressimageto20kb.online/zh/guides/jpg-upload-size-limits.html#faq",
+      "@id": "https://compressimageto20kb.online/zh/guides/jpg-upload-size-limits#faq",
       "mainEntity": [
         {"@type": "Question", "name": "为什么 19.8KB 的文件被 20KB 表单拒绝？", "acceptedAnswer": {"@type": "Answer", "text": "表单可能把 20KB 当作 20,000 字节，或把 multipart 请求头也计入大小。把目标设到 19KB，并查看文件属性里的精确字节数。"}},
         {"@type": "Question", "name": "单文件上限是否也适用于总上传量？", "acceptedAnswer": {"@type": "Answer", "text": "不一定。表单可能允许每个文件 1MB，但所有文件合计只有 4MB。页面里的计算器会扣除预留空间，再把可用额度平均分给每个文件。"}}
@@ -74,7 +74,7 @@
 <a aria-label="PixelPress 首页" class="brand" href="/">
 <svg aria-hidden="true" fill="none" viewbox="0 0 44 44"><rect fill="#e9f4ff" height="38" rx="5" stroke="#9cc4f4" stroke-width="2" width="38" x="3" y="3"></rect><path d="M13 12l14 10-14 10V12z" fill="#2487eb"></path><path d="M24 12l10 10-10 10V12z" fill="#5cd510"></path></svg>
 <span><b>PIXELPRESS</b><small>中文 JPG 压缩指南</small></span></a>
-<nav aria-label="主导航" class="top-links"><a href="/">压缩器</a><a href="/zh/guides/">中文指南</a><a href="/guides/jpg-upload-size-limits.html" hreflang="en" lang="en">English</a><a class="top-cta" data-funnel="try_start" href="/#compressor">压缩 JPG</a></nav>
+<nav aria-label="主导航" class="top-links"><a href="/">压缩器</a><a href="/zh/guides/">中文指南</a><a href="/guides/jpg-upload-size-limits" hreflang="en" lang="en">English</a><a class="top-cta" data-funnel="try_start" href="/#compressor">压缩 JPG</a></nav>
 </div>
 </header>
 <main>
@@ -161,16 +161,16 @@
 <p>不同的服务器、字节换算、请求开销和尺寸规则。把每个门户当成独立合同。</p>
 <div class="cta-band"><p>需要命中每文件预算？上传前先在本地压缩每张 JPG。</p><a data-funnel="try_start" href="/#compressor">打开 JPG 压缩器</a></div>
 <div class="related"><h2>相关指南</h2><ul>
-<li><a href="/zh/guides/compress-jpg-to-20kb.html">压缩到 20KB</a></li>
-<li><a href="/zh/guides/compress-jpg-to-50kb-100kb.html">50KB 与 100KB</a></li>
-<li><a href="/zh/guides/job-application-photo-upload.html">求职照片上传</a></li>
-<li><a href="/zh/guides/email-attachment-jpg-size.html">邮件附件大小</a></li>
+<li><a href="/zh/guides/compress-jpg-to-20kb">压缩到 20KB</a></li>
+<li><a href="/zh/guides/compress-jpg-to-50kb-100kb">50KB 与 100KB</a></li>
+<li><a href="/zh/guides/job-application-photo-upload">求职照片上传</a></li>
+<li><a href="/zh/guides/email-attachment-jpg-size">邮件附件大小</a></li>
 </ul></div>
 </article>
 <aside class="aside">
 <div class="box"><h2>试试主工具</h2><p>批量压缩和 ZIP 下载。</p><a class="btn" data-funnel="try_start" href="/#compressor">免费压缩 JPG</a></div>
 <div class="box"><h2>检查清单</h2><ul><li>字节换算</li><li>单文件上限</li><li>总上限</li><li>最小/最大尺寸</li><li>允许格式</li></ul></div>
-<div class="box"><h2>English</h2><p><a href="/guides/jpg-upload-size-limits.html" hreflang="en" lang="en">Read in English →</a></p></div>
+<div class="box"><h2>English</h2><p><a href="/guides/jpg-upload-size-limits" hreflang="en" lang="en">Read in English →</a></p></div>
 </aside>
 </div>
 <footer class="foot"><div class="container foot-inner">

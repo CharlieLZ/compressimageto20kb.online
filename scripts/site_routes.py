@@ -23,7 +23,10 @@ for directory, prefix in (("guides", "/guides/"), ("zh/guides", "/zh/guides/")):
     for path in sorted((ROOT / directory).glob("*.html")):
         if path.name == "index.html":
             continue
-        ROUTES[f"{prefix}{path.name}"] = f"{directory}/{path.name}"
+        # Cloudflare Pages redirects /x.html to /x, so the extensionless URL is
+        # the only final, canonical form. The .html file stays on disk for Pages
+        # to serve at that URL.
+        ROUTES[f"{prefix}{path.stem}"] = f"{directory}/{path.name}"
 
 
 def absolute(path: str) -> str:

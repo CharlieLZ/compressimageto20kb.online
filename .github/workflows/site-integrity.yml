@@ -22,3 +22,4 @@ jobs:
       - run: python3 scripts/verify_guides.py
       - run: python3 scripts/verify_sitemap.py
       - run: python3 scripts/verify_seo_discovery.py
+      - run: python3 scripts/verify_routing.py

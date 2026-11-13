@@ -7,10 +7,10 @@
 <meta content="A practical 20KB JPG guide: byte math, pixel budgets, why some photos resist 20KB, and a working browser compressor you can test before uploading." name="description"/>
 <meta content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" name="robots"/>
 <meta content="#2487eb" name="theme-color"/>
-<link href="https://compressimageto20kb.online/guides/compress-jpg-to-20kb.html" rel="canonical"/>
-<link href="https://compressimageto20kb.online/guides/compress-jpg-to-20kb.html" hreflang="en" rel="alternate"/>
-<link href="https://compressimageto20kb.online/zh/guides/compress-jpg-to-20kb.html" hreflang="zh-Hans" rel="alternate"/>
-<link href="https://compressimageto20kb.online/guides/compress-jpg-to-20kb.html" hreflang="x-default" rel="alternate"/>
+<link href="https://compressimageto20kb.online/guides/compress-jpg-to-20kb" rel="canonical"/>
+<link href="https://compressimageto20kb.online/guides/compress-jpg-to-20kb" hreflang="en" rel="alternate"/>
+<link href="https://compressimageto20kb.online/zh/guides/compress-jpg-to-20kb" hreflang="zh-Hans" rel="alternate"/>
+<link href="https://compressimageto20kb.online/guides/compress-jpg-to-20kb" hreflang="x-default" rel="alternate"/>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon.svg" rel="icon" sizes="any" type="image/svg+xml"/>
 <link href="/apple-touch-icon.png" rel="apple-touch-icon"/>
@@ -18,7 +18,7 @@
 <meta content="article" property="og:type"/>
 <meta content="Compress JPG to 20KB: What Actually Fits" property="og:title"/>
 <meta content="Byte math, pixel budgets and a working local compressor for strict 20KB upload limits." property="og:description"/>
-<meta content="https://compressimageto20kb.online/guides/compress-jpg-to-20kb.html" property="og:url"/>
+<meta content="https://compressimageto20kb.online/guides/compress-jpg-to-20kb" property="og:url"/>
 <meta content="PixelPress" property="og:site_name"/>
 <meta content="https://compressimageto20kb.online/og-image.png" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
@@ -34,34 +34,34 @@
   "@graph": [
     {
       "@type": "Article",
-      "@id": "https://compressimageto20kb.online/guides/compress-jpg-to-20kb.html#article",
+      "@id": "https://compressimageto20kb.online/guides/compress-jpg-to-20kb#article",
       "headline": "Compress JPG to 20KB: What Actually Fits",
       "description": "Byte math, pixel budgets and a working browser compressor for strict 20KB upload limits.",
       "inLanguage": "en",
       "datePublished": "2026-11-14",
       "dateModified": "2026-11-14",
-      "mainEntityOfPage": "https://compressimageto20kb.online/guides/compress-jpg-to-20kb.html",
+      "mainEntityOfPage": "https://compressimageto20kb.online/guides/compress-jpg-to-20kb",
       "author": {"@type": "Organization", "name": "PixelPress", "url": "https://compressimageto20kb.online/"},
       "publisher": {"@type": "Organization", "name": "PixelPress", "url": "https://compressimageto20kb.online/"},
       "isPartOf": {"@id": "https://compressimageto20kb.online/#website"}
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://compressimageto20kb.online/guides/compress-jpg-to-20kb.html#breadcrumb",
+      "@id": "https://compressimageto20kb.online/guides/compress-jpg-to-20kb#breadcrumb",
       "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://compressimageto20kb.online/"},
         {"@type": "ListItem", "position": 2, "name": "Guides", "item": "https://compressimageto20kb.online/guides/"},
-        {"@type": "ListItem", "position": 3, "name": "Compress JPG to 20KB", "item": "https://compressimageto20kb.online/guides/compress-jpg-to-20kb.html"}
+        {"@type": "ListItem", "position": 3, "name": "Compress JPG to 20KB", "item": "https://compressimageto20kb.online/guides/compress-jpg-to-20kb"}
       ]
     },
     {
       "@type": "FAQPage",
-      "@id": "https://compressimageto20kb.online/guides/compress-jpg-to-20kb.html#faq",
+      "@id": "https://compressimageto20kb.online/guides/compress-jpg-to-20kb#faq",
       "mainEntity": [
         {"@type": "Question", "name": "Is 20KB the same as 20,000 bytes?", "acceptedAnswer": {"@type": "Answer", "text": "No. Most image tools treat 20KB as 20 × 1024 = 20,480 bytes, while some portals mean 20,000 bytes. If a form is strict, aim for 19.5KB in the tool and check the byte count it reports."}},
         {"@type": "Question", "name": "Can a 600×450 photo reach 20KB?", "acceptedAnswer": {"@type": "Answer", "text": "It can, but only at roughly 0.61 bits per pixel, which is very aggressive for a photograph. Smooth backgrounds may survive; faces, foliage and texture usually soften. Smaller dimensions or a simpler crop produce a cleaner 20KB image."}},
         {"@type": "Question", "name": "Why does the tool say closest match instead of 20KB?", "acceptedAnswer": {"@type": "Answer", "text": "The compressor stops when the next reduction would visibly damage the image. It reports the smallest clean result rather than producing a broken file that technically hits the number."}},
-        {"@type": "Question", "name": "Does compressing to 20KB remove photo metadata?", "acceptedAnswer": {"@type": "Answer", "text": "The browser re-encodes the pixels into a new JPEG, so EXIF fields such as device model and GPS coordinates are not copied into the downloaded result. The original file on your device is untouched."}}
+        {"@type": "Question", "name": "Does compressing to 20KB remove photo metadata?", "acceptedAnswer": {"@type": "Answer", "text": "Whenever the tool has to reduce a file it re-encodes the pixels into a new JPEG, so EXIF fields such as device model and GPS coordinates are not copied into the downloaded result. A genuine JPEG that is already under the target is returned unchanged, so its metadata stays. The original file on your device is untouched."}}
       ]
     }
   ]
@@ -76,7 +76,7 @@
 <a aria-label="PixelPress homepage" class="brand" href="/">
 <svg aria-hidden="true" fill="none" viewbox="0 0 44 44"><rect fill="#e9f4ff" height="38" rx="5" stroke="#9cc4f4" stroke-width="2" width="38" x="3" y="3"></rect><path d="M13 12l14 10-14 10V12z" fill="#2487eb"></path><path d="M24 12l10 10-10 10V12z" fill="#5cd510"></path></svg>
 <span><b>PIXELPRESS</b><small>JPG compression guides</small></span></a>
-<nav aria-label="Primary" class="top-links"><a href="/">Compressor</a><a href="/guides/">Guides</a><a href="/zh/guides/compress-jpg-to-20kb.html" hreflang="zh-Hans" lang="zh-Hans">中文</a><a class="top-cta" data-funnel="try_start" href="/#compressor">Compress JPG</a></nav>
+<nav aria-label="Primary" class="top-links"><a href="/">Compressor</a><a href="/guides/">Guides</a><a href="/zh/guides/compress-jpg-to-20kb" hreflang="zh-Hans" lang="zh-Hans">中文</a><a class="top-cta" data-funnel="try_start" href="/#compressor">Compress JPG</a></nav>
 </div>
 </header>
 <main>
@@ -118,7 +118,7 @@
 <p>The tool below runs the same browser-local compression as the homepage. It starts from a 600×450 fit for the 20KB preset, lowers quality in steps, and reduces dimensions further only when needed. If it cannot reach 20KB cleanly, it says so and offers the smallest clean result.</p>
 <div class="gtool" data-tool="compressor">
 <h3>Compress a JPG to 20KB in this tab</h3>
-<p class="gtool-sub">JPG or JPEG only, up to 50MB. The file is read locally and never uploaded.</p>
+<p class="gtool-sub">JPEG output, up to 50MB. A PNG or WebP renamed to .jpg is detected by its bytes and re-encoded as JPEG. The file is read locally and never uploaded.</p>
 <div class="gtool-row">
 <div class="gtool-field"><label for="g1file">JPG file</label><input accept=".jpg,.jpeg,image/jpeg" data-file id="g1file" type="file"/></div>
 <div class="gtool-field"><label for="g1preset">Target size</label><select data-preset id="g1preset"><option value="10kb">10KB</option><option selected value="20kb">20KB</option><option value="30kb">30KB</option><option value="50kb">50KB</option><option value="100kb">100KB</option></select></div>
@@ -126,7 +126,7 @@
 </div>
 <div class="gtool-result" data-result hidden><a data-download hidden href="#">Download</a></div>
 <p aria-live="polite" class="gtool-status" data-status role="status"></p>
-<p class="gtool-hint">The reported size is the exact byte count of the new file. Compare it with the portal limit before uploading.</p>
+<p class="gtool-hint">The reported size is the exact byte count of the new file. A re-encoded result is a new JPEG, so EXIF metadata such as GPS is not carried over; a genuine JPEG already under the target is returned unchanged with its metadata.</p>
 </div>
 <script defer src="/guides/tools.js"></script>
 
@@ -145,7 +145,7 @@
 <p>A responsible compressor therefore has a stopping condition. PixelPress uses a minimum quality floor and reports “Closest match” when the cleanest result remains above the target. That label is not a failure of the tool; it is information that the source image and the target are in conflict. The fix is usually a tighter crop, smaller dimensions, or a form that accepts 50KB.</p>
 
 <h2>Privacy and metadata</h2>
-<p>When a JPEG is decoded into a canvas and re-encoded, the new file contains pixel data and a fresh JFIF header, not the original EXIF block. Device model, capture time, GPS coordinates and editing history are not carried over. That is a useful side effect for personal photos submitted to public portals. It is not a guarantee of anonymity: the image content itself can still identify a person or location, and some portals keep the uploaded file. The original file on your device is never modified by the browser tool.</p>
+<p>When a JPEG is decoded into a canvas and re-encoded, the new file contains pixel data and a fresh JFIF header, not the original EXIF block. Device model, capture time, GPS coordinates and editing history are not carried over. That is a useful side effect for personal photos submitted to public portals. It is not a guarantee of anonymity: the image content itself can still identify a person or location, and some portals keep the uploaded file. The original file on your device is never modified by the browser tool. A genuine JPEG that is already under the target is returned byte-for-byte unchanged, so its EXIF metadata is preserved; only a file that must be reduced is re-encoded and stripped.</p>
 
 <h2>Common rejection reasons and what to change</h2>
 <ul>
@@ -165,16 +165,16 @@
 <p>Not reliably. Re-encoding an already compressed JPEG adds another generation of loss and may even increase size because the encoder has to represent existing artefacts. Always compress from the best original you have, once, to the final target.</p>
 <div class="cta-band"><p>Need several files at once? The homepage compressor batches JPGs and downloads a ZIP.</p><a data-funnel="try_start" href="/#compressor">Open the batch compressor</a></div>
 <div class="related"><h2>Related guides</h2><ul>
-<li><a href="/guides/compress-jpg-to-50kb-100kb.html">Compress JPG to 50KB or 100KB</a></li>
-<li><a href="/guides/jpg-upload-size-limits.html">Upload size limits on forms</a></li>
-<li><a href="/guides/reduce-jpg-size-without-losing-quality.html">Reduce JPG size without losing quality</a></li>
-<li><a href="/guides/phone-photos-too-large.html">Phone photos that are too large</a></li>
+<li><a href="/guides/compress-jpg-to-50kb-100kb">Compress JPG to 50KB or 100KB</a></li>
+<li><a href="/guides/jpg-upload-size-limits">Upload size limits on forms</a></li>
+<li><a href="/guides/reduce-jpg-size-without-losing-quality">Reduce JPG size without losing quality</a></li>
+<li><a href="/guides/phone-photos-too-large">Phone photos that are too large</a></li>
 </ul></div>
 </article>
 <aside class="aside">
 <div class="box"><h2>Try the main tool</h2><p>Batch compression, ten presets and ZIP download on the homepage.</p><a class="btn" data-funnel="try_start" href="/#compressor">Compress JPG free</a></div>
 <div class="box"><h2>In this guide</h2><ul><li><a href="#article">Byte math</a></li><li><a href="#article">Dimensions vs quality</a></li><li><a href="#article">Workflow</a></li><li><a href="#article">Rejection fixes</a></li></ul></div>
-<div class="box"><h2>中文版</h2><p><a href="/zh/guides/compress-jpg-to-20kb.html" hreflang="zh-Hans" lang="zh-Hans">阅读中文版：把 JPG 压缩到 20KB →</a></p></div>
+<div class="box"><h2>中文版</h2><p><a href="/zh/guides/compress-jpg-to-20kb" hreflang="zh-Hans" lang="zh-Hans">阅读中文版：把 JPG 压缩到 20KB →</a></p></div>
 </aside>
 </div>
 <footer class="foot"><div class="container foot-inner">

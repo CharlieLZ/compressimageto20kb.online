@@ -39,28 +39,28 @@ PixelPress avoids destroying an image just to hit a number, so exact 20KB output
 Ten English guides and ten Simplified Chinese guides cover the decisions around the compressor. Each guide includes a working local tool: a target-size compressor, a print-size calculator or an upload budget calculator.
 
 English:
-- [Compress JPG to 20KB](https://compressimageto20kb.online/guides/compress-jpg-to-20kb.html): byte conventions, bits-per-pixel math and a local compressor.
-- [50KB and 100KB targets](https://compressimageto20kb.online/guides/compress-jpg-to-50kb-100kb.html): when extra bytes buy visible quality.
-- [JPG upload size limits](https://compressimageto20kb.online/guides/jpg-upload-size-limits.html): per-file and total caps with a budget calculator.
-- [Passport photo JPG size](https://compressimageto20kb.online/guides/passport-photo-jpg-size.html): pixels, DPI and print size.
-- [Email attachment JPG size](https://compressimageto20kb.online/guides/email-attachment-jpg-size.html): base64 overhead and mailbox planning.
-- [Job application photo upload](https://compressimageto20kb.online/guides/job-application-photo-upload.html): headshots, filenames and ATS behavior.
-- [JPG vs PNG vs WebP](https://compressimageto20kb.online/guides/jpg-vs-png-vs-webp.html): format fit for photos, text and transparency.
-- [Reduce JPG size without losing visible quality](https://compressimageto20kb.online/guides/reduce-jpg-size-without-losing-quality.html): crop, downscale, encode once.
-- [Batch compress JPGs for websites](https://compressimageto20kb.online/guides/batch-compress-jpg-for-websites.html): display widths, naming and Core Web Vitals.
-- [Phone photos too large](https://compressimageto20kb.online/guides/phone-photos-too-large.html): HEIC, 48MP and HDR causes.
+- [Compress JPG to 20KB](https://compressimageto20kb.online/guides/compress-jpg-to-20kb): byte conventions, bits-per-pixel math and a local compressor.
+- [50KB and 100KB targets](https://compressimageto20kb.online/guides/compress-jpg-to-50kb-100kb): when extra bytes buy visible quality.
+- [JPG upload size limits](https://compressimageto20kb.online/guides/jpg-upload-size-limits): per-file and total caps with a budget calculator.
+- [Passport photo JPG size](https://compressimageto20kb.online/guides/passport-photo-jpg-size): pixels, DPI and print size.
+- [Email attachment JPG size](https://compressimageto20kb.online/guides/email-attachment-jpg-size): base64 overhead and mailbox planning.
+- [Job application photo upload](https://compressimageto20kb.online/guides/job-application-photo-upload): headshots, filenames and ATS behavior.
+- [JPG vs PNG vs WebP](https://compressimageto20kb.online/guides/jpg-vs-png-vs-webp): format fit for photos, text and transparency.
+- [Reduce JPG size without losing visible quality](https://compressimageto20kb.online/guides/reduce-jpg-size-without-losing-quality): crop, downscale, encode once.
+- [Batch compress JPGs for websites](https://compressimageto20kb.online/guides/batch-compress-jpg-for-websites): display widths, naming and Core Web Vitals.
+- [Phone photos too large](https://compressimageto20kb.online/guides/phone-photos-too-large): HEIC, 48MP and HDR causes.
 
 中文：
-- [把 JPG 压缩到 20KB](https://compressimageto20kb.online/zh/guides/compress-jpg-to-20kb.html)：字节换算、位/像素预算与本地压缩工具。
-- [50KB 还是 100KB](https://compressimageto20kb.online/zh/guides/compress-jpg-to-50kb-100kb.html)：多出的字节值不值得。
-- [JPG 上传大小限制](https://compressimageto20kb.online/zh/guides/jpg-upload-size-limits.html)：单文件与总量上限。
-- [护照照片 JPG 尺寸](https://compressimageto20kb.online/zh/guides/passport-photo-jpg-size.html)：像素、DPI 与打印尺寸。
-- [邮件附件 JPG 大小](https://compressimageto20kb.online/zh/guides/email-attachment-jpg-size.html)：base64 开销与邮箱规划。
-- [求职照片上传](https://compressimageto20kb.online/zh/guides/job-application-photo-upload.html)：头像尺寸与文件名。
-- [JPG、PNG、WebP 怎么选](https://compressimageto20kb.online/zh/guides/jpg-vs-png-vs-webp.html)：照片、文字与透明度。
-- [压缩 JPG 又不损失可见画质](https://compressimageto20kb.online/zh/guides/reduce-jpg-size-without-losing-quality.html)：裁剪、缩放、只编码一次。
-- [网站批量压缩 JPG](https://compressimageto20kb.online/zh/guides/batch-compress-jpg-for-websites.html)：显示宽度、命名与 Core Web Vitals。
-- [手机照片太大](https://compressimageto20kb.online/zh/guides/phone-photos-too-large.html)：HEIC、4800 万像素与 HDR。
+- [把 JPG 压缩到 20KB](https://compressimageto20kb.online/zh/guides/compress-jpg-to-20kb)：字节换算、位/像素预算与本地压缩工具。
+- [50KB 还是 100KB](https://compressimageto20kb.online/zh/guides/compress-jpg-to-50kb-100kb)：多出的字节值不值得。
+- [JPG 上传大小限制](https://compressimageto20kb.online/zh/guides/jpg-upload-size-limits)：单文件与总量上限。
+- [护照照片 JPG 尺寸](https://compressimageto20kb.online/zh/guides/passport-photo-jpg-size)：像素、DPI 与打印尺寸。
+- [邮件附件 JPG 大小](https://compressimageto20kb.online/zh/guides/email-attachment-jpg-size)：base64 开销与邮箱规划。
+- [求职照片上传](https://compressimageto20kb.online/zh/guides/job-application-photo-upload)：头像尺寸与文件名。
+- [JPG、PNG、WebP 怎么选](https://compressimageto20kb.online/zh/guides/jpg-vs-png-vs-webp)：照片、文字与透明度。
+- [压缩 JPG 又不损失可见画质](https://compressimageto20kb.online/zh/guides/reduce-jpg-size-without-losing-quality)：裁剪、缩放、只编码一次。
+- [网站批量压缩 JPG](https://compressimageto20kb.online/zh/guides/batch-compress-jpg-for-websites)：显示宽度、命名与 Core Web Vitals。
+- [手机照片太大](https://compressimageto20kb.online/zh/guides/phone-photos-too-large)：HEIC、4800 万像素与 HDR。
 
 ## Limits and supported files
 
