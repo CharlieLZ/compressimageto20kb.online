@@ -4,6 +4,27 @@ const vm = require('node:vm');
 const { readFileSync } = require('node:fs');
 const { join } = require('node:path');
 
+const JPEG = [0xff, 0xd8, 0xff, 0xe0];
+const PNG = [0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a];
+
+function bytesWith(magic, size) {
+  const bytes = new Uint8Array(Math.max(size, magic.length));
+  bytes.set(magic);
+  return bytes;
+}
+
+function fileWith(bytes, { name = 'private-photo.jpg', type = 'image/jpeg' } = {}) {
+  return {
+    name,
+    type,
+    size: bytes.length,
+    slice(start, end) {
+      const part = bytes.slice(start, end);
+      return { arrayBuffer: async () => part.buffer.slice(part.byteOffset, part.byteOffset + part.byteLength) };
+    }
+  };
+}
+
 function fixture({ privacy = false, trackerFails = false } = {}) {
   const elements = new Map(), events = [], downloads = [], urls = [];
   function element() {
@@ -11,8 +32,16 @@ function fixture({ privacy = false, trackerFails = false } = {}) {
       addEventListener(name,fn){this.handlers[name]=fn;},querySelectorAll(){return [];},appendChild(){},focus(){},remove(){},
       click(){if(this.download) downloads.push(this.download);else return this.handlers.click?.();}};
   }
+  function canvas() {
+    return {width:0,height:0,
+      getContext(){return {fillStyle:'',imageSmoothingEnabled:false,imageSmoothingQuality:'',fillRect(){},drawImage(){}};},
+      toBlob(callback, type, quality) {
+        const size = Math.max(800, Math.min(18000, Math.round(this.width * this.height * (quality || .5) * .2)));
+        callback(new Blob([bytesWith(JPEG, size)], {type: 'image/jpeg'}));
+      }};
+  }
   const get = id => {if(!elements.has(id))elements.set(id,element());return elements.get(id);};
-  const document = {getElementById:get,querySelectorAll:()=>[],addEventListener(){},body:{appendChild(){}},createElement:element};
+  const document = {getElementById:get,querySelectorAll:()=>[],addEventListener(){},body:{appendChild(){}},createElement(tag){return tag === 'canvas' ? canvas() : element();}};
   const context = vm.createContext({document,navigator:{doNotTrack:privacy===true?'1':'0',globalPrivacyControl:privacy==='gpc'},
     window:{location:{search:'?qa=1'},gtag(...args){if(trackerFails)throw new Error('analytics unavailable');events.push(args);}},
     console:{warn(){}},URL:{createObjectURL(){const url='blob:qa-'+urls.length;urls.push(url);return url;},revokeObjectURL(){}},URLSearchParams,
@@ -21,7 +50,8 @@ function fixture({ privacy = false, trackerFails = false } = {}) {
   const source=[...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].map(m=>m[1]).find(s=>s.includes('const presets='));
   vm.runInContext(source,context);
   const api=context.window.__PIXELPRESS_TEST__;
-  function add(file={name:'private-photo.jpg',type:'image/jpeg',size:1000}) {
+  function add(file) {
+    if (!file) file = fileWith(bytesWith(JPEG, 1000));
     get('fileInput').handlers.change({target:{files:[file],value:'fake'}});
     return api.state.files.at(-1);
   }
@@ -45,7 +75,7 @@ test('changing the target during encoding cannot publish the old-size result', a
   p.context.createImageBitmap=()=>new Promise(resolve=>{release=()=>resolve({width:40,height:30,close(){}});});
   const pending=p.api.compressOne(item.id);
   p.get('targetSize').handlers.change({target:{value:'10kb'}});
-  release();await pending;
+  await new Promise(resolve=>setImmediate(resolve));release();await pending;
   assert.equal(item.status,'ready');assert.equal(item.blob,null);assert.equal(item.url,'');
   assert.equal(p.events.filter(e=>e[1]==='compression_complete').length,0);
 });
@@ -55,7 +85,7 @@ test('removing a file during encoding cannot create an orphan result URL', async
   p.context.window.createImageBitmap=true;
   p.context.createImageBitmap=()=>new Promise(resolve=>{release=()=>resolve({width:40,height:30,close(){}});});
   const pending=p.api.compressOne(item.id);
-  p.get('clearBtn').click();release();await pending;
+  p.get('clearBtn').click();await new Promise(resolve=>setImmediate(resolve));release();await pending;
   assert.equal(p.api.state.files.length,0);assert.equal(p.urls.length,1);
   assert.equal(p.events.filter(e=>e[1]==='compression_complete').length,0);
 });
@@ -97,7 +127,7 @@ test('compress all exposes a disabled loading state and ignores a duplicate run'
   assert.equal(p.get('compressAllBtn').disabled,true);
   assert.equal(p.get('compressAllBtn').textContent,'Compressing…');
   await p.api.compressAll();
-  release();await pending;
+  await new Promise(resolve=>setImmediate(resolve));release();await pending;
   assert.equal(item.status,'done');
   assert.equal(p.events.filter(e=>e[1]==='compression_start').length,1);
   assert.equal(p.get('compressAllBtn').disabled,false);
@@ -110,7 +140,35 @@ test('unsupported files and duplicate active clicks do not fabricate success', a
   const item=p.add();let release;
   p.context.window.createImageBitmap=true;
   p.context.createImageBitmap=()=>new Promise(resolve=>{release=()=>resolve({width:40,height:30,close(){}});});
-  const pending=p.api.compressOne(item.id);await p.api.compressOne(item.id);release();await pending;
+  const pending=p.api.compressOne(item.id);await p.api.compressOne(item.id);await new Promise(resolve=>setImmediate(resolve));release();await pending;
   assert.equal(p.events.filter(e=>e[1]==='compression_start').length,1);
   assert.equal(p.events.filter(e=>e[1]==='compression_complete').length,1);
+});
+
+test('homepage under-target shortcut rejects a renamed PNG and returns JPEG bytes', async()=>{
+  const p=fixture();
+  const file=fileWith(bytesWith(PNG,1000),{name:'renamed.png.jpg'});
+  const item=p.add(file);
+  p.context.window.createImageBitmap=true;
+  p.context.createImageBitmap=async()=>({width:40,height:30,close(){}});
+  await p.api.compressOne(item.id);
+  assert.equal(item.status,'done');
+  assert.notEqual(item.blob,file);
+  const out=new Uint8Array(await item.blob.arrayBuffer());
+  assert.deepEqual([...out.slice(0,3)],[255,216,255]);
+  assert.match(item.note,/Converted from PNG to real JPEG bytes/);
+  assert.doesNotMatch(item.text,/Already under target/);
+});
+
+test('homepage keeps a genuine under-target JPEG byte-identical', async()=>{
+  const p=fixture();
+  const file=fileWith(bytesWith(JPEG,1000));
+  const item=p.add(file);
+  p.context.window.createImageBitmap=true;
+  p.context.createImageBitmap=async()=>({width:40,height:30,close(){}});
+  await p.api.compressOne(item.id);
+  assert.equal(item.status,'done');
+  assert.equal(item.blob,file);
+  assert.match(item.text,/Already under target/);
+  assert.doesNotMatch(item.note,/Converted/);
 });
