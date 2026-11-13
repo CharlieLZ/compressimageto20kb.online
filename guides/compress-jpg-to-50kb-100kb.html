@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Compress JPG to 50KB or 100KB: Which Target Wins | PixelPress</title>
+<meta content="Compare 50KB and 100KB JPG targets: quality math, which images benefit, when 20KB is too aggressive, and a working browser compressor with both presets." name="description"/>
+<meta content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" name="robots"/>
+<meta content="#2487eb" name="theme-color"/>
+<link href="https://compressimageto20kb.online/guides/compress-jpg-to-50kb-100kb.html" rel="canonical"/>
+<link href="https://compressimageto20kb.online/guides/compress-jpg-to-50kb-100kb.html" hreflang="en" rel="alternate"/>
+<link href="https://compressimageto20kb.online/zh/guides/compress-jpg-to-50kb-100kb.html" hreflang="zh-Hans" rel="alternate"/>
+<link href="https://compressimageto20kb.online/guides/compress-jpg-to-50kb-100kb.html" hreflang="x-default" rel="alternate"/>
+<link href="/favicon.ico" rel="icon" sizes="48x48"/>
+<link href="/favicon.svg" rel="icon" sizes="any" type="image/svg+xml"/>
+<link href="/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="/manifest.webmanifest" rel="manifest"/>
+<meta content="article" property="og:type"/>
+<meta content="Compress JPG to 50KB or 100KB" property="og:title"/>
+<meta content="A practical comparison of 50KB and 100KB JPG targets, with a local compressor." property="og:description"/>
+<meta content="https://compressimageto20kb.online/guides/compress-jpg-to-50kb-100kb.html" property="og:url"/>
+<meta content="PixelPress" property="og:site_name"/>
+<meta content="https://compressimageto20kb.online/og-image.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="JPG 50KB and 100KB target guide" property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://compressimageto20kb.online/og-image.png" name="twitter:image"/>
+<meta content="Compress JPG to 50KB or 100KB" name="twitter:title"/>
+<meta content="When the extra bytes are worth it, and how presets behave on detailed photos." name="twitter:description"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://compressimageto20kb.online/guides/compress-jpg-to-50kb-100kb.html#article",
+      "headline": "Compress JPG to 50KB or 100KB: Which Target Wins",
+      "description": "A practical comparison of 50KB and 100KB JPG targets, with a local compressor.",
+      "inLanguage": "en",
+      "datePublished": "2026-11-14",
+      "dateModified": "2026-11-14",
+      "mainEntityOfPage": "https://compressimageto20kb.online/guides/compress-jpg-to-50kb-100kb.html",
+      "author": {"@type": "Organization", "name": "PixelPress", "url": "https://compressimageto20kb.online/"},
+      "publisher": {"@type": "Organization", "name": "PixelPress", "url": "https://compressimageto20kb.online/"},
+      "isPartOf": {"@id": "https://compressimageto20kb.online/#website"}
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://compressimageto20kb.online/guides/compress-jpg-to-50kb-100kb.html#breadcrumb",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://compressimageto20kb.online/"},
+        {"@type": "ListItem", "position": 2, "name": "Guides", "item": "https://compressimageto20kb.online/guides/"},
+        {"@type": "ListItem", "position": 3, "name": "50KB and 100KB targets", "item": "https://compressimageto20kb.online/guides/compress-jpg-to-50kb-100kb.html"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://compressimageto20kb.online/guides/compress-jpg-to-50kb-100kb.html#faq",
+      "mainEntity": [
+        {"@type": "Question", "name": "Is 100KB better than 50KB for a headshot?", "acceptedAnswer": {"@type": "Answer", "text": "Usually yes if the portal allows it. A 600×600 headshot at 100KB has about 2.3 bits per pixel, enough for skin tones and hair detail; 50KB halves that budget and tends to smooth texture."}},
+        {"@type": "Question", "name": "Can I compress one JPG to both targets and compare?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The embedded tool lets you run the same file at 50KB and 100KB, then compare the downloaded results at 100% zoom before choosing."}},
+        {"@type": "Question", "name": "Why is my 100KB file still rejected?", "acceptedAnswer": {"@type": "Answer", "text": "Check whether the portal means 100,000 bytes rather than 102,400, whether it also limits dimensions, and whether the upload includes multiple files counted together."}}
+      ]
+    }
+  ]
+}
+</script>
+<link href="/guides/guide.css" rel="stylesheet"/>
+</head>
+<body>
+<a class="skip-link" href="#article">Skip to article</a>
+<header class="top">
+<div class="container nav">
+<a aria-label="PixelPress homepage" class="brand" href="/">
+<svg aria-hidden="true" fill="none" viewbox="0 0 44 44"><rect fill="#e9f4ff" height="38" rx="5" stroke="#9cc4f4" stroke-width="2" width="38" x="3" y="3"></rect><path d="M13 12l14 10-14 10V12z" fill="#2487eb"></path><path d="M24 12l10 10-10 10V12z" fill="#5cd510"></path></svg>
+<span><b>PIXELPRESS</b><small>JPG compression guides</small></span></a>
+<nav aria-label="Primary" class="top-links"><a href="/">Compressor</a><a href="/guides/">Guides</a><a href="/zh/guides/compress-jpg-to-50kb-100kb.html" hreflang="zh-Hans" lang="zh-Hans">中文</a><a class="top-cta" data-funnel="try_start" href="/#compressor">Compress JPG</a></nav>
+</div>
+</header>
+<main>
+<div class="crumb"><div class="container"><ol><li><a href="/">Home</a></li><li><a href="/guides/">Guides</a></li><li>50KB and 100KB targets</li></ol></div></div>
+<section class="hero"><div class="container">
+<p class="eyebrow">Size target guide</p>
+<h1>Compress JPG to 50KB or 100KB: which target wins</h1>
+<p class="lede">Between 20KB and 100KB there is a wide band where a photo stops looking damaged and starts looking merely small. Choosing inside that band is a matter of what the image must communicate, not a single “best” number.</p>
+<div class="byline"><span>Updated 14 November 2026</span><span>7 min read</span><span>Tool runs locally</span></div>
+<div class="answer"><h2>Quick answer</h2><p>Use 50KB when the portal caps the file and the image is a simple portrait, thumbnail or product shot. Use 100KB when the image contains text, faces at medium size, or product detail that a reviewer must judge. If the portal allows 100KB, the extra 50KB usually buys visibly cleaner edges than spending it on a larger pixel canvas.</p></div>
+</div></section>
+<div class="container layout">
+<article class="article" id="article">
+<h2>The gap between 50KB and 100KB is not linear</h2>
+<p>Doubling the byte budget does not double perceived quality. JPEG quality is a curve: the first reductions remove information the eye barely notices, while later reductions start erasing texture and edges. Moving from a very aggressive 20KB target to 50KB often produces the largest visible improvement. Moving from 50KB to 100KB is quieter, but it is the difference between a face that looks slightly waxy and one that keeps pores, hair strands and the edge between lips and skin.</p>
+<p>The pixel count matters as much as the bytes. At 600×450, 50KB provides about 1.52 bits per pixel and 100KB provides about 3.03. At 1200×900, the same byte counts fall to 0.38 and 0.76 bits per pixel, which is not enough for a detailed photograph. This is why a preset that works for a small headshot can fail badly on a full-size landscape shot.</p>
+<table>
+<caption>Average bits per pixel for common targets and dimensions, before JPEG overhead.</caption>
+<thead><tr><th>Dimensions</th><th>50KB</th><th>100KB</th><th>Best use</th></tr></thead>
+<tbody>
+<tr><td>400×300</td><td>3.41</td><td>6.83</td><td>Overkill for both; a form thumbnail</td></tr>
+<tr><td>600×450</td><td>1.52</td><td>3.03</td><td>50KB portraits, 100KB detailed product shots</td></tr>
+<tr><td>800×600</td><td>0.85</td><td>1.71</td><td>50KB only for smooth images; 100KB general web photos</td></tr>
+<tr><td>1200×900</td><td>0.38</td><td>0.76</td><td>Neither is comfortable for detailed photos</td></tr>
+<tr><td>1600×1200</td><td>0.21</td><td>0.43</td><td>Use a larger target or smaller dimensions</td></tr>
+</tbody>
+</table>
+
+<h2>When 50KB is the right call</h2>
+<p>A 50KB cap is common on application forms, school portals and older content systems. It is also a sensible self-imposed budget for a website thumbnail or a directory listing. At 50KB, a 600×450 portrait usually keeps a clean face, a recognisable background and enough contrast for a reviewer to identify the subject. The file downloads quickly on a weak connection and sits comfortably inside most email clients.</p>
+<p>The failure mode at 50KB is texture. Knitted clothing, foliage, gravel and fine hair lose definition first. If the image’s purpose is to show a product’s material or a document’s text, 50KB is usually the wrong budget. If the purpose is identity or a quick visual impression, it is often enough.</p>
+
+<h2>When 100KB earns its place</h2>
+<p>A 100KB file is still small by camera standards, but it gives the encoder room to preserve edges. That matters for three categories: faces that will be reviewed closely, images that contain small text, and product photos where colour and surface matter. A 100KB image at 800×600 is also a reasonable default for a blog hero or an Open Graph preview, where the file is fetched once and cached.</p>
+<p>Do not assume 100KB is always safer. Some portals specify a range, such as 20KB to 50KB, and reject anything above the ceiling. Others count all uploaded files together, so five 100KB images exceed a 400KB total. Read the constraint as a set of numbers, not a single familiar label.</p>
+
+<h2>Try both targets on the same file</h2>
+<p>Compress once at 50KB, then once at 100KB, and compare at 100% zoom. Look at the eyes, the boundary between hair and background, and any text. The difference should be visible at 100KB; if it is not, keep the smaller file. On a slow connection, the 50KB version is the better user experience.</p>
+<div class="gtool" data-tool="compressor">
+<h3>Compare 50KB and 100KB locally</h3>
+<p class="gtool-sub">Choose a JPG, pick a target, compress, then change the target and run again. Nothing is uploaded.</p>
+<div class="gtool-row">
+<div class="gtool-field"><label for="g2file">JPG file</label><input accept=".jpg,.jpeg,image/jpeg" data-file id="g2file" type="file"/></div>
+<div class="gtool-field"><label for="g2preset">Target size</label><select data-preset id="g2preset"><option value="20kb">20KB</option><option value="30kb">30KB</option><option selected value="50kb">50KB</option><option value="100kb">100KB</option><option value="200kb">200KB</option></select></div>
+<button data-run type="button">Compress</button>
+</div>
+<div class="gtool-result" data-result hidden><a data-download hidden href="#">Download</a></div>
+<p aria-live="polite" class="gtool-status" data-status role="status"></p>
+<p class="gtool-hint">The 50KB preset starts from a 1200×900 fit and the 100KB preset from 1600×1200. The tool reduces dimensions further if quality alone cannot reach the target.</p>
+</div>
+<script defer src="/guides/tools.js"></script>
+
+<h2>What the preset dimensions mean</h2>
+<p>The homepage presets use a starting canvas rather than a guarantee. For 50KB, the starting fit is 1200×900; for 100KB, it is 1600×1200. Those numbers come from the assumption that a web image rarely needs more than that for its display size. They are not requirements. If your source is a 600×600 headshot, the tool will not upscale it; it keeps the original dimensions and spends the byte budget on quality.</p>
+<p>This distinction is important when a portal demands a minimum dimension. A 1600×1200 starting fit for 100KB can produce a soft image because 100KB is only 0.43 bits per pixel at that size. For a 600×600 portrait, the same 100KB is 2.28 bits per pixel and looks much better. The correct move is to set the intended display dimensions first, then choose the target.</p>
+
+<h2>A decision checklist</h2>
+<ol>
+<li><strong>Does the image contain text?</strong> If yes, prefer 100KB or larger, and check letter edges at 100%.</li>
+<li><strong>Will a human judge the face?</strong> Use at least 50KB for a 600×450 portrait, 100KB if the face fills the frame.</li>
+<li><strong>Is it a website thumbnail?</strong> 30KB to 50KB is usually plenty at 300–600 pixels wide.</li>
+<li><strong>Is it a hero image?</strong> Use 100KB to 200KB and modern delivery, not a 20KB compromise.</li>
+<li><strong>Does the form state a maximum?</strong> Stay 5–10% below it to absorb byte-count differences.</li>
+<li><strong>Does the form state a minimum?</strong> Do not go under it, even if the image would look better smaller.</li>
+</ol>
+
+<h2>Quality modes and how they change the result</h2>
+<p>The homepage offers three priorities. Balanced quality is the default and searches a wide quality range. Keep more detail narrows the search toward higher quality and accepts larger dimensions only when the target allows it. Prefer smaller output pushes the search toward the low end. The guide tool uses a balanced search by default because its job is to demonstrate the target math, not to expose every control.</p>
+<p>If you are preparing a file for an uncertain portal, balanced is the safest choice. If the portal has a hard ceiling and no minimum dimensions, prefer smaller output and verify the face still reads. If the image will be printed or reviewed closely, use keep more detail and accept a larger byte count if the form permits.</p>
+
+<h2>Frequently asked questions</h2>
+<h3>Can I hit exactly 100KB?</h3>
+<p>Not exactly, and you should not want to. The encoder produces a file at or below the target, typically a few percent under. A file that reports 98.7KB is a success; forcing exactly 102,400 bytes would require padding that adds no value.</p>
+<h3>Why does a 100KB preset sometimes return 60KB?</h3>
+<p>Because the image reached the target before the tool needed the full budget. Hitting the ceiling is not the goal; producing the smallest clean file that still looks right is. If you need the extra detail, choose a higher target or a larger starting dimension.</p>
+<h3>Should I use 50KB for email attachments?</h3>
+<p>It is usually more than enough for a single photo. Email clients care about total message size, and base64 encoding adds roughly a third. A 50KB photo becomes about 67KB on the wire, which is trivial next to a 25MB mailbox limit.</p>
+<div class="cta-band"><p>Prefer one tool for every target? The homepage has ten presets from 10KB to 2MB.</p><a data-funnel="try_start" href="/#compressor">Open the compressor</a></div>
+<div class="related"><h2>Related guides</h2><ul>
+<li><a href="/guides/compress-jpg-to-20kb.html">Compress JPG to 20KB</a></li>
+<li><a href="/guides/jpg-upload-size-limits.html">Upload size limits explained</a></li>
+<li><a href="/guides/passport-photo-jpg-size.html">Passport photo dimensions</a></li>
+<li><a href="/guides/jpg-vs-png-vs-webp.html">JPG vs PNG vs WebP</a></li>
+</ul></div>
+</article>
+<aside class="aside">
+<div class="box"><h2>Try the main tool</h2><p>Ten presets, batch mode and ZIP download.</p><a class="btn" data-funnel="try_start" href="/#compressor">Compress JPG free</a></div>
+<div class="box"><h2>Rule of thumb</h2><p>Choose dimensions first, then spend the byte budget on quality. Never enlarge an image to meet a preset.</p></div>
+<div class="box"><h2>中文版</h2><p><a href="/zh/guides/compress-jpg-to-50kb-100kb.html" hreflang="zh-Hans" lang="zh-Hans">阅读中文版：50KB 与 100KB 怎么选 →</a></p></div>
+</aside>
+</div>
+<footer class="foot"><div class="container foot-inner">
+<div class="foot-brand"><svg aria-hidden="true" fill="none" viewbox="0 0 44 44"><rect fill="#e9f4ff" height="38" rx="5" stroke="#9cc4f4" stroke-width="2" width="38" x="3" y="3"></rect><path d="M14 12l14 10-14 10V12z" fill="#2487eb"></path><path d="M24 12l10 10-10 10V12z" fill="#5cd510"></path></svg><strong>PIXELPRESS</strong></div>
+<div class="foot-links"><a href="/">JPG compressor</a><a href="/guides/">Guides</a><a href="/zh/guides/" hreflang="zh-Hans" lang="zh-Hans">中文指南</a></div>
+<p>Browser-based JPG compression. No account, no payment, no server upload.</p>
+</div></footer>
+</body>
+</html>

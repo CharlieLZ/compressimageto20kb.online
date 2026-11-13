@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Batch Compress JPGs for a Website: Workflow and Sizes | PixelPress</title>
+<meta content="A repeatable website image workflow: choose display widths, compress in batches, name files sensibly, and keep image weight from hurting Core Web Vitals." name="description"/>
+<meta content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" name="robots"/>
+<meta content="#2487eb" name="theme-color"/>
+<link href="https://compressimageto20kb.online/guides/batch-compress-jpg-for-websites.html" rel="canonical"/>
+<link href="https://compressimageto20kb.online/guides/batch-compress-jpg-for-websites.html" hreflang="en" rel="alternate"/>
+<link href="https://compressimageto20kb.online/zh/guides/batch-compress-jpg-for-websites.html" hreflang="zh-Hans" rel="alternate"/>
+<link href="https://compressimageto20kb.online/guides/batch-compress-jpg-for-websites.html" hreflang="x-default" rel="alternate"/>
+<link href="/favicon.ico" rel="icon" sizes="48x48"/>
+<link href="/favicon.svg" rel="icon" sizes="any" type="image/svg+xml"/>
+<link href="/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="/manifest.webmanifest" rel="manifest"/>
+<meta content="article" property="og:type"/>
+<meta content="Batch Compress JPGs for a Website" property="og:title"/>
+<meta content="Display widths, batch compression, filenames and Core Web Vitals." property="og:description"/>
+<meta content="https://compressimageto20kb.online/guides/batch-compress-jpg-for-websites.html" property="og:url"/>
+<meta content="PixelPress" property="og:site_name"/>
+<meta content="https://compressimageto20kb.online/og-image.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="Website image workflow guide" property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://compressimageto20kb.online/og-image.png" name="twitter:image"/>
+<meta content="Batch Compress JPGs for a Website" name="twitter:title"/>
+<meta content="A repeatable image workflow that protects LCP and CLS." name="twitter:description"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://compressimageto20kb.online/guides/batch-compress-jpg-for-websites.html#article",
+      "headline": "Batch Compress JPGs for a Website",
+      "description": "Display widths, batch compression, filenames and Core Web Vitals.",
+      "inLanguage": "en",
+      "datePublished": "2026-11-14",
+      "dateModified": "2026-11-14",
+      "mainEntityOfPage": "https://compressimageto20kb.online/guides/batch-compress-jpg-for-websites.html",
+      "author": {"@type": "Organization", "name": "PixelPress", "url": "https://compressimageto20kb.online/"},
+      "publisher": {"@type": "Organization", "name": "PixelPress", "url": "https://compressimageto20kb.online/"},
+      "isPartOf": {"@id": "https://compressimageto20kb.online/#website"}
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://compressimageto20kb.online/guides/batch-compress-jpg-for-websites.html#breadcrumb",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://compressimageto20kb.online/"},
+        {"@type": "ListItem", "position": 2, "name": "Guides", "item": "https://compressimageto20kb.online/guides/"},
+        {"@type": "ListItem", "position": 3, "name": "Batch compression for websites", "item": "https://compressimageto20kb.online/guides/batch-compress-jpg-for-websites.html"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://compressimageto20kb.online/guides/batch-compress-jpg-for-websites.html#faq",
+      "mainEntity": [
+        {"@type": "Question", "name": "What width should website images be?", "acceptedAnswer": {"@type": "Answer", "text": "Match the largest CSS width the image will occupy, multiplied by two for high-density screens if you serve one file. A full-width content column of 760px needs roughly 1520px; a card at 360px needs roughly 720px."}},
+        {"@type": "Question", "name": "Does compressing images improve Core Web Vitals?", "acceptedAnswer": {"@type": "Answer", "text": "It can improve LCP when the hero image is the largest element, and it reduces bandwidth for every visitor. It does not fix layout shifts; those need explicit width and height attributes or aspect-ratio CSS."}},
+        {"@type": "Question", "name": "Should I compress images before uploading to a CMS?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. A CMS may resize but often keeps a large original and serves it. Compressing to the intended display width before upload gives you control over the delivered bytes."}}
+      ]
+    }
+  ]
+}
+</script>
+<link href="/guides/guide.css" rel="stylesheet"/>
+</head>
+<body>
+<a class="skip-link" href="#article">Skip to article</a>
+<header class="top">
+<div class="container nav">
+<a aria-label="PixelPress homepage" class="brand" href="/">
+<svg aria-hidden="true" fill="none" viewbox="0 0 44 44"><rect fill="#e9f4ff" height="38" rx="5" stroke="#9cc4f4" stroke-width="2" width="38" x="3" y="3"></rect><path d="M13 12l14 10-14 10V12z" fill="#2487eb"></path><path d="M24 12l10 10-10 10V12z" fill="#5cd510"></path></svg>
+<span><b>PIXELPRESS</b><small>JPG compression guides</small></span></a>
+<nav aria-label="Primary" class="top-links"><a href="/">Compressor</a><a href="/guides/">Guides</a><a href="/zh/guides/batch-compress-jpg-for-websites.html" hreflang="zh-Hans" lang="zh-Hans">中文</a><a class="top-cta" data-funnel="try_start" href="/#compressor">Compress JPG</a></nav>
+</div>
+</header>
+<main>
+<div class="crumb"><div class="container"><ol><li><a href="/">Home</a></li><li><a href="/guides/">Guides</a></li><li>Batch compression for websites</li></ol></div></div>
+<section class="hero"><div class="container">
+<p class="eyebrow">Website workflow guide</p>
+<h1>Batch compress JPGs for a website</h1>
+<p class="lede">Website images fail in two directions: too many pixels for their display size, or too few bits for the detail they show. A batch workflow fixes both by deciding the display width first, then compressing every image to that width and a sensible byte budget.</p>
+<div class="byline"><span>Updated 14 November 2026</span><span>8 min read</span><span>Batch tool on the homepage</span></div>
+<div class="answer"><h2>Quick answer</h2><p>Decide the CSS width each image will occupy, export at roughly twice that width for high-density screens, and compress each JPG to 100–300KB. A 760-pixel article column needs about 1520 pixels; a 360-pixel card needs about 720. Keep width and height attributes so the layout does not shift while images load.</p></div>
+</div></section>
+<div class="container layout">
+<article class="article" id="article">
+<h2>Start from layout width, not camera resolution</h2>
+<p>A modern camera produces 4000-pixel images because it captures detail for cropping and printing. A website displays them in a column that may be 360 to 1200 CSS pixels wide. Serving the camera file wastes bandwidth and can delay the largest contentful paint, especially on a phone. The first decision in a batch workflow is therefore the display width, not the compression quality.</p>
+<p>For a single file that must look sharp on both standard and high-density screens, export at about twice the CSS width. A 760-pixel article column gets a 1520-pixel image; a 360-pixel card gets 720 pixels. If you can serve responsive sources, smaller files for narrow screens are better, but one well-sized file is already a large improvement over a 4000-pixel original.</p>
+<table>
+<caption>Typical display widths and sensible export widths for a single high-density image.</caption>
+<thead><tr><th>Placement</th><th>CSS width</th><th>Export width</th><th>Suggested JPEG budget</th></tr></thead>
+<tbody>
+<tr><td>Small card / avatar</td><td>160–360px</td><td>320–720px</td><td>30–80KB</td></tr>
+<tr><td>Article inline image</td><td>600–760px</td><td>1200–1520px</td><td>100–250KB</td></tr>
+<tr><td>Full-width hero</td><td>1200–1600px</td><td>1600–2400px</td><td>200–500KB</td></tr>
+<tr><td>Open Graph preview</td><td>1200×630</td><td>1200×630</td><td>100–300KB</td></tr>
+<tr><td>Product gallery</td><td>800–1200px</td><td>1200–1600px</td><td>150–400KB</td></tr>
+</tbody>
+</table>
+
+<h2>Why image weight matters for Core Web Vitals</h2>
+<p>Google’s Core Web Vitals use three field metrics: LCP for loading, INP for responsiveness and CLS for visual stability. Images affect LCP directly when the hero or first article image is the largest element in the viewport, and affect CLS when they lack reserved space. A smaller file helps LCP only if the image is actually the LCP element; compressing decorative images is still useful for bandwidth but does not move that metric.</p>
+<p>CLS is a layout problem, not a compression problem. Add <code>width</code> and <code>height</code> attributes that match the intrinsic aspect ratio, or set an explicit <code>aspect-ratio</code> in CSS. The browser can then reserve space before the image arrives. Compression cannot compensate for a missing reservation.</p>
+<p>INP is about interaction latency. Large images can compete for main-thread decode time during scrolling or input, especially on low-end phones, but the bigger wins usually come from JavaScript. Still, serving a 200KB image instead of a 4MB one reduces decode work and memory pressure.</p>
+
+<h2>A repeatable batch workflow</h2>
+<ol>
+<li><strong>List the images and their placements.</strong> Note the CSS width, whether the image is decorative or the LCP candidate, and whether it needs transparency.</li>
+<li><strong>Export each image at the chosen width.</strong> Crop to the intended aspect ratio so CSS does not have to crop unpredictably.</li>
+<li><strong>Choose a byte budget per placement.</strong> Use the table above as a starting point, not a rule. A detailed product shot may need more; a soft background may need less.</li>
+<li><strong>Batch compress on the homepage.</strong> Add all JPGs, select the target preset, run Compress All, and check the result table for each file’s original and new size.</li>
+<li><strong>Rename the outputs.</strong> Use descriptive, lowercase, hyphenated names such as <code>kitchen-remodel-card.jpg</code>. Keep the target in the name if you serve multiple sizes.</li>
+<li><strong>Verify one file per placement type.</strong> Open the smallest and the largest at 100% before publishing the batch.</li>
+<li><strong>Add dimensions and alt text in the CMS.</strong> Compression and accessibility are separate chores; do both at upload time.</li>
+</ol>
+
+<h2>Batch-compress a set of JPGs</h2>
+<p>The homepage compressor handles several files and a ZIP download. The single-file tool below is useful for testing the right target on one representative image before you commit the whole batch. Both run locally; no image is uploaded.</p>
+<div class="gtool" data-tool="compressor">
+<h3>Test one image before the batch</h3>
+<p class="gtool-sub">JPG or JPEG only, up to 50MB. Runs in this tab.</p>
+<div class="gtool-row">
+<div class="gtool-field"><label for="g9file">JPG file</label><input accept=".jpg,.jpeg,image/jpeg" data-file id="g9file" type="file"/></div>
+<div class="gtool-field"><label for="g9preset">Target size</label><select data-preset id="g9preset"><option value="50kb">50KB</option><option value="100kb">100KB</option><option selected value="200kb">200KB</option><option value="500kb">500KB</option><option value="1mb">1MB</option></select></div>
+<button data-run type="button">Compress</button>
+</div>
+<div class="gtool-result" data-result hidden><a data-download hidden href="#">Download</a></div>
+<p aria-live="polite" class="gtool-status" data-status role="status"></p>
+<p class="gtool-hint">Run one representative image first, then apply the same target to the batch on the homepage.</p>
+</div>
+<script defer src="/guides/tools.js"></script>
+
+<h2>Naming, caching and re-compression</h2>
+<p>Image URLs are cache keys. If you replace a file but keep the same name, some caches and CDNs may continue serving the old bytes. Use a content hash or a version suffix when the image changes, or configure your host to invalidate correctly. Descriptive names also help image search and make a folder of assets intelligible six months later.</p>
+<p>Do not re-compress an already published JPEG when a new size is needed. Go back to the original export, resize to the new width, and encode once. Repeatedly opening and saving a published file accumulates artefacts and can produce a larger file at worse quality.</p>
+
+<h2>Formats beyond JPG for web delivery</h2>
+<p>JPEG remains the lowest-risk choice for photographs. WebP often delivers similar quality at a smaller size and is supported by current browsers; AVIF can be smaller again but encoding and support vary. If you generate WebP or AVIF, keep a JPEG fallback and test the actual delivered content type. For logos, diagrams and text, PNG or SVG is usually better than JPEG regardless of byte size, because sharp edges survive and transparency is preserved.</p>
+<blockquote>The batch decision is not “compress everything to 20KB”. It is “serve each image at the size and format its placement needs”.</blockquote>
+
+<h2>Responsive images without a build system</h2>
+<p>A static site can still serve appropriate sizes with the <code>srcset</code> and <code>sizes</code> attributes. Export two or three widths, name them consistently, and let the browser choose based on viewport and pixel density. This is more work than one file, but it avoids sending a 1520-pixel image to a 360-pixel phone. If you cannot maintain multiple widths, a single 1200-pixel image is a reasonable compromise for article content.</p>
+<p>Use modern formats as an enhancement, not a requirement. A <code>picture</code> element can offer WebP or AVIF first and a JPEG fallback second. Test that the fallback works when the modern format is unavailable, and confirm the server sends the correct content type. A mislabelled WebP served as image/jpeg can fail in some clients even when the browser supports the format.</p>
+
+<h2>Measure the result, do not assume it</h2>
+<p>After publishing, check the actual bytes the browser downloads and the LCP element in a real page load. A compression win that is hidden behind a CMS-generated thumbnail may not reach the visitor. Use the network panel or your analytics’ Web Vitals data to confirm which image is the LCP candidate and how large it is. If the page still loads a 2MB original, the batch work did not take effect.</p>
+<p>Also check a slow connection and a small screen. A hero that looks instant on a desktop with a fast connection can dominate LCP on a phone. Serving a smaller candidate for narrow viewports is often the single most effective change.</p>
+
+<h2>Frequently asked questions</h2>
+<h3>Is 100KB enough for a hero image?</h3>
+<p>For a 1200-pixel-wide hero, 100KB is about 0.55 bits per pixel and will look soft. Use 200–500KB or a modern format, and test at the actual display size. A hero is usually the LCP element, so file size matters, but visible damage is worse than a slightly larger file.</p>
+<h3>Should I use CSS to shrink large images instead of resizing files?</h3>
+<p>No. CSS changes display size but the browser still downloads the full file. Resize the asset before upload.</p>
+<h3>Does compression remove alt text?</h3>
+<p>Alt text lives in the HTML, not the image file. Re-encoding does not affect it, but uploading a new file may require re-entering alt text in the CMS.</p>
+<div class="cta-band"><p>Compress a whole folder of JPGs and download the results as a ZIP.</p><a data-funnel="try_start" href="/#compressor">Open the batch compressor</a></div>
+<div class="related"><h2>Related guides</h2><ul>
+<li><a href="/guides/jpg-vs-png-vs-webp.html">JPG vs PNG vs WebP</a></li>
+<li><a href="/guides/reduce-jpg-size-without-losing-quality.html">Reduce size without losing quality</a></li>
+<li><a href="/guides/compress-jpg-to-50kb-100kb.html">50KB vs 100KB</a></li>
+<li><a href="/guides/jpg-upload-size-limits.html">Upload size limits</a></li>
+</ul></div>
+</article>
+<aside class="aside">
+<div class="box"><h2>Batch tool</h2><p>Add several JPGs, compress once, download a ZIP.</p><a class="btn" data-funnel="try_start" href="/#compressor">Open the compressor</a></div>
+<div class="box"><h2>Before publishing</h2><ul><li>Width matches placement</li><li>Budget checked</li><li>Alt text added</li><li>Width/height set</li></ul></div>
+<div class="box"><h2>中文版</h2><p><a href="/zh/guides/batch-compress-jpg-for-websites.html" hreflang="zh-Hans" lang="zh-Hans">阅读中文版：网站批量压缩 JPG →</a></p></div>
+</aside>
+</div>
+<footer class="foot"><div class="container foot-inner">
+<div class="foot-brand"><svg aria-hidden="true" fill="none" viewbox="0 0 44 44"><rect fill="#e9f4ff" height="38" rx="5" stroke="#9cc4f4" stroke-width="2" width="38" x="3" y="3"></rect><path d="M14 12l14 10-14 10V12z" fill="#2487eb"></path><path d="M24 12l10 10-10 10V12z" fill="#5cd510"></path></svg><strong>PIXELPRESS</strong></div>
+<div class="foot-links"><a href="/">JPG compressor</a><a href="/guides/">Guides</a><a href="/zh/guides/" hreflang="zh-Hans" lang="zh-Hans">中文指南</a></div>
+<p>Browser-based JPG compression. No account, no payment, no server upload.</p>
+</div></footer>
+</body>
+</html>

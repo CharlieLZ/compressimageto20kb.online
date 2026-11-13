@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>JPG、PNG、WebP：不同图片该选哪种格式 | PixelPress</title>
+<meta content="图片格式实用对比：什么时候 JPEG 更合适、什么时候 PNG 更好、WebP 如何改变选择，以及为什么把错误的图片转成 JPG 会更糟。" name="description"/>
+<meta content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" name="robots"/>
+<meta content="#2487eb" name="theme-color"/>
+<link href="https://compressimageto20kb.online/zh/guides/jpg-vs-png-vs-webp.html" rel="canonical"/>
+<link href="https://compressimageto20kb.online/guides/jpg-vs-png-vs-webp.html" hreflang="en" rel="alternate"/>
+<link href="https://compressimageto20kb.online/zh/guides/jpg-vs-png-vs-webp.html" hreflang="zh-Hans" rel="alternate"/>
+<link href="https://compressimageto20kb.online/guides/jpg-vs-png-vs-webp.html" hreflang="x-default" rel="alternate"/>
+<link href="/favicon.ico" rel="icon" sizes="48x48"/>
+<link href="/favicon.svg" rel="icon" sizes="any" type="image/svg+xml"/>
+<link href="/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="/manifest.webmanifest" rel="manifest"/>
+<meta content="article" property="og:type"/>
+<meta content="JPG、PNG、WebP 怎么选" property="og:title"/>
+<meta content="有损与无损、透明度、文字和浏览器支持。" property="og:description"/>
+<meta content="https://compressimageto20kb.online/zh/guides/jpg-vs-png-vs-webp.html" property="og:url"/>
+<meta content="PixelPress" property="og:site_name"/>
+<meta content="https://compressimageto20kb.online/og-image.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="图片格式对比中文指南" property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://compressimageto20kb.online/og-image.png" name="twitter:image"/>
+<meta content="JPG、PNG、WebP 怎么选" name="twitter:title"/>
+<meta content="照片、截图和带透明度的标志各有不同需求。" name="twitter:description"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://compressimageto20kb.online/zh/guides/jpg-vs-png-vs-webp.html#article",
+      "headline": "JPG、PNG、WebP：不同图片该选哪种格式",
+      "description": "有损与无损、透明度、文字和浏览器支持。",
+      "inLanguage": "zh-Hans",
+      "datePublished": "2026-11-14",
+      "dateModified": "2026-11-14",
+      "mainEntityOfPage": "https://compressimageto20kb.online/zh/guides/jpg-vs-png-vs-webp.html",
+      "author": {"@type": "Organization", "name": "PixelPress", "url": "https://compressimageto20kb.online/"},
+      "publisher": {"@type": "Organization", "name": "PixelPress", "url": "https://compressimageto20kb.online/"},
+      "isPartOf": {"@id": "https://compressimageto20kb.online/#website"}
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://compressimageto20kb.online/zh/guides/jpg-vs-png-vs-webp.html#breadcrumb",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "首页", "item": "https://compressimageto20kb.online/"},
+        {"@type": "ListItem", "position": 2, "name": "中文指南", "item": "https://compressimageto20kb.online/zh/guides/"},
+        {"@type": "ListItem", "position": 3, "name": "JPG、PNG、WebP", "item": "https://compressimageto20kb.online/zh/guides/jpg-vs-png-vs-webp.html"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://compressimageto20kb.online/zh/guides/jpg-vs-png-vs-webp.html#faq",
+      "mainEntity": [
+        {"@type": "Question", "name": "截图应该转成 JPG 吗？", "acceptedAnswer": {"@type": "Answer", "text": "通常不要。纯色和文字的截图用 PNG 更清楚，JPEG 会在字母边缘产生振铃。只有门户强制 JPEG 时才转换。"}},
+        {"@type": "Question", "name": "WebP 一定比 JPG 小吗？", "acceptedAnswer": {"@type": "Answer", "text": "常常更小，但不总是。相似画质下 WebP 通常节省 25% 到 35%，实际取决于编码器、内容和质量设置。要测量真实文件，而不是假设。"}},
+        {"@type": "Question", "name": "JPG 转 PNG 能提升画质吗？", "acceptedAnswer": {"@type": "Answer", "text": "不能。PNG 是无损格式，但无法恢复 JPEG 已经丢弃的细节。JPG 转 PNG 通常只会让文件变大。"}}
+      ]
+    }
+  ]
+}
+</script>
+<link href="/guides/guide.css" rel="stylesheet"/>
+</head>
+<body>
+<a class="skip-link" href="#article">跳到正文</a>
+<header class="top">
+<div class="container nav">
+<a aria-label="PixelPress 首页" class="brand" href="/">
+<svg aria-hidden="true" fill="none" viewbox="0 0 44 44"><rect fill="#e9f4ff" height="38" rx="5" stroke="#9cc4f4" stroke-width="2" width="38" x="3" y="3"></rect><path d="M13 12l14 10-14 10V12z" fill="#2487eb"></path><path d="M24 12l10 10-10 10V12z" fill="#5cd510"></path></svg>
+<span><b>PIXELPRESS</b><small>中文 JPG 压缩指南</small></span></a>
+<nav aria-label="主导航" class="top-links"><a href="/">压缩器</a><a href="/zh/guides/">中文指南</a><a href="/guides/jpg-vs-png-vs-webp.html" hreflang="en" lang="en">English</a><a class="top-cta" data-funnel="try_start" href="/#compressor">压缩 JPG</a></nav>
+</div>
+</header>
+<main>
+<div class="crumb"><div class="container"><ol><li><a href="/">首页</a></li><li><a href="/zh/guides/">中文指南</a></li><li>JPG、PNG、WebP</li></ol></div></div>
+<section class="hero"><div class="container">
+<p class="eyebrow">格式指南</p>
+<h1>JPG、PNG、WebP：不同图片该选哪种格式</h1>
+<p class="lede">格式选择取决于图片内容。照片、扁平界面截图和带透明度的标志各有不同需求。选错容器可能让文件大一倍，或者引入任何质量滑块都修不好的可见损伤。</p>
+<div class="byline"><span>更新于 2026 年 11 月 14 日</span><span>阅读约 7 分钟</span><span>工具在本地运行</span></div>
+<div class="answer"><h2>快速回答</h2><p>照片和带平滑色调过渡的图片用 JPEG。文字、线稿、截图，以及需要透明度或无损编辑的图片用 PNG。网站交付可用 WebP，但最好能提供回退，它在现代浏览器里往往更小。不要指望把 JPEG 转成 PNG 能提升画质。</p></div>
+</div></section>
+<div class="container layout">
+<article class="article" id="article">
+<h2>真正的区别：有损与无损</h2>
+<p>JPEG 是有损格式。它把像素块变换成频率系数，量化后丢弃人眼相对不敏感的信息。每次编码都会永久移除细节。PNG 是无损格式，解码后的图像与编码前完全一致。这让 PNG 对照片来说更大，但对文字、图表和截图非常合适，因为每个像素都必须准确。</p>
+<p>WebP 两种模式都支持。有损 WebP 像 JPEG，但同样画质下通常压得更好；无损 WebP 像 PNG，文件可能更小。问题在兼容性和工作流：旧软件、部分邮件客户端和一些上传门户不接受 WebP，即使浏览器能显示。</p>
+<table>
+<caption>按图片类型选择格式的实用建议。文件大小只是普遍趋势，不是保证。</caption>
+<thead><tr><th>图片内容</th><th>默认选择</th><th>原因</th><th>避免</th></tr></thead>
+<tbody>
+<tr><td>人像或风景照片</td><td>JPEG 或 WebP</td><td>平滑过渡、颜色多</td><td>除非需要透明度，否则不用 PNG</td></tr>
+<tr><td>文字截图</td><td>PNG 或无损 WebP</td><td>锐利边缘、纯色</td><td>低质量 JPEG</td></tr>
+<tr><td>带透明度的标志</td><td>PNG 或 WebP</td><td>Alpha 通道、清晰边缘</td><td>JPEG，会填满透明区域</td></tr>
+<tr><td>白底商品图</td><td>JPEG、WebP 或 PNG</td><td>取决于背景和复用方式</td><td>在边缘使用过度压缩</td></tr>
+<tr><td>动态图</td><td>WebP、GIF 或视频</td><td>动画支持</td><td>JPEG</td></tr>
+<tr><td>文件扫描</td><td>PDF 或 PNG</td><td>可读性和精确文字</td><td>低质量 JPEG</td></tr>
+</tbody>
+</table>
+
+<h2>为什么照片仍默认用 JPEG</h2>
+<p>JPEG 有三个超越压缩率的优势：通用支持、可预测的行为和成熟生态。每个浏览器、手机、打印机、邮件客户端和上传门户都接受它。相机流水线原生输出它。格式的缺点，也就是低质量下的块效应和振铃，已经被充分理解，细心的编码器可以避开最糟的情况。</p>
+<p>JPEG 恰好擅长照片包含的内容：平滑渐变、肤色和自然纹理。变换作用在 8×8 块上，大部分位用于亮度，符合人眼视觉。质量合理时，即使大部分高频细节已被丢弃，照片看起来仍然连续。</p>
+
+<h2>JPEG 在哪里失败</h2>
+<p>JPEG 不擅长硬边缘、纯色和文字。文档截图是白底黑字，尖锐的过渡让块变换很难低成本表示。编码器要么模糊字母，要么在周围产生振铃。提高质量有帮助，但文件也会变大，常常超过同等 PNG。20KB 的截图 JPEG 通常比 40KB 的 PNG 更糟。</p>
+<p>JPEG 也没有透明度。带透明背景的标志保存为 JPEG 后，透明区域会变成白色或黑色，取决于编码器。结果可能在一个页面上看起来还行，在另一个页面上完全错误。透明度是资产的一部分时，用 PNG 或 WebP。</p>
+
+<h2>WebP：有用，但要读要求</h2>
+<p>对照片，WebP 在相似观感下通常比 JPEG 小；对无损图形，也常比 PNG 小。当前 Chrome、Edge、Firefox 和 Safari 都广泛支持。对控制页面标记、能提供回退的网站资产，它是很强的选择。</p>
+<p>不要假设所有目的地都接受。许多上传表单只白名单 .jpg、.jpeg 和 .png。邮件客户端可能内嵌显示 WebP，但作为附件行为异常。旧设计工具可能打不开。门户要 JPG 就交 JPG；把 WebP 转成 JPEG 又是一次有损步骤，应尽量从最好的源文件生成。</p>
+<blockquote>测试目的地要求的格式，而不是浏览器偏好的格式。兼容性失败的代价，比节省几 KB 高得多。</blockquote>
+
+<h2>在本地测试 JPG 转换</h2>
+<p>如果不确定 JPEG 是否合适，先压到目标大小，再在 100% 下检查。下面的工具在本地重新编码 JPG。它不能转换 PNG 或 WebP，因为本站是专门的 JPG 压缩器；可以用它判断照片能否承受你考虑的目标。</p>
+<div class="gtool" data-tool="compressor">
+<h3>在目标大小下测试 JPG</h3>
+<p class="gtool-sub">仅 JPG 或 JPEG，最大 50MB。在当前标签页运行。</p>
+<div class="gtool-row">
+<div class="gtool-field"><label for="z7file">JPG 文件</label><input accept=".jpg,.jpeg,image/jpeg" data-file id="z7file" type="file"/></div>
+<div class="gtool-field"><label for="z7preset">目标大小</label><select data-preset id="z7preset"><option value="20kb">20KB</option><option selected value="50kb">50KB</option><option value="100kb">100KB</option><option value="200kb">200KB</option><option value="500kb">500KB</option></select></div>
+<button data-run type="button">压缩</button>
+</div>
+<div class="gtool-result" data-result hidden><a data-download hidden href="#">下载</a></div>
+<p aria-live="polite" class="gtool-status" data-status role="status"></p>
+<p class="gtool-hint">在 100% 缩放下看文字边缘和细线，它们通常最先被 JPEG 牺牲。</p>
+</div>
+<script defer src="/guides/tools.js"></script>
+
+<h2>格式转换不要越转越差</h2>
+<p>转换方向很重要。无损 PNG 转 JPEG 是单向有损步骤：文件变小，但精确像素永久丢失。JPEG 转 PNG 通常没有意义：文件更大，缺失的细节也不会回来。JPEG 转 WebP 若用有损模式，又是一代损失；用无损 WebP，文件可能比原 JPEG 更大。</p>
+<p>安全的工作流是保留最好格式的原件，再从原件生成交付副本。照片保留相机原图或高质量导出；标志保留矢量源；截图重新截取。反复对交付副本重新编码会累积伪影，第一遍之后甚至可能不再减小体积。</p>
+
+<h2>上传前检查什么</h2>
+<ul>
+<li><strong>允许的扩展名：</strong>读表单。写只收 JPG 时，不要上传改名后的 WebP。</li>
+<li><strong>透明度：</strong>图片需要透明时，JPEG 就是错格式。</li>
+<li><strong>文字可读性：</strong>放大到 100%。字母发糊就用 PNG 或更高质量。</li>
+<li><strong>文件大小：</strong>比较真实字节，而不是格式的名声。</li>
+<li><strong>色彩配置：</strong>部分门户期望 sRGB。广色域图片上传后可能偏色。</li>
+<li><strong>元数据：</strong>重新编码会去掉 EXIF，对隐私有好处，但可能移除方向信息。现代浏览器绘制前会应用方向，检查结果是否朝上。</li>
+</ul>
+
+<h2>色彩配置与透明度陷阱</h2>
+<p>JPEG 可以携带 ICC 色彩配置，浏览器或打印机可能以不同方式解释。广色域照片转成 sRGB 可能略淡，但在不同设备上更一致。上传时除非目的地另有规定，sRGB 是最安全的假设。提交前转换或移除异常配置，并在中性背景上比较结果。</p>
+<p>透明度是另一个常见陷阱。把透明 PNG 保存为 JPEG，透明区域会被填成编码器选择的纯色，通常是白或黑。如果标志放在有色页头上，填充矩形就会露出来。要么保留 PNG/WebP 的透明度，要么先把标志放到精确的背景色上再导出 JPEG。</p>
+
+<h2>一个简单的决策路径</h2>
+<p>照片且目的地接受 JPEG，就用 JPEG。包含文字、纯色或透明度，就用 PNG，除非目的地禁止。自己控制网站、需要更小交付体积时，测试 WebP 并保留 JPEG 回退。目的地指定格式时，这个要求高于所有一般偏好。其余靠测量：比较真实字节，检查真实像素，而不是相信格式的名声。</p>
+
+<h2>常见问题</h2>
+<h3>PNG 比 JPG 画质更高吗？</h3>
+<p>PNG 是无损的，能保留精确像素，这是更高的保真度，但不自动等于更好看。照片存成 PNG 更大，观感与高质量 JPEG 相同；已经丢失细节的 JPEG 转成 PNG 也恢复不了。</p>
+<h3>现在能在网站上用 WebP 吗？</h3>
+<p>可以，只要为旧客户端准备回退，并确认 CDN 返回正确的 content type。对简单静态网站，照片用 JPEG 仍是风险最低的选择。</p>
+<h3>为什么 PNG 转 JPG 反而变大？</h3>
+<p>对照片不常见，但对有大面积纯色和锐利文字的截图很常见，PNG 的无损预测非常高效。如果 JPEG 保存质量极高，也可能出现这种情况。</p>
+<div class="cta-band"><p>在编辑照片？把它压到目的地真正接受的大小。</p><a data-funnel="try_start" href="/#compressor">打开 JPG 压缩器</a></div>
+<div class="related"><h2>相关指南</h2><ul>
+<li><a href="/zh/guides/reduce-jpg-size-without-losing-quality.html">压缩又不损失可见画质</a></li>
+<li><a href="/zh/guides/compress-jpg-to-20kb.html">压缩到 20KB</a></li>
+<li><a href="/zh/guides/batch-compress-jpg-for-websites.html">网站批量压缩</a></li>
+<li><a href="/zh/guides/jpg-upload-size-limits.html">上传大小限制</a></li>
+</ul></div>
+</article>
+<aside class="aside">
+<div class="box"><h2>试试主工具</h2><p>十个目标大小，批量压缩。</p><a class="btn" data-funnel="try_start" href="/#compressor">免费压缩 JPG</a></div>
+<div class="box"><h2>默认选择</h2><ul><li>照片 → JPEG</li><li>文字 → PNG</li><li>标志 → PNG/WebP</li><li>网站交付 → WebP + 回退</li></ul></div>
+<div class="box"><h2>English</h2><p><a href="/guides/jpg-vs-png-vs-webp.html" hreflang="en" lang="en">Read in English →</a></p></div>
+</aside>
+</div>
+<footer class="foot"><div class="container foot-inner">
+<div class="foot-brand"><svg aria-hidden="true" fill="none" viewbox="0 0 44 44"><rect fill="#e9f4ff" height="38" rx="5" stroke="#9cc4f4" stroke-width="2" width="38" x="3" y="3"></rect><path d="M14 12l14 10-14 10V12z" fill="#2487eb"></path><path d="M24 12l10 10-10 10V12z" fill="#5cd510"></path></svg><strong>PIXELPRESS</strong></div>
+<div class="foot-links"><a href="/">JPG 压缩器</a><a href="/zh/guides/">中文指南</a><a href="/guides/" hreflang="en" lang="en">English guides</a></div>
+<p>浏览器本地 JPG 压缩。无账号、无付费、不上传服务器。</p>
+</div></footer>
+</body>
+</html>

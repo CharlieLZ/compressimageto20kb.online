@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>邮件附件 JPG 大小：为什么 20MB 会变成 27MB | PixelPress</title>
+<meta content="邮件附件大小详解：base64 编码开销、服务商上限、一批照片能放多少，并附浏览器本地附件预算计算器。" name="description"/>
+<meta content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" name="robots"/>
+<meta content="#2487eb" name="theme-color"/>
+<link href="https://compressimageto20kb.online/zh/guides/email-attachment-jpg-size.html" rel="canonical"/>
+<link href="https://compressimageto20kb.online/guides/email-attachment-jpg-size.html" hreflang="en" rel="alternate"/>
+<link href="https://compressimageto20kb.online/zh/guides/email-attachment-jpg-size.html" hreflang="zh-Hans" rel="alternate"/>
+<link href="https://compressimageto20kb.online/guides/email-attachment-jpg-size.html" hreflang="x-default" rel="alternate"/>
+<link href="/favicon.ico" rel="icon" sizes="48x48"/>
+<link href="/favicon.svg" rel="icon" sizes="any" type="image/svg+xml"/>
+<link href="/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="/manifest.webmanifest" rel="manifest"/>
+<meta content="article" property="og:type"/>
+<meta content="邮件附件 JPG 大小" property="og:title"/>
+<meta content="base64 开销、邮箱上限与一批照片的预算。" property="og:description"/>
+<meta content="https://compressimageto20kb.online/zh/guides/email-attachment-jpg-size.html" property="og:url"/>
+<meta content="PixelPress" property="og:site_name"/>
+<meta content="https://compressimageto20kb.online/og-image.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="邮件附件大小中文指南" property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://compressimageto20kb.online/og-image.png" name="twitter:image"/>
+<meta content="邮件附件 JPG 大小" name="twitter:title"/>
+<meta content="为什么编码后的附件比磁盘文件更大。" name="twitter:description"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://compressimageto20kb.online/zh/guides/email-attachment-jpg-size.html#article",
+      "headline": "邮件附件 JPG 大小：为什么 20MB 会变成 27MB",
+      "description": "base64 开销、邮箱上限与一批照片的预算。",
+      "inLanguage": "zh-Hans",
+      "datePublished": "2026-11-14",
+      "dateModified": "2026-11-14",
+      "mainEntityOfPage": "https://compressimageto20kb.online/zh/guides/email-attachment-jpg-size.html",
+      "author": {"@type": "Organization", "name": "PixelPress", "url": "https://compressimageto20kb.online/"},
+      "publisher": {"@type": "Organization", "name": "PixelPress", "url": "https://compressimageto20kb.online/"},
+      "isPartOf": {"@id": "https://compressimageto20kb.online/#website"}
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://compressimageto20kb.online/zh/guides/email-attachment-jpg-size.html#breadcrumb",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "首页", "item": "https://compressimageto20kb.online/"},
+        {"@type": "ListItem", "position": 2, "name": "中文指南", "item": "https://compressimageto20kb.online/zh/guides/"},
+        {"@type": "ListItem", "position": 3, "name": "邮件附件大小", "item": "https://compressimageto20kb.online/zh/guides/email-attachment-jpg-size.html"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://compressimageto20kb.online/zh/guides/email-attachment-jpg-size.html#faq",
+      "mainEntity": [
+        {"@type": "Question", "name": "为什么附件比磁盘上的文件大？", "acceptedAnswer": {"@type": "Answer", "text": "邮件把二进制附件编码成 base64 文本，体积约增加 33%。20MB 照片在传输中约 27MB，还没算邮件头。"}},
+        {"@type": "Question", "name": "25MB 邮件能放多少张 100KB 照片？", "acceptedAnswer": {"@type": "Answer", "text": "理论上约 187 张，但实际还要留邮件头和签名空间，按 180 张左右规划更稳。文件再多应改用网盘链接。"}},
+        {"@type": "Question", "name": "压到 20KB 的邮件照片还能看吗？", "acceptedAnswer": {"@type": "Answer", "text": "屏幕预览通常可辨，但人脸和文字细节会损失。邮件照片一般 100KB 到 500KB 更平衡，除非收件人只需要缩略图。"}}
+      ]
+    }
+  ]
+}
+</script>
+<link href="/guides/guide.css" rel="stylesheet"/>
+</head>
+<body>
+<a class="skip-link" href="#article">跳到正文</a>
+<header class="top">
+<div class="container nav">
+<a aria-label="PixelPress 首页" class="brand" href="/">
+<svg aria-hidden="true" fill="none" viewbox="0 0 44 44"><rect fill="#e9f4ff" height="38" rx="5" stroke="#9cc4f4" stroke-width="2" width="38" x="3" y="3"></rect><path d="M13 12l14 10-14 10V12z" fill="#2487eb"></path><path d="M24 12l10 10-10 10V12z" fill="#5cd510"></path></svg>
+<span><b>PIXELPRESS</b><small>中文 JPG 压缩指南</small></span></a>
+<nav aria-label="主导航" class="top-links"><a href="/">压缩器</a><a href="/zh/guides/">中文指南</a><a href="/guides/email-attachment-jpg-size.html" hreflang="en" lang="en">English</a><a class="top-cta" data-funnel="try_start" href="/#compressor">压缩 JPG</a></nav>
+</div>
+</header>
+<main>
+<div class="crumb"><div class="container"><ol><li><a href="/">首页</a></li><li><a href="/zh/guides/">中文指南</a></li><li>邮件附件大小</li></ol></div></div>
+<section class="hero"><div class="container">
+<p class="eyebrow">分享指南</p>
+<h1>邮件附件 JPG 大小：为什么 20MB 会变成 27MB</h1>
+<p class="lede">邮件不是文件传输协议。它把附件包装成文本、加上邮件头，并受邮箱配额限制。磁盘上的数字不等于对方服务器看到的数字。提前考虑这个差距，可以避免退信和发送失败。</p>
+<div class="byline"><span>更新于 2026 年 11 月 14 日</span><span>阅读约 7 分钟</span><span>计算器在本地运行</span></div>
+<div class="answer"><h2>快速回答</h2><p>base64 编码会让附件增加约 33%，所以 20MB 照片在传输中约 27MB，还没算邮件头。常见个人邮箱单封上限约 20MB 到 25MB，只够放少量原图。把照片压到 100KB 到 500KB，或改用下载链接发送大批文件。</p></div>
+</div></section>
+<div class="container layout">
+<article class="article" id="article">
+<h2>JPG 在邮件里经历了什么</h2>
+<p>SMTP 最初只支持七位文本，所以二进制附件要编码成 base64。每三个字节的二进制变成四个 ASCII 字符，这就是熟悉的 33% 膨胀。编码后的内容再被 MIME 边界和邮件头包裹。20MB 的 JPEG 会变成约 27MB 的编码内容，整封邮件还要再大一点。</p>
+<p>邮件客户端可能显示附件是 20MB，因为它展示的是解码后的文件大小；服务器却按编码后的整封邮件执行限制。这个差异解释了为什么看起来远低于 25MB 的邮件仍会退信。如果服务商写的是 25MB 邮件上限，按约 18MB 的实际文件规划，而不是 25MB。</p>
+
+<h2>常见上限与实际容量</h2>
+<p>个人邮箱上限会变化，企业账户策略也常常不同。下表的数字只是规划示例，不是保证；以服务商当前文档和组织邮件策略为准。重要的习惯是扣除编码开销和邮件头，而不是把标称数字直接当成附件预算。</p>
+<table>
+<caption>示意性邮件上限与编码后大约可用的原始文件容量。服务条款和账户设置会不同。</caption>
+<thead><tr><th>标称邮件上限</th><th>约可用原始附件</th><th>20MB 原图</th><th>100KB 照片</th></tr></thead>
+<tbody>
+<tr><td>10MB</td><td>约 7.5MB</td><td>0 张</td><td>约 75 张</td></tr>
+<tr><td>20MB</td><td>约 15MB</td><td>0 张</td><td>约 150 张</td></tr>
+<tr><td>25MB</td><td>约 18.7MB</td><td>0 张</td><td>约 187 张</td></tr>
+<tr><td>50MB</td><td>约 37.5MB</td><td>1 张</td><td>约 375 张</td></tr>
+</tbody>
+</table>
+<p>表格说明了一个现实：一张现代手机照片就可能超过 20MB 邮件上限。把一张图从 20MB 压到 300KB，发送从不可能变成瞬间完成。如果对方需要打印级画质，正确工具是云盘链接，而不是更大的附件。</p>
+
+<h2>计算能放多少张照片</h2>
+<p>输入服务商上限、图片数量和编码开销，计算器返回每张图平均可用的原始大小。邮件 base64 填 33%，直接文件上传填 0%，并给邮件头、签名和正文留一点空间。</p>
+<div class="gtool" data-tool="upload-budget">
+<h3>邮件附件预算</h3>
+<p class="gtool-sub">只做本地算术，不发送邮件，也不读取文件。</p>
+<div class="gtool-row">
+<div class="gtool-field"><label for="z5limit">邮件上限（KB）</label><input data-limit id="z5limit" min="1" step="1" type="number" value="25600"/></div>
+<div class="gtool-field"><label for="z5files">照片数量</label><input data-files id="z5files" min="1" step="1" type="number" value="10"/></div>
+<div class="gtool-field"><label for="z5overhead">base64 开销（%）</label><input data-overhead id="z5overhead" min="0" max="100" step="1" type="number" value="33"/></div>
+<div class="gtool-field"><label for="z5reserved">预留（KB）</label><input data-reserved id="z5reserved" min="0" step="1" type="number" value="500"/></div>
+<button data-run type="button">计算</button>
+</div>
+<output aria-live="polite" data-output></output>
+<p class="gtool-hint">25MB 等于 25,600KB。十张照片、33% 开销、预留 500KB 时，每张约 1.7MB。</p>
+</div>
+<script defer src="/guides/tools.js"></script>
+
+<h2>邮件照片该多大</h2>
+<p>邮件是预览媒介。收件人多半在手机或笔记本上看，1200 像素宽的图片已经超过屏幕需要。1200×900、100KB 到 300KB 的 JPEG 在这些屏幕上看起来不错，一批也不会太大。20KB 只适合只需要缩略图或邮箱上限异常紧的情况。</p>
+<p>“小到能发”和“小到有用”是两件事。合同扫描或收据需要文字可读，压到 100KB 后要放大检查数字；同事看的人像需要脸清楚，200KB 很宽裕；房产图集需要细节，发一个图库链接比三十个附件更合适。</p>
+
+<h2>绕开附件上限的办法</h2>
+<ul>
+<li><strong>云盘链接：</strong>上传一次，发送查看或下载链接。邮件很小，对方还能拿到原图。</li>
+<li><strong>ZIP 压缩包：</strong>适合多个文件，但 JPEG 已经压缩过，ZIP 主要减少每文件开销，不会显著缩小图片。</li>
+<li><strong>发送前缩放：</strong>单张过大照片最可靠的修复。4000 像素的图很少需要以全尺寸发送供屏幕预览。</li>
+<li><strong>拆分批次：</strong>发两封各五张，而不是一封被退回。告诉对方会收到几封。</li>
+<li><strong>共享文件夹：</strong>持续协作、版本管理和大批文件比邮件更合适。</li>
+</ul>
+
+<h2>邮件里的隐私与元数据</h2>
+<p>邮件默认不私密。信息可能被扫描、转发、归档和保留。JPEG 的 EXIF 元数据可能包含 GPS 坐标、设备型号和拍摄时间。通过浏览器压缩器重新编码会去掉这些元数据，因为新文件由像素构建，而不是复制原容器。这对住宅、工作场所或儿童照片是合理的预防措施，但不能移除画面中可见的身份信息。</p>
+<p>也要考虑收件人的存储。20MB 附件会进入对方邮箱并占用配额；200KB 版本更友好，也更可能在手机上被打开。如果对方之后需要原图，把原图放在共享文件夹并在邮件里说明。</p>
+
+<h2>照片数量比单张大小更容易出问题</h2>
+<p>十张中等照片可能失败，而一张大照片成功。每个附件都有自己的 MIME 头、边界标记和文件名元数据，每张都单独编码。单文件开销通常只有几百字节，但一批累积起来不可忽略。更重要的是，触发上限的通常是解码后的总大小，而不是某一张。</p>
+<p>实用的规划习惯是：照片数量乘以平均大小，加上开销，再和原始容量比较，而不是和标称邮件上限比较。结果接近时，拆成两封。两封各八张比一封十六张更容易送达。提前告诉收件人会收到几封，避免对方以为文件不全。</p>
+
+<h2>发送前先测试</h2>
+<p>先把整批发给自己。这能暴露两件客户端可能隐藏的事：实际编码后的大小，以及对方客户端是内嵌显示还是要求下载。如果你自己的邮箱都拒收，对方也会。图片到达但看起来发软时，用更大的目标重新压缩再发，不要假设对方看到的是你的预览。</p>
+<p>重要的一次性发送，可以在正文里写清楚附件内容和数量。手机收件人常常只预览第一张，甚至完全不预览。一句简短说明能帮对方决定是否下载其余文件。</p>
+
+<h2>常见问题</h2>
+<h3>ZIP 能显著缩小 JPG 吗？</h3>
+<p>通常不能。JPEG 数据已经压缩过，ZIP 一般只节省几个百分点。用 JPEG 编码器压到更小的目标有效得多。</p>
+<h3>附件没超上限，为什么还是退信？</h3>
+<p>可能是 base64 膨胀、邮件头、服务器实际限制低于宣传值，或收件人邮箱已满。换一个小 25% 的文件或发链接。</p>
+<h3>能邮件发送 20KB 照片吗？</h3>
+<p>很容易。代价是细节：20KB 的人脸或文件可能太软，无法使用。选仍能传达信息的最小尺寸。</p>
+<div class="cta-band"><p>发送前先压缩一批照片。首页支持多张 JPG 和 ZIP 下载。</p><a data-funnel="try_start" href="/#compressor">打开批量压缩器</a></div>
+<div class="related"><h2>相关指南</h2><ul>
+<li><a href="/zh/guides/compress-jpg-to-50kb-100kb.html">50KB 与 100KB</a></li>
+<li><a href="/zh/guides/jpg-upload-size-limits.html">上传大小限制</a></li>
+<li><a href="/zh/guides/batch-compress-jpg-for-websites.html">网站批量压缩</a></li>
+<li><a href="/zh/guides/phone-photos-too-large.html">手机照片太大</a></li>
+</ul></div>
+</article>
+<aside class="aside">
+<div class="box"><h2>试试主工具</h2><p>压缩多张照片并打包 ZIP 下载。</p><a class="btn" data-funnel="try_start" href="/#compressor">免费压缩 JPG</a></div>
+<div class="box"><h2>规划数字</h2><ul><li>base64 增加约 33%</li><li>25MB 邮件约 18.7MB 原文件</li><li>邮件预览宽度 1200px</li><li>打印用云盘链接</li></ul></div>
+<div class="box"><h2>English</h2><p><a href="/guides/email-attachment-jpg-size.html" hreflang="en" lang="en">Read in English →</a></p></div>
+</aside>
+</div>
+<footer class="foot"><div class="container foot-inner">
+<div class="foot-brand"><svg aria-hidden="true" fill="none" viewbox="0 0 44 44"><rect fill="#e9f4ff" height="38" rx="5" stroke="#9cc4f4" stroke-width="2" width="38" x="3" y="3"></rect><path d="M14 12l14 10-14 10V12z" fill="#2487eb"></path><path d="M24 12l10 10-10 10V12z" fill="#5cd510"></path></svg><strong>PIXELPRESS</strong></div>
+<div class="foot-links"><a href="/">JPG 压缩器</a><a href="/zh/guides/">中文指南</a><a href="/guides/" hreflang="en" lang="en">English guides</a></div>
+<p>浏览器本地 JPG 压缩。无账号、无付费、不上传服务器。</p>
+</div></footer>
+</body>
+</html>

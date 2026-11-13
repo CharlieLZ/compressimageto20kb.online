@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>JPG 上传大小限制：20KB、20,000 字节与总量 | PixelPress</title>
+<meta content="看清 JPG 上传限制：KB 与字节的差别、单文件上限与总上限、尺寸规则，并提供批量上传预算计算器。全部在浏览器本地计算。" name="description"/>
+<meta content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" name="robots"/>
+<meta content="#2487eb" name="theme-color"/>
+<link href="https://compressimageto20kb.online/zh/guides/jpg-upload-size-limits.html" rel="canonical"/>
+<link href="https://compressimageto20kb.online/guides/jpg-upload-size-limits.html" hreflang="en" rel="alternate"/>
+<link href="https://compressimageto20kb.online/zh/guides/jpg-upload-size-limits.html" hreflang="zh-Hans" rel="alternate"/>
+<link href="https://compressimageto20kb.online/guides/jpg-upload-size-limits.html" hreflang="x-default" rel="alternate"/>
+<link href="/favicon.ico" rel="icon" sizes="48x48"/>
+<link href="/favicon.svg" rel="icon" sizes="any" type="image/svg+xml"/>
+<link href="/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="/manifest.webmanifest" rel="manifest"/>
+<meta content="article" property="og:type"/>
+<meta content="JPG 上传大小限制详解" property="og:title"/>
+<meta content="单文件与总量上限、字节换算、尺寸规则和预算计算器。" property="og:description"/>
+<meta content="https://compressimageto20kb.online/zh/guides/jpg-upload-size-limits.html" property="og:url"/>
+<meta content="PixelPress" property="og:site_name"/>
+<meta content="https://compressimageto20kb.online/og-image.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="JPG 上传限制中文指南" property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://compressimageto20kb.online/og-image.png" name="twitter:image"/>
+<meta content="JPG 上传大小限制" name="twitter:title"/>
+<meta content="为什么看起来不到 20KB 的文件仍会被拒绝。" name="twitter:description"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://compressimageto20kb.online/zh/guides/jpg-upload-size-limits.html#article",
+      "headline": "JPG 上传大小限制：20KB、20,000 字节与总量",
+      "description": "单文件与总量上限、字节换算、尺寸规则和预算计算器。",
+      "inLanguage": "zh-Hans",
+      "datePublished": "2026-11-14",
+      "dateModified": "2026-11-14",
+      "mainEntityOfPage": "https://compressimageto20kb.online/zh/guides/jpg-upload-size-limits.html",
+      "author": {"@type": "Organization", "name": "PixelPress", "url": "https://compressimageto20kb.online/"},
+      "publisher": {"@type": "Organization", "name": "PixelPress", "url": "https://compressimageto20kb.online/"},
+      "isPartOf": {"@id": "https://compressimageto20kb.online/#website"}
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://compressimageto20kb.online/zh/guides/jpg-upload-size-limits.html#breadcrumb",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "首页", "item": "https://compressimageto20kb.online/"},
+        {"@type": "ListItem", "position": 2, "name": "中文指南", "item": "https://compressimageto20kb.online/zh/guides/"},
+        {"@type": "ListItem", "position": 3, "name": "上传大小限制", "item": "https://compressimageto20kb.online/zh/guides/jpg-upload-size-limits.html"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://compressimageto20kb.online/zh/guides/jpg-upload-size-limits.html#faq",
+      "mainEntity": [
+        {"@type": "Question", "name": "为什么 19.8KB 的文件被 20KB 表单拒绝？", "acceptedAnswer": {"@type": "Answer", "text": "表单可能把 20KB 当作 20,000 字节，或把 multipart 请求头也计入大小。把目标设到 19KB，并查看文件属性里的精确字节数。"}},
+        {"@type": "Question", "name": "单文件上限是否也适用于总上传量？", "acceptedAnswer": {"@type": "Answer", "text": "不一定。表单可能允许每个文件 1MB，但所有文件合计只有 4MB。页面里的计算器会扣除预留空间，再把可用额度平均分给每个文件。"}}
+      ]
+    }
+  ]
+}
+</script>
+<link href="/guides/guide.css" rel="stylesheet"/>
+</head>
+<body>
+<a class="skip-link" href="#article">跳到正文</a>
+<header class="top">
+<div class="container nav">
+<a aria-label="PixelPress 首页" class="brand" href="/">
+<svg aria-hidden="true" fill="none" viewbox="0 0 44 44"><rect fill="#e9f4ff" height="38" rx="5" stroke="#9cc4f4" stroke-width="2" width="38" x="3" y="3"></rect><path d="M13 12l14 10-14 10V12z" fill="#2487eb"></path><path d="M24 12l10 10-10 10V12z" fill="#5cd510"></path></svg>
+<span><b>PIXELPRESS</b><small>中文 JPG 压缩指南</small></span></a>
+<nav aria-label="主导航" class="top-links"><a href="/">压缩器</a><a href="/zh/guides/">中文指南</a><a href="/guides/jpg-upload-size-limits.html" hreflang="en" lang="en">English</a><a class="top-cta" data-funnel="try_start" href="/#compressor">压缩 JPG</a></nav>
+</div>
+</header>
+<main>
+<div class="crumb"><div class="container"><ol><li><a href="/">首页</a></li><li><a href="/zh/guides/">中文指南</a></li><li>上传大小限制</li></ol></div></div>
+<section class="hero"><div class="container">
+<p class="eyebrow">上传规则指南</p>
+<h1>JPG 上传大小限制：20KB、20,000 字节与总量</h1>
+<p class="lede">大多数上传失败，是因为把限制理解成一个数字，而表单实际同时执行多个条件。本文把字节换算、单文件上限、总上限和尺寸规则拆开，并给出组合场景的计算器。</p>
+<div class="byline"><span>更新于 2026 年 11 月 14 日</span><span>阅读约 7 分钟</span><span>计算器在本地运行</span></div>
+<div class="answer"><h2>快速回答</h2><p>20KB 在多数工具里是 20,480 字节，但部分门户按 20,000 字节计算。单文件上限不代表总上限，大小上限也不能代替尺寸规则。把目标设在标称上限以下 5% 到 10%，检查精确字节数，并在上传多张前先算总量。</p></div>
+</div></section>
+<div class="container layout">
+<article class="article" id="article">
+<h2>一句话背后的四个限制</h2>
+<p>表单可能写着“上传照片，最大 20KB”。实际服务器可以同时检查：每个文件的最大字节数、整个请求的最大字节数、像素的最小和最大值、固定的宽高比、允许的 MIME 类型。通过其中一项，不代表通过其他项。避免反复被拒的最快方法，是在动图片之前把所有写明的条件记下来。</p>
+<p>界面显示的数字和服务器测量的数字也可能不同。文件选择器可能显示“20KB”，服务器却比较上传分片的原始字节长度。有些服务器把 multipart 边界和请求头也算进请求大小，多出几百字节。这就是为什么刚好卡在上限的文件很脆弱，而低于上限 5% 到 10% 的文件更稳。</p>
+
+<h2>KB、kB 与字节</h2>
+<p>严格来说，kB 是 1,000 字节，KiB 是 1,024 字节。消费级软件很少遵守这个区别。图片工具通常显示二进制千字节，所以 20KB 是 20,480 字节；网络和存储界面有时用十进制，20KB 就是 20,000 字节。480 字节的差距绝对值很小，但在硬边界上足以决定成败。</p>
+<table>
+<caption>常见上限标签对应的字节数。文件在边界附近被拒时，先确认表单用哪种换算。</caption>
+<thead><tr><th>标签</th><th>二进制（×1024）</th><th>十进制（×1000）</th><th>差值</th></tr></thead>
+<tbody>
+<tr><td>10KB</td><td>10,240 B</td><td>10,000 B</td><td>240 B</td></tr>
+<tr><td>20KB</td><td>20,480 B</td><td>20,000 B</td><td>480 B</td></tr>
+<tr><td>50KB</td><td>51,200 B</td><td>50,000 B</td><td>1,200 B</td></tr>
+<tr><td>100KB</td><td>102,400 B</td><td>100,000 B</td><td>2,400 B</td></tr>
+<tr><td>1MB</td><td>1,048,576 B</td><td>1,000,000 B</td><td>48,576 B</td></tr>
+</tbody>
+</table>
+
+<h2>单文件上限与总上限</h2>
+<p>单文件上限独立限制每张图片；总上限限制一次提交中所有文件的和。要求上传照片、签名和证书的门户经常两者都查：“每个文件最多 100KB，总计最多 250KB。” 如果你把每个文件都优化到正好 100KB，总量必然失败。正确做法是先分配总预算，再把每个文件压到自己的份额。</p>
+<p>文件名、表单字段和编码开销也可能占用空间。Base64 编码会给二进制大小增加约三分之一，100KB 的图片在文本传输中约 133KB，还没算请求头。理解传输方式，可以避免一个本地检查通过的文件在编码后被拒。</p>
+
+<h2>计算每个文件的预算</h2>
+<p>计算器接收总上限、文件数量、编码开销和预留空间，返回每个文件平均可用的字节数。普通 multipart 表单填 0% 开销；邮件或 JSON 的 base64 传输填 33%；表单还有其他字段或文件名时，预留一点空间。</p>
+<div class="gtool" data-tool="upload-budget">
+<h3>上传预算计算器</h3>
+<p class="gtool-sub">所有算术都在当前标签页完成，不会上传任何文件。</p>
+<div class="gtool-row">
+<div class="gtool-field"><label for="z3limit">总上限（KB）</label><input data-limit id="z3limit" min="1" step="1" type="number" value="500"/></div>
+<div class="gtool-field"><label for="z3files">文件数量</label><input data-files id="z3files" min="1" step="1" type="number" value="5"/></div>
+<div class="gtool-field"><label for="z3overhead">编码开销（%）</label><input data-overhead id="z3overhead" min="0" max="100" step="1" type="number" value="0"/></div>
+<div class="gtool-field"><label for="z3reserved">预留空间（KB）</label><input data-reserved id="z3reserved" min="0" step="1" type="number" value="10"/></div>
+<button data-run type="button">计算</button>
+</div>
+<output aria-live="polite" data-output></output>
+<p class="gtool-hint">结果是平均值。如果某个文件必须更大，就减少其他文件的预算，并保持总量在上限以内。</p>
+</div>
+<script defer src="/guides/tools.js"></script>
+
+<h2>尺寸规则是独立条件</h2>
+<p>20KB 的文件可以是 200×200，也可以是 2000×2000。字节上限不说明人脸是否够大、图片是否为正方形、最小分辨率是否满足。证件和申请表常要求 600×600 像素、2×2 英寸 300 DPI，或特定宽高比。先压缩、后才发现尺寸不对，等于浪费一次上传。</p>
+<p>当表单同时写大小和尺寸时，要检查两者是否兼容。600×600 压到 20KB 约 0.46 位/像素，对人脸非常激进。如果表单还要求 20KB，它实际上是在要一张低细节图片；如果允许 100KB，同样尺寸就舒服得多。决定观感的是组合，而不是其中任何一个数字。</p>
+
+<h2>正确理解拒绝提示</h2>
+<ul>
+<li><strong>“文件超过最大大小”。</strong>减少字节。确认十进制与二进制差别，再检查精确属性。</li>
+<li><strong>“图片尺寸太小”。</strong>增加像素。这与严格的字节上限冲突，应优先裁剪，而不是继续降质量。</li>
+<li><strong>“图片尺寸太大”。</strong>缩小宽高。只降 JPEG 质量没用，服务器检查的是宽高。</li>
+<li><strong>“文件类型无效”。</strong>检查真实编码，而不是扩展名。PNG 改名成 .jpg 仍是 PNG。</li>
+<li><strong>“上传总量过大”。</strong>重新计算合计，而不是逐个文件看。</li>
+<li><strong>“未知错误”。</strong>经常是服务器在校验前就做了大小检查。换一个小 10% 的文件测试。</li>
+</ul>
+
+<h2>安全的默认策略</h2>
+<p>面对未知门户，先准备一张约 600 像素宽、大小约为标称上限 70% 到 80% 的 JPEG。这个组合能通过多数尺寸和大小检查，而且看起来仍像照片。保留高分辨率原图。如果门户拒绝尺寸，从原图重新裁剪，而不是压缩一张已经压缩过的副本；如果拒绝大小，你还有余量继续减小，而不必再损失一代画质。</p>
+<p>多文件提交时，先算总量，分配每文件预算，压到各自份额的 90%，再核对总和。这比把每张都压到单文件最大值慢，但能避免最常见的总量超限。</p>
+
+<h2>服务器看不见的检查</h2>
+<p>表单可能在浏览器里校验一次，又在服务器上校验一次。浏览器可能使用报告的文件大小，服务器可能统计整个请求体，包括请求头和其他字段。有些服务器还会在存储前转码，再对转码后的版本执行限制。这就是为什么同一个文件在一个门户通过，在另一个规则看起来相同的门户却失败。</p>
+<p>外部无法可靠地检查这些逻辑。实用的应对是留余量：低于标称上限 5% 到 10%，避免刚好卡线的文件；遇到无法解释的拒绝时，换一个明显更小的文件重试。如果文件远低于上限仍被拒，原因通常是尺寸、格式或请求总量，而不是字节数。</p>
+
+<h2>ZIP 与合并上传</h2>
+<p>ZIP 方便，但不是 JPEG 的压缩捷径。图片本身已经压缩过，打包主要是在归档和少量元数据，5MB 的 JPEG 文件夹可能只变成 4.9MB 的 ZIP。如果门户把压缩包计入总上限，打包不会创造有意义的余量；仍然需要减小图片本身。有些门户完全不接受压缩包，或接受但不预览内容，上传前先读说明。</p>
+
+<h2>常见问题</h2>
+<h3>浏览器文件选择器显示精确字节吗？</h3>
+<p>通常不显示。操作系统会四舍五入。限制严格时，打开文件属性，或使用压缩器报告的字节数。</p>
+<h3>能改扩展名后上传 JPG 吗？</h3>
+<p>服务器通常检查文件签名，而不只是名字。改名不会转换格式，还可能触发安全拒绝。</p>
+<h3>为什么同一文件在一个门户通过，在另一个失败？</h3>
+<p>不同的服务器、字节换算、请求开销和尺寸规则。把每个门户当成独立合同。</p>
+<div class="cta-band"><p>需要命中每文件预算？上传前先在本地压缩每张 JPG。</p><a data-funnel="try_start" href="/#compressor">打开 JPG 压缩器</a></div>
+<div class="related"><h2>相关指南</h2><ul>
+<li><a href="/zh/guides/compress-jpg-to-20kb.html">压缩到 20KB</a></li>
+<li><a href="/zh/guides/compress-jpg-to-50kb-100kb.html">50KB 与 100KB</a></li>
+<li><a href="/zh/guides/job-application-photo-upload.html">求职照片上传</a></li>
+<li><a href="/zh/guides/email-attachment-jpg-size.html">邮件附件大小</a></li>
+</ul></div>
+</article>
+<aside class="aside">
+<div class="box"><h2>试试主工具</h2><p>批量压缩和 ZIP 下载。</p><a class="btn" data-funnel="try_start" href="/#compressor">免费压缩 JPG</a></div>
+<div class="box"><h2>检查清单</h2><ul><li>字节换算</li><li>单文件上限</li><li>总上限</li><li>最小/最大尺寸</li><li>允许格式</li></ul></div>
+<div class="box"><h2>English</h2><p><a href="/guides/jpg-upload-size-limits.html" hreflang="en" lang="en">Read in English →</a></p></div>
+</aside>
+</div>
+<footer class="foot"><div class="container foot-inner">
+<div class="foot-brand"><svg aria-hidden="true" fill="none" viewbox="0 0 44 44"><rect fill="#e9f4ff" height="38" rx="5" stroke="#9cc4f4" stroke-width="2" width="38" x="3" y="3"></rect><path d="M14 12l14 10-14 10V12z" fill="#2487eb"></path><path d="M24 12l10 10-10 10V12z" fill="#5cd510"></path></svg><strong>PIXELPRESS</strong></div>
+<div class="foot-links"><a href="/">JPG 压缩器</a><a href="/zh/guides/">中文指南</a><a href="/guides/" hreflang="en" lang="en">English guides</a></div>
+<p>浏览器本地 JPG 压缩。无账号、无付费、不上传服务器。</p>
+</div></footer>
+</body>
+</html>

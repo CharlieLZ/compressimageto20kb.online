@@ -1,20 +1,41 @@
 # PixelPress — Compress JPG to 20KB Online
 
-> PixelPress is a free, browser-based JPG compressor for strict upload limits such as 20KB. Choose a JPG, pick a target size, and download a smaller image without login, payment, or server upload.
+> PixelPress is a free, browser-based JPG compressor for strict upload limits such as 20KB. Choose a JPG, pick a target size, and download a smaller image without login, payment, or server upload. The guide library explains size limits, photo dimensions and quality trade-offs in English and Simplified Chinese.
 
-PixelPress is one page, https://compressimageto20kb.online/. Compression runs inside the browser with the Canvas API, so the selected JPG is never uploaded to a server and the result is downloaded directly from the tab. The tool accepts JPG/JPEG files only, up to 50MB each, and never asks for an account.
+PixelPress is a free JPG compressor at https://compressimageto20kb.online/. Compression runs inside the browser with the Canvas API, so the selected JPG is never uploaded. The compressor accepts JPG/JPEG files only, up to 50MB each, and never asks for an account. Target-size presets are 10KB, 20KB, 30KB, 40KB, 50KB, 100KB, 200KB, 500KB, 1MB and 2MB. Batch compression and ZIP download are built in.
 
-Target-size presets: 10KB, 20KB, 30KB, 40KB, 50KB, 100KB, 200KB, 500KB, 1MB and 2MB. Quality modes: Balanced quality (default), Keep more detail, and Prefer smaller output. Several JPG files can be compressed in one run and collected together with Download ZIP.
-
-Every result is reported as Target reached, Closest match, or Already under target. A very detailed photo may not reach a tiny target without visible damage, so the tool returns the closest clean result instead of a broken image. The page has no login, pricing, checkout, or support pages.
+Every result is reported as Target reached, Closest match, or Already under target. A detailed photo may not reach a tiny target without visible damage, so the tool returns the closest clean result instead of a broken image. The site has no login, pricing, checkout, or support pages.
 
 ## Core pages
-- [PixelPress JPG compressor](https://compressimageto20kb.online/): the whole tool lives on this single page: upload panel, target sizes, quality settings, guide, FAQ and downloads.
+- [PixelPress JPG compressor](https://compressimageto20kb.online/): upload panel, target sizes, quality settings, guide, FAQ and downloads on one page.
+- [JPG compression guides](https://compressimageto20kb.online/guides/): English library covering byte math, upload limits, passport photos, email attachments, formats and batch workflows.
+- [中文 JPG 压缩指南](https://compressimageto20kb.online/zh/guides/): Simplified Chinese library with localized explanations and tools.
 
-## Tool sections
+## English guides
+- [Compress JPG to 20KB](https://compressimageto20kb.online/guides/compress-jpg-to-20kb.html): byte conventions, bits-per-pixel math and a local compressor.
+- [50KB and 100KB targets](https://compressimageto20kb.online/guides/compress-jpg-to-50kb-100kb.html): when the extra bytes buy visible quality.
+- [JPG upload size limits](https://compressimageto20kb.online/guides/jpg-upload-size-limits.html): per-file and total caps with an upload budget calculator.
+- [Passport photo JPG size](https://compressimageto20kb.online/guides/passport-photo-jpg-size.html): pixels, DPI and print size with a calculator.
+- [Email attachment JPG size](https://compressimageto20kb.online/guides/email-attachment-jpg-size.html): base64 overhead and mailbox planning.
+- [Job application photo upload](https://compressimageto20kb.online/guides/job-application-photo-upload.html): headshot dimensions, filenames and ATS behavior.
+- [JPG vs PNG vs WebP](https://compressimageto20kb.online/guides/jpg-vs-png-vs-webp.html): format fit for photos, text and transparency.
+- [Reduce JPG size without losing visible quality](https://compressimageto20kb.online/guides/reduce-jpg-size-without-losing-quality.html): crop, downscale, encode once.
+- [Batch compress JPGs for websites](https://compressimageto20kb.online/guides/batch-compress-jpg-for-websites.html): display widths, naming and Core Web Vitals.
+- [Phone photos too large](https://compressimageto20kb.online/guides/phone-photos-too-large.html): HEIC, 48MP and HDR causes with a local fix.
+
+## 中文指南
+- [把 JPG 压缩到 20KB](https://compressimageto20kb.online/zh/guides/compress-jpg-to-20kb.html)：字节换算、位/像素预算与本地压缩工具。
+- [50KB 还是 100KB](https://compressimageto20kb.online/zh/guides/compress-jpg-to-50kb-100kb.html)：多出的字节值不值得。
+- [JPG 上传大小限制](https://compressimageto20kb.online/zh/guides/jpg-upload-size-limits.html)：单文件与总量上限、上传预算计算器。
+- [护照照片 JPG 尺寸](https://compressimageto20kb.online/zh/guides/passport-photo-jpg-size.html)：像素、DPI 与打印尺寸。
+- [邮件附件 JPG 大小](https://compressimageto20kb.online/zh/guides/email-attachment-jpg-size.html)：base64 开销与邮箱规划。
+- [求职照片上传](https://compressimageto20kb.online/zh/guides/job-application-photo-upload.html)：头像尺寸、文件名与 ATS。
+- [JPG、PNG、WebP 怎么选](https://compressimageto20kb.online/zh/guides/jpg-vs-png-vs-webp.html)：照片、文字与透明度。
+- [压缩 JPG 又不损失可见画质](https://compressimageto20kb.online/zh/guides/reduce-jpg-size-without-losing-quality.html)：裁剪、缩放、只编码一次。
+- [网站批量压缩 JPG](https://compressimageto20kb.online/zh/guides/batch-compress-jpg-for-websites.html)：显示宽度、命名与 Core Web Vitals。
+- [手机照片太大](https://compressimageto20kb.online/zh/guides/phone-photos-too-large.html)：HEIC、4800 万像素与 HDR。
+
+## Optional
 - [Upload and file list](https://compressimageto20kb.online/#compressor): choose or drop JPG files, run Compress All, download single results or a ZIP.
-- [Target-size presets](https://compressimageto20kb.online/#sizes): switch between the ten presets from 10KB to 2MB without leaving the page.
-- [Why compress JPG to 20KB](https://compressimageto20kb.online/#why): when a strict 20KB limit helps and how the compressor trades detail for size.
-- [JPG compression guide](https://compressimageto20kb.online/#guide): 16 short sections on target size, source preparation, privacy, quality modes and result status.
-- [Feature highlights](https://compressimageto20kb.online/#features): browser based, fast downloads, help built in, private by design.
-- [JPG compressor FAQ](https://compressimageto20kb.online/#faq): 8 questions on uploads, batch compression, supported file types, quality and cost.
+- [Target-size presets](https://compressimageto20kb.online/#sizes): switch between the ten presets from 10KB to 2MB.
+- [JPG compressor FAQ](https://compressimageto20kb.online/#faq): uploads, batch compression, supported file types, quality and cost.

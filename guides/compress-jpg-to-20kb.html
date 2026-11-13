@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Compress JPG to 20KB: What Actually Fits | PixelPress</title>
+<meta content="A practical 20KB JPG guide: byte math, pixel budgets, why some photos resist 20KB, and a working browser compressor you can test before uploading." name="description"/>
+<meta content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" name="robots"/>
+<meta content="#2487eb" name="theme-color"/>
+<link href="https://compressimageto20kb.online/guides/compress-jpg-to-20kb.html" rel="canonical"/>
+<link href="https://compressimageto20kb.online/guides/compress-jpg-to-20kb.html" hreflang="en" rel="alternate"/>
+<link href="https://compressimageto20kb.online/zh/guides/compress-jpg-to-20kb.html" hreflang="zh-Hans" rel="alternate"/>
+<link href="https://compressimageto20kb.online/guides/compress-jpg-to-20kb.html" hreflang="x-default" rel="alternate"/>
+<link href="/favicon.ico" rel="icon" sizes="48x48"/>
+<link href="/favicon.svg" rel="icon" sizes="any" type="image/svg+xml"/>
+<link href="/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="/manifest.webmanifest" rel="manifest"/>
+<meta content="article" property="og:type"/>
+<meta content="Compress JPG to 20KB: What Actually Fits" property="og:title"/>
+<meta content="Byte math, pixel budgets and a working local compressor for strict 20KB upload limits." property="og:description"/>
+<meta content="https://compressimageto20kb.online/guides/compress-jpg-to-20kb.html" property="og:url"/>
+<meta content="PixelPress" property="og:site_name"/>
+<meta content="https://compressimageto20kb.online/og-image.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="Compress JPG to 20KB guide" property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://compressimageto20kb.online/og-image.png" name="twitter:image"/>
+<meta content="Compress JPG to 20KB: What Actually Fits" name="twitter:title"/>
+<meta content="Why 20KB is aggressive, which dimensions to choose, and how to verify the result." name="twitter:description"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://compressimageto20kb.online/guides/compress-jpg-to-20kb.html#article",
+      "headline": "Compress JPG to 20KB: What Actually Fits",
+      "description": "Byte math, pixel budgets and a working browser compressor for strict 20KB upload limits.",
+      "inLanguage": "en",
+      "datePublished": "2026-11-14",
+      "dateModified": "2026-11-14",
+      "mainEntityOfPage": "https://compressimageto20kb.online/guides/compress-jpg-to-20kb.html",
+      "author": {"@type": "Organization", "name": "PixelPress", "url": "https://compressimageto20kb.online/"},
+      "publisher": {"@type": "Organization", "name": "PixelPress", "url": "https://compressimageto20kb.online/"},
+      "isPartOf": {"@id": "https://compressimageto20kb.online/#website"}
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://compressimageto20kb.online/guides/compress-jpg-to-20kb.html#breadcrumb",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://compressimageto20kb.online/"},
+        {"@type": "ListItem", "position": 2, "name": "Guides", "item": "https://compressimageto20kb.online/guides/"},
+        {"@type": "ListItem", "position": 3, "name": "Compress JPG to 20KB", "item": "https://compressimageto20kb.online/guides/compress-jpg-to-20kb.html"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://compressimageto20kb.online/guides/compress-jpg-to-20kb.html#faq",
+      "mainEntity": [
+        {"@type": "Question", "name": "Is 20KB the same as 20,000 bytes?", "acceptedAnswer": {"@type": "Answer", "text": "No. Most image tools treat 20KB as 20 × 1024 = 20,480 bytes, while some portals mean 20,000 bytes. If a form is strict, aim for 19.5KB in the tool and check the byte count it reports."}},
+        {"@type": "Question", "name": "Can a 600×450 photo reach 20KB?", "acceptedAnswer": {"@type": "Answer", "text": "It can, but only at roughly 0.61 bits per pixel, which is very aggressive for a photograph. Smooth backgrounds may survive; faces, foliage and texture usually soften. Smaller dimensions or a simpler crop produce a cleaner 20KB image."}},
+        {"@type": "Question", "name": "Why does the tool say closest match instead of 20KB?", "acceptedAnswer": {"@type": "Answer", "text": "The compressor stops when the next reduction would visibly damage the image. It reports the smallest clean result rather than producing a broken file that technically hits the number."}},
+        {"@type": "Question", "name": "Does compressing to 20KB remove photo metadata?", "acceptedAnswer": {"@type": "Answer", "text": "The browser re-encodes the pixels into a new JPEG, so EXIF fields such as device model and GPS coordinates are not copied into the downloaded result. The original file on your device is untouched."}}
+      ]
+    }
+  ]
+}
+</script>
+<link href="/guides/guide.css" rel="stylesheet"/>
+</head>
+<body>
+<a class="skip-link" href="#article">Skip to article</a>
+<header class="top">
+<div class="container nav">
+<a aria-label="PixelPress homepage" class="brand" href="/">
+<svg aria-hidden="true" fill="none" viewbox="0 0 44 44"><rect fill="#e9f4ff" height="38" rx="5" stroke="#9cc4f4" stroke-width="2" width="38" x="3" y="3"></rect><path d="M13 12l14 10-14 10V12z" fill="#2487eb"></path><path d="M24 12l10 10-10 10V12z" fill="#5cd510"></path></svg>
+<span><b>PIXELPRESS</b><small>JPG compression guides</small></span></a>
+<nav aria-label="Primary" class="top-links"><a href="/">Compressor</a><a href="/guides/">Guides</a><a href="/zh/guides/compress-jpg-to-20kb.html" hreflang="zh-Hans" lang="zh-Hans">中文</a><a class="top-cta" data-funnel="try_start" href="/#compressor">Compress JPG</a></nav>
+</div>
+</header>
+<main>
+<div class="crumb"><div class="container"><ol><li><a href="/">Home</a></li><li><a href="/guides/">Guides</a></li><li>Compress JPG to 20KB</li></ol></div></div>
+<section class="hero"><div class="container">
+<p class="eyebrow">Size target guide</p>
+<h1>Compress JPG to 20KB: what actually fits</h1>
+<p class="lede">Twenty kilobytes is not a quality setting. It is a hard budget, and every pixel in the image has to share it. This guide shows the arithmetic, the visual cost, and a working compressor so you can test the result before a portal rejects it.</p>
+<div class="byline"><span>Updated 14 November 2026</span><span>8 min read</span><span>Tool runs locally</span></div>
+<div class="answer"><h2>Quick answer</h2><p>To compress a JPG to 20KB, reduce its pixel dimensions first, then lower JPEG quality. A 20KB file is 20,480 bytes in most tools, which is only about 0.61 bits per pixel at 600×450. For photos with faces or fine texture, a 400×300 to 500×375 result usually looks cleaner than forcing 600×450 down to the same byte count.</p></div>
+</div></section>
+<div class="container layout">
+<article class="article" id="article">
+<h2>What “20KB” means in bytes</h2>
+<p>File size is counted in bytes, but interfaces label it in kilobytes. The convention most compression tools use is binary: 1KB equals 1,024 bytes, so 20KB equals 20,480 bytes. Some upload portals instead mean 20,000 bytes, which is 480 bytes smaller. That gap sounds trivial until a form rejects a file at 20.1KB. When the limit is rigid, target 19.5KB or less and read the exact byte count your tool reports, not just the rounded label.</p>
+<p>The distinction matters because JPEG encoders do not hit an exact size. They compress a block of pixels and produce whatever byte count those blocks require. A tool can search for a combination of dimensions and quality that lands under the limit, but it cannot promise an exact 20,480-byte file without padding, and padding a JPEG with junk bytes is not a real optimisation.</p>
+
+<h2>The bit budget behind a 20KB target</h2>
+<p>A JPEG stores three colour channels, usually with chroma subsampling, and spends most of its bytes on luminance detail. A rough way to see how aggressive a target is: multiply the byte count by eight to get bits, then divide by the pixel count. The result is the average number of bits available per pixel before compression overhead.</p>
+<table>
+<caption>Average bits per pixel at a 20,480-byte target, before JPEG overhead. Lower values mean more visible softening.</caption>
+<thead><tr><th>Pixel dimensions</th><th>Total pixels</th><th>Bits per pixel at 20KB</th><th>Practical expectation</th></tr></thead>
+<tbody>
+<tr><td>300×225</td><td>67,500</td><td>2.43</td><td>Comfortable for a small portrait or thumbnail</td></tr>
+<tr><td>400×300</td><td>120,000</td><td>1.37</td><td>Usually readable faces and clear edges</td></tr>
+<tr><td>500×375</td><td>187,500</td><td>0.87</td><td>Visible softness on texture, acceptable for forms</td></tr>
+<tr><td>600×450</td><td>270,000</td><td>0.61</td><td>Aggressive; smooth images only</td></tr>
+<tr><td>800×600</td><td>480,000</td><td>0.34</td><td>Not realistic for detailed photographs</td></tr>
+</tbody>
+</table>
+<p>These numbers explain why the same 20KB target looks fine on one photo and terrible on another. A studio portrait against a plain wall has large areas that compress cheaply. A tree canopy, a brick wall or a page of text has high-frequency detail in every block, so the encoder runs out of bits quickly and either blurs or produces blocking artefacts.</p>
+
+<h2>Dimensions or quality: which to cut first</h2>
+<p>When a JPG is far above the target, you have two levers. Lowering quality keeps the pixel count and throws away precision inside each 8×8 block. Reducing dimensions removes pixels entirely, then encodes the smaller image at a healthier quality. For a strict 20KB limit, reducing dimensions first usually produces the better-looking result, because the viewer sees fewer pixels but each one is represented more accurately.</p>
+<p>There is a limit to that logic. If the form requires a minimum dimension, such as 600×600 for a profile photo, you cannot shrink below it. In that case the file must accept a lower quality, and the honest outcome may be “closest match” rather than an exact 20KB file. A compressor that silently destroys the image to hit the number is not helping you pass a human review.</p>
+<blockquote>Useful rule: choose the smallest dimensions that still satisfy the form, then spend the remaining byte budget on quality. Do not choose the largest allowed dimensions and force the quality down until the file fits.</blockquote>
+
+<h2>Compress one JPG to 20KB now</h2>
+<p>The tool below runs the same browser-local compression as the homepage. It starts from a 600×450 fit for the 20KB preset, lowers quality in steps, and reduces dimensions further only when needed. If it cannot reach 20KB cleanly, it says so and offers the smallest clean result.</p>
+<div class="gtool" data-tool="compressor">
+<h3>Compress a JPG to 20KB in this tab</h3>
+<p class="gtool-sub">JPG or JPEG only, up to 50MB. The file is read locally and never uploaded.</p>
+<div class="gtool-row">
+<div class="gtool-field"><label for="g1file">JPG file</label><input accept=".jpg,.jpeg,image/jpeg" data-file id="g1file" type="file"/></div>
+<div class="gtool-field"><label for="g1preset">Target size</label><select data-preset id="g1preset"><option value="10kb">10KB</option><option selected value="20kb">20KB</option><option value="30kb">30KB</option><option value="50kb">50KB</option><option value="100kb">100KB</option></select></div>
+<button data-run type="button">Compress</button>
+</div>
+<div class="gtool-result" data-result hidden><a data-download hidden href="#">Download</a></div>
+<p aria-live="polite" class="gtool-status" data-status role="status"></p>
+<p class="gtool-hint">The reported size is the exact byte count of the new file. Compare it with the portal limit before uploading.</p>
+</div>
+<script defer src="/guides/tools.js"></script>
+
+<h2>A repeatable 20KB workflow</h2>
+<ol>
+<li><strong>Read the form twice.</strong> Write down the maximum size, the minimum and maximum dimensions, the required aspect ratio and the accepted formats. If the form says “20KB, 600×600 minimum”, those two constraints may conflict.</li>
+<li><strong>Crop before compressing.</strong> Remove empty background, borders and anything the form does not need. A tighter crop gives the subject more pixels inside the same byte budget.</li>
+<li><strong>Set the target to 20KB.</strong> Let the tool choose dimensions and quality together. Do not manually save at quality 10 in an image editor and hope the result lands under the limit.</li>
+<li><strong>Check the exact bytes.</strong> Open the downloaded file’s properties. If the portal counts 20KB as 20,000 bytes, leave a margin.</li>
+<li><strong>Look at the face or the label.</strong> Zoom to 100%. If eyes, text or product edges are mushy, reduce dimensions and re-encode rather than lowering quality further.</li>
+<li><strong>Keep the original.</strong> The compressed copy is for the upload. Keep the full-resolution file for print, future applications and any appeal process.</li>
+</ol>
+
+<h2>Why some images cannot reach 20KB cleanly</h2>
+<p>JPEG divides the image into 8×8 blocks and quantises the frequency information in each block. When the target is extremely small, the quantisation table becomes coarse. Flat areas survive because neighbouring blocks are similar. Detailed areas do not: edges spread, colour bleeds and the image develops a blocky texture. At the extreme, the encoder can still produce a 20KB file, but the result may be a blurry approximation that no longer serves its purpose.</p>
+<p>A responsible compressor therefore has a stopping condition. PixelPress uses a minimum quality floor and reports “Closest match” when the cleanest result remains above the target. That label is not a failure of the tool; it is information that the source image and the target are in conflict. The fix is usually a tighter crop, smaller dimensions, or a form that accepts 50KB.</p>
+
+<h2>Privacy and metadata</h2>
+<p>When a JPEG is decoded into a canvas and re-encoded, the new file contains pixel data and a fresh JFIF header, not the original EXIF block. Device model, capture time, GPS coordinates and editing history are not carried over. That is a useful side effect for personal photos submitted to public portals. It is not a guarantee of anonymity: the image content itself can still identify a person or location, and some portals keep the uploaded file. The original file on your device is never modified by the browser tool.</p>
+
+<h2>Common rejection reasons and what to change</h2>
+<ul>
+<li><strong>“File too large” after the tool said 20KB.</strong> The portal may count 20,000 bytes, or it may include form overhead. Aim for 19KB.</li>
+<li><strong>“Dimensions too small.”</strong> You reduced pixels to hit the byte limit. Crop instead, or accept a slightly larger file if the form allows it.</li>
+<li><strong>“Invalid file type.”</strong> Renaming a PNG to .jpg does not change its encoding. Re-encode through a JPEG tool.</li>
+<li><strong>“Photo is blurry.”</strong> The target forced excessive quantisation. Use a tighter crop and a smaller canvas rather than a lower quality slider.</li>
+<li><strong>“Head not centred” or “background not plain.”</strong> This is a composition rule, not a compression problem. Fix the crop before compressing again.</li>
+</ul>
+
+<h2>Frequently asked questions</h2>
+<h3>Is 20KB enough for a passport or ID photo?</h3>
+<p>Usually not on its own. Many identity portals specify both a pixel size, such as 600×600, and a byte range. A 600×600 photo at 20KB is about 0.46 bits per pixel, which is extremely tight for a face. Follow the portal’s stated range; if it allows 50KB or 100KB, use the extra room.</p>
+<h3>Should I convert PNG screenshots to JPG for a 20KB limit?</h3>
+<p>Only if the screenshot has photographic content or gradients. Flat interface screenshots and text compress better as PNG, and JPEG adds ringing around letters. If the portal demands JPG, a screenshot with large flat areas can still fit 20KB, but check the text at 100% zoom.</p>
+<h3>Does lowering quality twice make the file smaller?</h3>
+<p>Not reliably. Re-encoding an already compressed JPEG adds another generation of loss and may even increase size because the encoder has to represent existing artefacts. Always compress from the best original you have, once, to the final target.</p>
+<div class="cta-band"><p>Need several files at once? The homepage compressor batches JPGs and downloads a ZIP.</p><a data-funnel="try_start" href="/#compressor">Open the batch compressor</a></div>
+<div class="related"><h2>Related guides</h2><ul>
+<li><a href="/guides/compress-jpg-to-50kb-100kb.html">Compress JPG to 50KB or 100KB</a></li>
+<li><a href="/guides/jpg-upload-size-limits.html">Upload size limits on forms</a></li>
+<li><a href="/guides/reduce-jpg-size-without-losing-quality.html">Reduce JPG size without losing quality</a></li>
+<li><a href="/guides/phone-photos-too-large.html">Phone photos that are too large</a></li>
+</ul></div>
+</article>
+<aside class="aside">
+<div class="box"><h2>Try the main tool</h2><p>Batch compression, ten presets and ZIP download on the homepage.</p><a class="btn" data-funnel="try_start" href="/#compressor">Compress JPG free</a></div>
+<div class="box"><h2>In this guide</h2><ul><li><a href="#article">Byte math</a></li><li><a href="#article">Dimensions vs quality</a></li><li><a href="#article">Workflow</a></li><li><a href="#article">Rejection fixes</a></li></ul></div>
+<div class="box"><h2>中文版</h2><p><a href="/zh/guides/compress-jpg-to-20kb.html" hreflang="zh-Hans" lang="zh-Hans">阅读中文版：把 JPG 压缩到 20KB →</a></p></div>
+</aside>
+</div>
+<footer class="foot"><div class="container foot-inner">
+<div class="foot-brand"><svg aria-hidden="true" fill="none" viewbox="0 0 44 44"><rect fill="#e9f4ff" height="38" rx="5" stroke="#9cc4f4" stroke-width="2" width="38" x="3" y="3"></rect><path d="M14 12l14 10-14 10V12z" fill="#2487eb"></path><path d="M24 12l10 10-10 10V12z" fill="#5cd510"></path></svg><strong>PIXELPRESS</strong></div>
+<div class="foot-links"><a href="/">JPG compressor</a><a href="/guides/">Guides</a><a href="/zh/guides/" hreflang="zh-Hans" lang="zh-Hans">中文指南</a></div>
+<p>Browser-based JPG compression. No account, no payment, no server upload.</p>
+</div></footer>
+</body>
+</html>

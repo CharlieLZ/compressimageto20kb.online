@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>JPG 压缩到 50KB 还是 100KB？看用途决定 | PixelPress</title>
+<meta content="50KB 与 100KB JPG 目标怎么选：位/像素对比、哪些图片值得多花字节、什么情况 20KB 太激进，并附本地压缩工具。" name="description"/>
+<meta content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" name="robots"/>
+<meta content="#2487eb" name="theme-color"/>
+<link href="https://compressimageto20kb.online/zh/guides/compress-jpg-to-50kb-100kb.html" rel="canonical"/>
+<link href="https://compressimageto20kb.online/guides/compress-jpg-to-50kb-100kb.html" hreflang="en" rel="alternate"/>
+<link href="https://compressimageto20kb.online/zh/guides/compress-jpg-to-50kb-100kb.html" hreflang="zh-Hans" rel="alternate"/>
+<link href="https://compressimageto20kb.online/guides/compress-jpg-to-50kb-100kb.html" hreflang="x-default" rel="alternate"/>
+<link href="/favicon.ico" rel="icon" sizes="48x48"/>
+<link href="/favicon.svg" rel="icon" sizes="any" type="image/svg+xml"/>
+<link href="/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="/manifest.webmanifest" rel="manifest"/>
+<meta content="article" property="og:type"/>
+<meta content="JPG 压缩到 50KB 还是 100KB" property="og:title"/>
+<meta content="用位/像素和实际用途判断目标大小。" property="og:description"/>
+<meta content="https://compressimageto20kb.online/zh/guides/compress-jpg-to-50kb-100kb.html" property="og:url"/>
+<meta content="PixelPress" property="og:site_name"/>
+<meta content="https://compressimageto20kb.online/og-image.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="JPG 50KB 与 100KB 目标中文指南" property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://compressimageto20kb.online/og-image.png" name="twitter:image"/>
+<meta content="JPG 压缩到 50KB 还是 100KB" name="twitter:title"/>
+<meta content="多出的字节值不值得，要看图片要表达什么。" name="twitter:description"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://compressimageto20kb.online/zh/guides/compress-jpg-to-50kb-100kb.html#article",
+      "headline": "JPG 压缩到 50KB 还是 100KB？看用途决定",
+      "description": "用位/像素和实际用途判断目标大小。",
+      "inLanguage": "zh-Hans",
+      "datePublished": "2026-11-14",
+      "dateModified": "2026-11-14",
+      "mainEntityOfPage": "https://compressimageto20kb.online/zh/guides/compress-jpg-to-50kb-100kb.html",
+      "author": {"@type": "Organization", "name": "PixelPress", "url": "https://compressimageto20kb.online/"},
+      "publisher": {"@type": "Organization", "name": "PixelPress", "url": "https://compressimageto20kb.online/"},
+      "isPartOf": {"@id": "https://compressimageto20kb.online/#website"}
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://compressimageto20kb.online/zh/guides/compress-jpg-to-50kb-100kb.html#breadcrumb",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "首页", "item": "https://compressimageto20kb.online/"},
+        {"@type": "ListItem", "position": 2, "name": "中文指南", "item": "https://compressimageto20kb.online/zh/guides/"},
+        {"@type": "ListItem", "position": 3, "name": "50KB 与 100KB", "item": "https://compressimageto20kb.online/zh/guides/compress-jpg-to-50kb-100kb.html"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://compressimageto20kb.online/zh/guides/compress-jpg-to-50kb-100kb.html#faq",
+      "mainEntity": [
+        {"@type": "Question", "name": "头像用 100KB 比 50KB 更好吗？", "acceptedAnswer": {"@type": "Answer", "text": "如果门户允许，通常是。600×600 头像在 100KB 时约 2.3 位/像素，能保住皮肤和头发细节；50KB 把预算减半，纹理更容易被抹平。"}},
+        {"@type": "Question", "name": "同一张照片能分别压到两个目标比较吗？", "acceptedAnswer": {"@type": "Answer", "text": "可以。页面里的工具支持在同一文件上运行 50KB 和 100KB，下载后在 100% 缩放下比较再决定。"}},
+        {"@type": "Question", "name": "为什么 100KB 的文件仍被拒绝？", "acceptedAnswer": {"@type": "Answer", "text": "确认门户是按 100,000 还是 102,400 字节计算，是否还限制像素尺寸，以及是否把多张图片合并计算总量。"}}
+      ]
+    }
+  ]
+}
+</script>
+<link href="/guides/guide.css" rel="stylesheet"/>
+</head>
+<body>
+<a class="skip-link" href="#article">跳到正文</a>
+<header class="top">
+<div class="container nav">
+<a aria-label="PixelPress 首页" class="brand" href="/">
+<svg aria-hidden="true" fill="none" viewbox="0 0 44 44"><rect fill="#e9f4ff" height="38" rx="5" stroke="#9cc4f4" stroke-width="2" width="38" x="3" y="3"></rect><path d="M13 12l14 10-14 10V12z" fill="#2487eb"></path><path d="M24 12l10 10-10 10V12z" fill="#5cd510"></path></svg>
+<span><b>PIXELPRESS</b><small>中文 JPG 压缩指南</small></span></a>
+<nav aria-label="主导航" class="top-links"><a href="/">压缩器</a><a href="/zh/guides/">中文指南</a><a href="/guides/compress-jpg-to-50kb-100kb.html" hreflang="en" lang="en">English</a><a class="top-cta" data-funnel="try_start" href="/#compressor">压缩 JPG</a></nav>
+</div>
+</header>
+<main>
+<div class="crumb"><div class="container"><ol><li><a href="/">首页</a></li><li><a href="/zh/guides/">中文指南</a></li><li>50KB 与 100KB</li></ol></div></div>
+<section class="hero"><div class="container">
+<p class="eyebrow">大小目标指南</p>
+<h1>JPG 压缩到 50KB 还是 100KB？看用途决定</h1>
+<p class="lede">在 20KB 和 100KB 之间，有一段很宽的区域：照片不再明显损坏，只是变小了。在这个区间里选目标，取决于图片要传达什么，而不是某个唯一的“最佳数字”。</p>
+<div class="byline"><span>更新于 2026 年 11 月 14 日</span><span>阅读约 7 分钟</span><span>工具在本地运行</span></div>
+<div class="answer"><h2>快速回答</h2><p>门户限制文件且图片是简单头像、缩略图或商品图时，用 50KB。图片包含文字、中等大小的人脸或需要审核的商品细节时，用 100KB。如果门户允许 100KB，多出的 50KB 通常比把像素数做大更能保住边缘清晰度。</p></div>
+</div></section>
+<div class="container layout">
+<article class="article" id="article">
+<h2>50KB 到 100KB 不是线性提升</h2>
+<p>字节预算翻倍，不代表观感翻倍。JPEG 的质量是一条曲线：最初的削减拿走的是眼睛几乎注意不到的信息，越往后越会伤到纹理和边缘。从非常激进的 20KB 提到 50KB，往往带来最明显的改善；从 50KB 提到 100KB 变化更安静，但它决定了一张脸是略微发蜡，还是能保住毛孔、发丝和嘴唇与皮肤的边界。</p>
+<p>像素数和字节数同样重要。600×450 时，50KB 约 1.52 位/像素，100KB 约 3.03；到了 1200×900，同样字节数只剩 0.38 和 0.76 位/像素，对细节照片远远不够。这就是为什么小头像可用的预设，换到全尺寸风景照会失败。</p>
+<table>
+<caption>常见目标与尺寸下的平均位/像素（未计容器开销）。</caption>
+<thead><tr><th>像素尺寸</th><th>50KB</th><th>100KB</th><th>适合用途</th></tr></thead>
+<tbody>
+<tr><td>400×300</td><td>3.41</td><td>6.83</td><td>两者都很宽裕，适合表单缩略图</td></tr>
+<tr><td>600×450</td><td>1.52</td><td>3.03</td><td>50KB 头像，100KB 细节商品图</td></tr>
+<tr><td>800×600</td><td>0.85</td><td>1.71</td><td>50KB 仅适合平滑画面，100KB 通用网页图</td></tr>
+<tr><td>1200×900</td><td>0.38</td><td>0.76</td><td>细节照片两者都不舒服</td></tr>
+<tr><td>1600×1200</td><td>0.21</td><td>0.43</td><td>应改用更大目标或更小尺寸</td></tr>
+</tbody>
+</table>
+
+<h2>什么时候 50KB 足够</h2>
+<p>50KB 上限常见于申请表、学校门户和较老的内容系统。对网站缩略图或目录列表，它也是一个合理的自设预算。600×450 的头像在 50KB 时通常能保住清晰的人脸、可辨认的背景和足够对比度，弱网下载也很快。</p>
+<p>50KB 的失败点通常是纹理。针织衣物、树叶、碎石和细发会最先失去细节。如果图片的目的是展示商品材质或文件文字，50KB 往往不够；如果目的是身份识别或快速印象，它通常够用。</p>
+
+<h2>什么时候 100KB 值得</h2>
+<p>100KB 按相机标准仍然很小，但它给了编码器保留边缘的空间。这对三类图片重要：会被仔细查看的人脸、包含小字的图片、颜色和表面质感重要的商品图。800×600 的 100KB 也是博客头图或社交预览的合理默认值，文件只需下载一次并缓存。</p>
+<p>不要以为 100KB 永远更安全。有些门户规定 20KB 到 50KB 的范围，超过上限就拒绝；有些把多张图片合并计算，五张 100KB 就超过 400KB 总量。把限制看成一组成员，而不是一个熟悉的标签。</p>
+
+<h2>在同一张图上试两个目标</h2>
+<p>先压 50KB，再压 100KB，在 100% 缩放下比较。看眼睛、头发与背景的交界、以及任何文字。如果 100KB 的改善看不出来，就保留更小的文件；在慢速网络上，50KB 版本体验更好。</p>
+<div class="gtool" data-tool="compressor">
+<h3>本地比较 50KB 与 100KB</h3>
+<p class="gtool-sub">选择 JPG，设定目标，压缩；再改目标重新运行。文件不会上传。</p>
+<div class="gtool-row">
+<div class="gtool-field"><label for="z2file">JPG 文件</label><input accept=".jpg,.jpeg,image/jpeg" data-file id="z2file" type="file"/></div>
+<div class="gtool-field"><label for="z2preset">目标大小</label><select data-preset id="z2preset"><option value="20kb">20KB</option><option value="30kb">30KB</option><option selected value="50kb">50KB</option><option value="100kb">100KB</option><option value="200kb">200KB</option></select></div>
+<button data-run type="button">压缩</button>
+</div>
+<div class="gtool-result" data-result hidden><a data-download hidden href="#">下载</a></div>
+<p aria-live="polite" class="gtool-status" data-status role="status"></p>
+<p class="gtool-hint">50KB 预设从 1200×900 适配开始，100KB 从 1600×1200 开始；仅靠质量达不到目标时，工具会继续缩小尺寸。</p>
+</div>
+<script defer src="/guides/tools.js"></script>
+
+<h2>预设尺寸意味着什么</h2>
+<p>首页预设给出的是起始画布，不是保证值。50KB 的起始适配是 1200×900，100KB 是 1600×1200。这些数字假设网页图片很少需要比显示尺寸更大的分辨率，它们不是硬性要求。如果源图是 600×600 头像，工具不会放大，而是保持原尺寸并把预算花在质量上。</p>
+<p>当门户要求最小尺寸时，这个区别很重要。1600×1200 的 100KB 只有约 0.43 位/像素，可能很软；同样 100KB 用在 600×600 上是约 2.28 位/像素，看起来好得多。正确顺序是先确定显示尺寸，再选目标。</p>
+
+<h2>决策清单</h2>
+<ol>
+<li><strong>图片里有文字吗？</strong>有的话优先 100KB 或更大，并在 100% 下检查字母边缘。</li>
+<li><strong>会有人仔细看脸吗？</strong>600×450 头像至少 50KB；脸占满画面时用 100KB。</li>
+<li><strong>是网站缩略图吗？</strong>300 到 600 像素宽时，30KB 到 50KB 通常足够。</li>
+<li><strong>是头图吗？</strong>用 100KB 到 200KB 并配合现代交付方式，不要用 20KB 勉强。</li>
+<li><strong>表单写了上限吗？</strong>比上限低 5% 到 10%，吸收字节换算差异。</li>
+<li><strong>表单写了最小尺寸吗？</strong>不要低于它，即使更小的图片看起来更好。</li>
+</ol>
+
+<h2>质量模式如何影响结果</h2>
+<p>首页有三种优先级。均衡质量是默认值，搜索较宽的质量范围；保留细节把搜索推向更高质量，只在目标允许时接受较大尺寸；优先更小则把搜索推向低端。指南工具默认使用均衡搜索，因为它的任务是演示目标算术，而不是暴露所有控制项。</p>
+<p>为不确定的门户准备文件时，均衡最稳。如果门户有硬上限且没有最小尺寸，选优先更小，并确认人脸仍可辨认；如果图片要打印或被近距离审核，选保留细节，并在表单允许时接受更大的字节数。</p>
+
+<h2>常见问题</h2>
+<h3>能精确压到 100KB 吗？</h3>
+<p>不能精确，也不需要。编码器会输出等于或略低于目标的文件，通常在目标以下几个百分点。报告 98.7KB 就是成功；为了正好 102,400 字节而填充数据没有任何价值。</p>
+<h3>为什么 100KB 预设有时只输出 60KB？</h3>
+<p>因为图片在用到全部预算前就达到了目标。命中上限不是目的，产生仍好看的最小清晰文件才是。如果需要更多细节，选更高目标或更大起始尺寸。</p>
+<h3>邮件附件用 50KB 够吗？</h3>
+<p>单张照片通常绰绰有余。邮件客户端关心的是整封邮件大小，base64 编码会增加约三分之一。50KB 照片在传输中约 67KB，相对 25MB 邮箱上限可以忽略。</p>
+<div class="cta-band"><p>想用一个工具处理所有目标？首页有从 10KB 到 2MB 的十个预设。</p><a data-funnel="try_start" href="/#compressor">打开压缩器</a></div>
+<div class="related"><h2>相关指南</h2><ul>
+<li><a href="/zh/guides/compress-jpg-to-20kb.html">压缩到 20KB</a></li>
+<li><a href="/zh/guides/jpg-upload-size-limits.html">上传大小限制</a></li>
+<li><a href="/zh/guides/passport-photo-jpg-size.html">护照照片尺寸</a></li>
+<li><a href="/zh/guides/jpg-vs-png-vs-webp.html">JPG、PNG、WebP 怎么选</a></li>
+</ul></div>
+</article>
+<aside class="aside">
+<div class="box"><h2>试试主工具</h2><p>十个预设、批量模式和 ZIP 下载。</p><a class="btn" data-funnel="try_start" href="/#compressor">免费压缩 JPG</a></div>
+<div class="box"><h2>经验规则</h2><p>先定尺寸，再把字节预算花在质量上。永远不要为了命中预设而放大图片。</p></div>
+<div class="box"><h2>English</h2><p><a href="/guides/compress-jpg-to-50kb-100kb.html" hreflang="en" lang="en">Read in English →</a></p></div>
+</aside>
+</div>
+<footer class="foot"><div class="container foot-inner">
+<div class="foot-brand"><svg aria-hidden="true" fill="none" viewbox="0 0 44 44"><rect fill="#e9f4ff" height="38" rx="5" stroke="#9cc4f4" stroke-width="2" width="38" x="3" y="3"></rect><path d="M14 12l14 10-14 10V12z" fill="#2487eb"></path><path d="M24 12l10 10-10 10V12z" fill="#5cd510"></path></svg><strong>PIXELPRESS</strong></div>
+<div class="foot-links"><a href="/">JPG 压缩器</a><a href="/zh/guides/">中文指南</a><a href="/guides/" hreflang="en" lang="en">English guides</a></div>
+<p>浏览器本地 JPG 压缩。无账号、无付费、不上传服务器。</p>
+</div></footer>
+</body>
+</html>

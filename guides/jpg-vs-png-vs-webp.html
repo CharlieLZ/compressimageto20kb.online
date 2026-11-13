@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>JPG vs PNG vs WebP: Which Format for Which Image | PixelPress</title>
+<meta content="A practical format comparison: when JPEG wins, when PNG is better, how WebP changes the choice, and why converting the wrong image to JPG makes it worse." name="description"/>
+<meta content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" name="robots"/>
+<meta content="#2487eb" name="theme-color"/>
+<link href="https://compressimageto20kb.online/guides/jpg-vs-png-vs-webp.html" rel="canonical"/>
+<link href="https://compressimageto20kb.online/guides/jpg-vs-png-vs-webp.html" hreflang="en" rel="alternate"/>
+<link href="https://compressimageto20kb.online/zh/guides/jpg-vs-png-vs-webp.html" hreflang="zh-Hans" rel="alternate"/>
+<link href="https://compressimageto20kb.online/guides/jpg-vs-png-vs-webp.html" hreflang="x-default" rel="alternate"/>
+<link href="/favicon.ico" rel="icon" sizes="48x48"/>
+<link href="/favicon.svg" rel="icon" sizes="any" type="image/svg+xml"/>
+<link href="/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="/manifest.webmanifest" rel="manifest"/>
+<meta content="article" property="og:type"/>
+<meta content="JPG vs PNG vs WebP" property="og:title"/>
+<meta content="When each image format wins, and when converting to JPG is a mistake." property="og:description"/>
+<meta content="https://compressimageto20kb.online/guides/jpg-vs-png-vs-webp.html" property="og:url"/>
+<meta content="PixelPress" property="og:site_name"/>
+<meta content="https://compressimageto20kb.online/og-image.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="Image format comparison guide" property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://compressimageto20kb.online/og-image.png" name="twitter:image"/>
+<meta content="JPG vs PNG vs WebP" name="twitter:title"/>
+<meta content="Lossy vs lossless, transparency, text and browser support." name="twitter:description"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://compressimageto20kb.online/guides/jpg-vs-png-vs-webp.html#article",
+      "headline": "JPG vs PNG vs WebP: Which Format for Which Image",
+      "description": "Lossy vs lossless, transparency, text and browser support.",
+      "inLanguage": "en",
+      "datePublished": "2026-11-14",
+      "dateModified": "2026-11-14",
+      "mainEntityOfPage": "https://compressimageto20kb.online/guides/jpg-vs-png-vs-webp.html",
+      "author": {"@type": "Organization", "name": "PixelPress", "url": "https://compressimageto20kb.online/"},
+      "publisher": {"@type": "Organization", "name": "PixelPress", "url": "https://compressimageto20kb.online/"},
+      "isPartOf": {"@id": "https://compressimageto20kb.online/#website"}
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://compressimageto20kb.online/guides/jpg-vs-png-vs-webp.html#breadcrumb",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://compressimageto20kb.online/"},
+        {"@type": "ListItem", "position": 2, "name": "Guides", "item": "https://compressimageto20kb.online/guides/"},
+        {"@type": "ListItem", "position": 3, "name": "JPG vs PNG vs WebP", "item": "https://compressimageto20kb.online/guides/jpg-vs-png-vs-webp.html"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://compressimageto20kb.online/guides/jpg-vs-png-vs-webp.html#faq",
+      "mainEntity": [
+        {"@type": "Question", "name": "Should I convert a screenshot to JPG?", "acceptedAnswer": {"@type": "Answer", "text": "Usually not. Screenshots with flat colours and text compress better as PNG, and JPEG adds ringing around letters. Convert only if a portal requires JPEG."}},
+        {"@type": "Question", "name": "Is WebP always smaller than JPG?", "acceptedAnswer": {"@type": "Answer", "text": "Often, but not always. WebP usually saves 25–35% at similar quality for photographs, but the gain depends on the encoder, the image content and the quality setting. Measure the actual file rather than assuming."}},
+        {"@type": "Question", "name": "Does converting JPG to PNG improve quality?", "acceptedAnswer": {"@type": "Answer", "text": "No. PNG is lossless, but it cannot restore detail that JPEG already removed. Converting a JPEG to PNG usually makes the file larger without improving the image."}}
+      ]
+    }
+  ]
+}
+</script>
+<link href="/guides/guide.css" rel="stylesheet"/>
+</head>
+<body>
+<a class="skip-link" href="#article">Skip to article</a>
+<header class="top">
+<div class="container nav">
+<a aria-label="PixelPress homepage" class="brand" href="/">
+<svg aria-hidden="true" fill="none" viewbox="0 0 44 44"><rect fill="#e9f4ff" height="38" rx="5" stroke="#9cc4f4" stroke-width="2" width="38" x="3" y="3"></rect><path d="M13 12l14 10-14 10V12z" fill="#2487eb"></path><path d="M24 12l10 10-10 10V12z" fill="#5cd510"></path></svg>
+<span><b>PIXELPRESS</b><small>JPG compression guides</small></span></a>
+<nav aria-label="Primary" class="top-links"><a href="/">Compressor</a><a href="/guides/">Guides</a><a href="/zh/guides/jpg-vs-png-vs-webp.html" hreflang="zh-Hans" lang="zh-Hans">中文</a><a class="top-cta" data-funnel="try_start" href="/#compressor">Compress JPG</a></nav>
+</div>
+</header>
+<main>
+<div class="crumb"><div class="container"><ol><li><a href="/">Home</a></li><li><a href="/guides/">Guides</a></li><li>JPG vs PNG vs WebP</li></ol></div></div>
+<section class="hero"><div class="container">
+<p class="eyebrow">Format guide</p>
+<h1>JPG vs PNG vs WebP: which format for which image</h1>
+<p class="lede">Format choice is a decision about what the image contains. Photographs, flat interface screenshots and images with transparency have different needs. Choosing the wrong container can double the file size or introduce visible damage that no quality slider can fix.</p>
+<div class="byline"><span>Updated 14 November 2026</span><span>7 min read</span><span>Tool runs locally</span></div>
+<div class="answer"><h2>Quick answer</h2><p>Use JPEG for photographs and anything with smooth tonal gradation. Use PNG for text, line art, screenshots and images that need transparency or lossless editing. Use WebP for web delivery when you can serve a fallback; it often beats JPEG on size but needs a modern browser. Never convert a JPEG to PNG expecting better quality.</p></div>
+</div></section>
+<div class="container layout">
+<article class="article" id="article">
+<h2>The one real difference: lossy versus lossless</h2>
+<p>JPEG is a lossy format. It transforms blocks of pixels into frequency coefficients, quantises them and discards information the eye is supposedly less sensitive to. Every encode permanently removes detail. PNG is lossless: the decoded image matches the encoded image exactly. That makes PNG larger for photographs but ideal for text, diagrams and screenshots where exact pixels matter.</p>
+<p>WebP supports both modes. A lossy WebP behaves like JPEG but often compresses better at the same visual quality. A lossless WebP behaves like PNG and can be smaller. The catch is compatibility and workflow: older software, some email clients and a few upload portals do not accept WebP even when browsers can display it.</p>
+<table>
+<caption>Practical format fit by image type. File-size claims are general tendencies, not guarantees.</caption>
+<thead><tr><th>Image content</th><th>Best default</th><th>Why</th><th>Avoid</th></tr></thead>
+<tbody>
+<tr><td>Portrait or landscape photo</td><td>JPEG or WebP</td><td>Smooth gradation, many colours</td><td>PNG unless transparency is needed</td></tr>
+<tr><td>Text screenshot</td><td>PNG or lossless WebP</td><td>Sharp edges, flat colours</td><td>JPEG at low quality</td></tr>
+<tr><td>Logo with transparency</td><td>PNG or WebP</td><td>Alpha channel, crisp edges</td><td>JPEG, which fills transparency</td></tr>
+<tr><td>Product photo on white</td><td>JPEG, WebP or PNG</td><td>Depends on background and reuse</td><td>Aggressive JPEG on edges</td></tr>
+<tr><td>Animated image</td><td>WebP, GIF or video</td><td>Animation support</td><td>JPEG</td></tr>
+<tr><td>Document scan</td><td>PDF or PNG</td><td>Legibility and exact text</td><td>Low-quality JPEG</td></tr>
+</tbody>
+</table>
+
+<h2>Why JPEG is still the default for photographs</h2>
+<p>JPEG has three advantages that matter beyond compression ratio: universal support, predictable behaviour and a mature ecosystem. Every browser, phone, printer, email client and upload portal accepts it. Camera pipelines produce it natively. The format’s weaknesses, blocking and ringing at low quality, are well understood, so a careful encoder can avoid the worst of them.</p>
+<p>JPEG is also good at exactly what photographs contain: smooth gradients, skin tones and natural texture. The transform works on 8×8 blocks and spends most bits on luminance, which matches human vision. At a reasonable quality, a photograph looks continuous even though most of the high-frequency detail is gone.</p>
+
+<h2>Where JPEG fails</h2>
+<p>JPEG fails on hard edges, flat colour and text. A screenshot of a document has black letters on white, with sharp transitions that the block transform cannot represent cheaply. The encoder either blurs the letters or creates ringing halos around them. Increasing quality helps but also increases the file size, often beyond the equivalent PNG. A screenshot saved as JPEG at 20KB is usually worse than the same screenshot as PNG at 40KB.</p>
+<p>JPEG also lacks transparency. If a logo has a transparent background and you save it as JPEG, the transparent area becomes white or black depending on the encoder. The result may look acceptable on one page and wrong on another. Use PNG or WebP when transparency is part of the asset.</p>
+
+<h2>WebP: useful, but read the requirement</h2>
+<p>WebP generally produces smaller files than JPEG at similar visual quality for photographs, and smaller files than PNG for lossless graphics. Browser support is broad in current versions of Chrome, Edge, Firefox and Safari. That makes it a strong choice for website assets where you control the markup and can provide a fallback.</p>
+<p>Do not assume every destination accepts it. Many upload forms whitelist only .jpg, .jpeg and .png. Email clients may display a WebP inline but fail to attach it as expected. Older design tools may not open it. If a portal asks for JPG, deliver JPG; converting a WebP to JPEG is a lossy step and should be done from the best available source.</p>
+<blockquote>Test the format the destination requires, not the format your browser prefers. Compatibility failures are more expensive than a few kilobytes saved.</blockquote>
+
+<h2>Test a JPG conversion locally</h2>
+<p>If you are unsure whether JPEG is suitable, compress the image at the target size and inspect the result at 100%. The tool below re-encodes a JPG locally. It cannot convert PNG or WebP, because the site is deliberately a JPG compressor; use it to judge whether a photographic image survives the target you have in mind.</p>
+<div class="gtool" data-tool="compressor">
+<h3>Test a JPG at a target size</h3>
+<p class="gtool-sub">JPG or JPEG only, up to 50MB. Runs in this tab.</p>
+<div class="gtool-row">
+<div class="gtool-field"><label for="g7file">JPG file</label><input accept=".jpg,.jpeg,image/jpeg" data-file id="g7file" type="file"/></div>
+<div class="gtool-field"><label for="g7preset">Target size</label><select data-preset id="g7preset"><option value="20kb">20KB</option><option selected value="50kb">50KB</option><option value="100kb">100KB</option><option value="200kb">200KB</option><option value="500kb">500KB</option></select></div>
+<button data-run type="button">Compress</button>
+</div>
+<div class="gtool-result" data-result hidden><a data-download hidden href="#">Download</a></div>
+<p aria-live="polite" class="gtool-status" data-status role="status"></p>
+<p class="gtool-hint">Inspect text edges and fine lines at 100% zoom; those are the first casualties of JPEG compression.</p>
+</div>
+<script defer src="/guides/tools.js"></script>
+
+<h2>Converting between formats without making things worse</h2>
+<p>Conversion direction matters. Converting a lossless PNG to JPEG is a one-way lossy step: you gain a smaller file and permanently lose exact pixels. Converting a JPEG to PNG is usually pointless: the file gets larger, and the missing detail does not return. Converting a JPEG to WebP is another lossy generation unless you use lossless WebP, which may be larger than the original JPEG.</p>
+<p>The safe workflow is to keep an original in the best available format and generate delivery copies from it. For a photograph, that means the camera original or a high-quality export. For a logo, the vector source. For a screenshot, a fresh capture. Re-encoding a delivery copy repeatedly accumulates artefacts and may not even reduce size after the first pass.</p>
+
+<h2>What to check before uploading</h2>
+<ul>
+<li><strong>Allowed extensions:</strong> read the form. If it says JPG only, do not upload WebP with a renamed extension.</li>
+<li><strong>Transparency:</strong> if the image needs it, JPEG is the wrong format.</li>
+<li><strong>Text legibility:</strong> zoom to 100%. If letters are fuzzy, use PNG or a higher JPEG quality.</li>
+<li><strong>File size:</strong> compare the actual bytes, not the format’s reputation.</li>
+<li><strong>Colour profile:</strong> some portals expect sRGB. A wide-gamut image may shift colours after upload.</li>
+<li><strong>Metadata:</strong> re-encoding strips EXIF, which is useful for privacy but may remove orientation if the source relies on it. Modern browsers apply orientation before drawing; verify the result is upright.</li>
+</ul>
+
+<h2>Colour profiles and transparency traps</h2>
+<p>A JPEG can carry an ICC colour profile, and a browser or printer may interpret it differently from the original. A wide-gamut photo converted to sRGB can look slightly duller but more consistent across devices. For uploads, sRGB is the safest assumption unless the destination specifies otherwise. Strip or convert unusual profiles before submitting, and compare the result on a neutral background.</p>
+<p>Transparency is the other common trap. Saving a transparent PNG as JPEG fills the transparent area with a solid colour chosen by the encoder, often white or black. If the logo is placed on a coloured header, the filled rectangle becomes visible. Keep transparency in PNG or WebP, or place the logo on the exact background colour before exporting to JPEG.</p>
+
+<h2>A simple decision path</h2>
+<p>If the image is a photograph and the destination accepts JPEG, use JPEG. If it contains text, flat colour or transparency, use PNG unless the destination forbids it. If you control a website and need smaller delivery, test WebP with a JPEG fallback. If the destination names a format, that requirement overrides every general preference. The rest is measurement: compare the actual bytes and inspect the actual pixels rather than trusting a format’s reputation.</p>
+
+<h2>Frequently asked questions</h2>
+<h3>Is PNG higher quality than JPG?</h3>
+<p>PNG is lossless, so it preserves exact pixels. That is higher fidelity, not automatically a better-looking image. A photograph saved as PNG is larger and looks the same as a high-quality JPEG; a JPEG that has already lost detail cannot be restored by converting to PNG.</p>
+<h3>Can I use WebP on a website today?</h3>
+<p>Yes, with a fallback for older clients and a check that your CDN serves the right content type. For a simple static site, JPEG remains the lowest-risk choice for photographs.</p>
+<h3>Why did my PNG get larger when I converted it to JPG?</h3>
+<p>That is unusual for a photograph but common for a screenshot with large flat areas and sharp text, where PNG’s lossless prediction is very efficient. It can also happen if the JPEG is saved at a very high quality setting.</p>
+<div class="cta-band"><p>Working with a photograph? Compress it to the size the destination actually accepts.</p><a data-funnel="try_start" href="/#compressor">Open the JPG compressor</a></div>
+<div class="related"><h2>Related guides</h2><ul>
+<li><a href="/guides/reduce-jpg-size-without-losing-quality.html">Reduce JPG size without losing quality</a></li>
+<li><a href="/guides/compress-jpg-to-20kb.html">Compress JPG to 20KB</a></li>
+<li><a href="/guides/batch-compress-jpg-for-websites.html">Batch compression for websites</a></li>
+<li><a href="/guides/jpg-upload-size-limits.html">Upload size limits</a></li>
+</ul></div>
+</article>
+<aside class="aside">
+<div class="box"><h2>Try the main tool</h2><p>Compress JPGs at ten target sizes.</p><a class="btn" data-funnel="try_start" href="/#compressor">Compress JPG free</a></div>
+<div class="box"><h2>Default choices</h2><ul><li>Photo → JPEG</li><li>Text → PNG</li><li>Logo → PNG/WebP</li><li>Web delivery → WebP + fallback</li></ul></div>
+<div class="box"><h2>中文版</h2><p><a href="/zh/guides/jpg-vs-png-vs-webp.html" hreflang="zh-Hans" lang="zh-Hans">阅读中文版：JPG、PNG、WebP 怎么选 →</a></p></div>
+</aside>
+</div>
+<footer class="foot"><div class="container foot-inner">
+<div class="foot-brand"><svg aria-hidden="true" fill="none" viewbox="0 0 44 44"><rect fill="#e9f4ff" height="38" rx="5" stroke="#9cc4f4" stroke-width="2" width="38" x="3" y="3"></rect><path d="M14 12l14 10-14 10V12z" fill="#2487eb"></path><path d="M24 12l10 10-10 10V12z" fill="#5cd510"></path></svg><strong>PIXELPRESS</strong></div>
+<div class="foot-links"><a href="/">JPG compressor</a><a href="/guides/">Guides</a><a href="/zh/guides/" hreflang="zh-Hans" lang="zh-Hans">中文指南</a></div>
+<p>Browser-based JPG compression. No account, no payment, no server upload.</p>
+</div></footer>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Email Attachment JPG Size: Why 20MB Becomes 27MB | PixelPress</title>
+<meta content="Email attachment sizing explained: base64 overhead, provider limits, how many photos fit, and a working upload-budget calculator that runs in your browser." name="description"/>
+<meta content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" name="robots"/>
+<meta content="#2487eb" name="theme-color"/>
+<link href="https://compressimageto20kb.online/guides/email-attachment-jpg-size.html" rel="canonical"/>
+<link href="https://compressimageto20kb.online/guides/email-attachment-jpg-size.html" hreflang="en" rel="alternate"/>
+<link href="https://compressimageto20kb.online/zh/guides/email-attachment-jpg-size.html" hreflang="zh-Hans" rel="alternate"/>
+<link href="https://compressimageto20kb.online/guides/email-attachment-jpg-size.html" hreflang="x-default" rel="alternate"/>
+<link href="/favicon.ico" rel="icon" sizes="48x48"/>
+<link href="/favicon.svg" rel="icon" sizes="any" type="image/svg+xml"/>
+<link href="/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="/manifest.webmanifest" rel="manifest"/>
+<meta content="article" property="og:type"/>
+<meta content="Email Attachment JPG Size" property="og:title"/>
+<meta content="Base64 overhead, mailbox limits and a calculator for photo batches." property="og:description"/>
+<meta content="https://compressimageto20kb.online/guides/email-attachment-jpg-size.html" property="og:url"/>
+<meta content="PixelPress" property="og:site_name"/>
+<meta content="https://compressimageto20kb.online/og-image.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="Email attachment sizing guide" property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://compressimageto20kb.online/og-image.png" name="twitter:image"/>
+<meta content="Email Attachment JPG Size" name="twitter:title"/>
+<meta content="Why encoded attachments are larger than the files on disk." name="twitter:description"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://compressimageto20kb.online/guides/email-attachment-jpg-size.html#article",
+      "headline": "Email Attachment JPG Size: Why 20MB Becomes 27MB",
+      "description": "Base64 overhead, provider limits, batch planning and a local budget calculator.",
+      "inLanguage": "en",
+      "datePublished": "2026-11-14",
+      "dateModified": "2026-11-14",
+      "mainEntityOfPage": "https://compressimageto20kb.online/guides/email-attachment-jpg-size.html",
+      "author": {"@type": "Organization", "name": "PixelPress", "url": "https://compressimageto20kb.online/"},
+      "publisher": {"@type": "Organization", "name": "PixelPress", "url": "https://compressimageto20kb.online/"},
+      "isPartOf": {"@id": "https://compressimageto20kb.online/#website"}
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://compressimageto20kb.online/guides/email-attachment-jpg-size.html#breadcrumb",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://compressimageto20kb.online/"},
+        {"@type": "ListItem", "position": 2, "name": "Guides", "item": "https://compressimageto20kb.online/guides/"},
+        {"@type": "ListItem", "position": 3, "name": "Email attachment size", "item": "https://compressimageto20kb.online/guides/email-attachment-jpg-size.html"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://compressimageto20kb.online/guides/email-attachment-jpg-size.html#faq",
+      "mainEntity": [
+        {"@type": "Question", "name": "Why is my attachment larger than the file on disk?", "acceptedAnswer": {"@type": "Answer", "text": "Email encodes binary attachments as base64 text, which adds roughly 33%. A 20MB photo can become about 27MB on the wire before message headers are counted."}},
+        {"@type": "Question", "name": "How many 100KB photos fit in a 25MB email?", "acceptedAnswer": {"@type": "Answer", "text": "About 190 after base64 overhead if the whole 25MB were available. Real messages have headers and often a signature, so plan for roughly 180 files or use a link or ZIP archive instead."}},
+        {"@type": "Question", "name": "Does compressing to 20KB make photos unusable in email?", "acceptedAnswer": {"@type": "Answer", "text": "For screen viewing it is usually readable, but faces and text lose detail. For email, 100KB to 500KB per photo is a better balance unless the recipient only needs a thumbnail."}}
+      ]
+    }
+  ]
+}
+</script>
+<link href="/guides/guide.css" rel="stylesheet"/>
+</head>
+<body>
+<a class="skip-link" href="#article">Skip to article</a>
+<header class="top">
+<div class="container nav">
+<a aria-label="PixelPress homepage" class="brand" href="/">
+<svg aria-hidden="true" fill="none" viewbox="0 0 44 44"><rect fill="#e9f4ff" height="38" rx="5" stroke="#9cc4f4" stroke-width="2" width="38" x="3" y="3"></rect><path d="M13 12l14 10-14 10V12z" fill="#2487eb"></path><path d="M24 12l10 10-10 10V12z" fill="#5cd510"></path></svg>
+<span><b>PIXELPRESS</b><small>JPG compression guides</small></span></a>
+<nav aria-label="Primary" class="top-links"><a href="/">Compressor</a><a href="/guides/">Guides</a><a href="/zh/guides/email-attachment-jpg-size.html" hreflang="zh-Hans" lang="zh-Hans">中文</a><a class="top-cta" data-funnel="try_start" href="/#compressor">Compress JPG</a></nav>
+</div>
+</header>
+<main>
+<div class="crumb"><div class="container"><ol><li><a href="/">Home</a></li><li><a href="/guides/">Guides</a></li><li>Email attachment size</li></ol></div></div>
+<section class="hero"><div class="container">
+<p class="eyebrow">Sharing guide</p>
+<h1>Email attachment JPG size: why 20MB becomes 27MB</h1>
+<p class="lede">Email is not a file transfer protocol. It wraps attachments in text, adds headers and applies mailbox quotas, so the number on your disk is not the number the recipient’s server sees. Planning for that gap prevents bounce messages and failed sends.</p>
+<div class="byline"><span>Updated 14 November 2026</span><span>7 min read</span><span>Calculator runs locally</span></div>
+<div class="answer"><h2>Quick answer</h2><p>Base64 encoding adds about 33% to an attachment, so a 20MB photo travels as roughly 27MB before headers. Common consumer limits are around 20–25MB per message, which leaves room for only a handful of full-size photos. Compress to 100–500KB per image or send a download link for larger sets.</p></div>
+</div></section>
+<div class="container layout">
+<article class="article" id="article">
+<h2>What happens to a JPG inside an email</h2>
+<p>SMTP was designed for seven-bit text, so binary attachments are encoded into base64. Every three bytes of binary become four characters of ASCII text, which is the source of the familiar 33% expansion. The encoded block is then wrapped in MIME boundaries and message headers. A 20MB JPEG becomes about 27MB of encoded content, and the complete message is slightly larger again.</p>
+<p>Your mail client may show the attachment as 20MB because it displays the decoded file size. The server, however, enforces its limit on the encoded message. That mismatch is why a message that looks comfortably under 25MB can still bounce. If the provider states a 25MB message limit, plan for about 18MB of actual files, not 25MB.</p>
+
+<h2>Common provider limits and what they mean in practice</h2>
+<p>Consumer mailbox limits change and business accounts often have different policies. The numbers below are planning examples, not guarantees; check your provider’s current documentation and your organisation’s mail policy. The important habit is to subtract overhead and headers rather than treating the quoted number as an attachment budget.</p>
+<table>
+<caption>Illustrative message limits and approximate raw file capacity after base64 encoding. Provider terms and account settings vary.</caption>
+<thead><tr><th>Quoted message limit</th><th>Approx. raw attachment capacity</th><th>Full-size 20MB photos</th><th>100KB photos</th></tr></thead>
+<tbody>
+<tr><td>10MB</td><td>~7.5MB</td><td>0</td><td>~75</td></tr>
+<tr><td>20MB</td><td>~15MB</td><td>0</td><td>~150</td></tr>
+<tr><td>25MB</td><td>~18.7MB</td><td>0</td><td>~187</td></tr>
+<tr><td>50MB</td><td>~37.5MB</td><td>1</td><td>~375</td></tr>
+</tbody>
+</table>
+<p>The table makes the practical point: a single modern phone photo can exceed a 20MB message limit on its own. Compressing one image from 20MB to 300KB changes the send from impossible to instant. If the recipient needs print quality, a cloud link is the correct tool, not a larger attachment.</p>
+
+<h2>Calculate how many photos fit</h2>
+<p>Enter the provider’s message limit, the number of images and the encoding overhead. The calculator returns the average raw size available per image. Use 33% for base64 email, 0% for a direct file upload, and reserve a little space for headers, signatures and the message body.</p>
+<div class="gtool" data-tool="upload-budget">
+<h3>Email attachment budget</h3>
+<p class="gtool-sub">Local arithmetic only. No email is sent and no file is read by this calculator.</p>
+<div class="gtool-row">
+<div class="gtool-field"><label for="g5limit">Message limit (KB)</label><input data-limit id="g5limit" min="1" step="1" type="number" value="25600"/></div>
+<div class="gtool-field"><label for="g5files">Number of photos</label><input data-files id="g5files" min="1" step="1" type="number" value="10"/></div>
+<div class="gtool-field"><label for="g5overhead">Base64 overhead (%)</label><input data-overhead id="g5overhead" min="0" max="100" step="1" type="number" value="33"/></div>
+<div class="gtool-field"><label for="g5reserved">Reserved (KB)</label><input data-reserved id="g5reserved" min="0" step="1" type="number" value="500"/></div>
+<button data-run type="button">Calculate</button>
+</div>
+<output aria-live="polite" data-output></output>
+<p class="gtool-hint">25MB is 25,600KB. Ten photos at 33% overhead leave roughly 1.7MB each after a 500KB reserve.</p>
+</div>
+<script defer src="/guides/tools.js"></script>
+
+<h2>Choosing a sensible photo size for email</h2>
+<p>Email is a preview medium. The recipient usually reads on a phone or a laptop screen, where a 1200-pixel-wide image is already more than enough. A 100KB to 300KB JPEG at 1200×900 looks good on those screens and keeps a batch small. A 20KB file is only appropriate when the recipient needs a thumbnail or the mailbox limit is unusually tight.</p>
+<p>There is a real difference between “small enough to send” and “small enough to be useful”. A contract scan or a receipt needs legible text; compress it to 100KB and check the numbers at 100%. A portrait for a colleague needs a clear face; 200KB is generous. A gallery of a property needs detail; send a link to a gallery page rather than thirty attachments.</p>
+
+<h2>Alternatives that avoid the attachment limit</h2>
+<ul>
+<li><strong>Cloud link:</strong> upload once and send a view or download link. The email stays tiny and the recipient gets the original.</li>
+<li><strong>ZIP archive:</strong> useful for several files, but ZIP does not shrink JPEGs much because they are already compressed. It mainly reduces per-file overhead.</li>
+<li><strong>Resize before sending:</strong> the most reliable fix for a single oversized photo. A 4000-pixel image rarely needs to travel at full size for a screen preview.</li>
+<li><strong>Split the batch:</strong> send two messages of five photos rather than one message that bounces. Tell the recipient how many messages to expect.</li>
+<li><strong>Shared folder:</strong> better than email for ongoing collaboration, versioning and large sets.</li>
+</ul>
+
+<h2>Privacy and metadata in email</h2>
+<p>Email is not private by default. Messages can be scanned, forwarded, archived and retained by providers. A JPEG’s EXIF metadata can include GPS coordinates, device model and capture time. Re-encoding through a browser compressor removes that metadata because the new file is built from pixels, not copied from the original container. That is a useful precaution for photos of a home, a workplace or a child. It does not remove identifying content visible in the image itself.</p>
+<p>Also consider the recipient’s storage. A 20MB attachment lands in their mailbox and counts against their quota. A 200KB version is friendlier and more likely to be read on a phone. If the recipient needs the original later, keep it in a shared folder and mention that in the message.</p>
+
+<h2>Photo count matters more than the per-photo size</h2>
+<p>Ten medium photos can fail where one large photo succeeds. Each attachment adds its own MIME headers, boundary markers and filename metadata, and each one is encoded separately. The overhead per file is small, usually a few hundred bytes, but it accumulates across a large batch. More importantly, the total decoded size is what usually trips the limit, not the size of any single image.</p>
+<p>A useful planning habit is to multiply the number of photos by the average size, add the overhead, and compare that with the raw capacity rather than the quoted message limit. If the result is close, split the send. Two messages of eight photos are more likely to arrive than one message of sixteen that bounces. Tell the recipient how many messages to expect so they do not assume the set is incomplete.</p>
+
+<h2>Test an attachment before you send</h2>
+<p>Send the batch to yourself first. That reveals two things the composer may hide: the actual encoded size and whether the recipient’s client displays the images inline or as downloads. If your own mailbox rejects the message, the recipient’s will too. If the images arrive but look soft, recompress at a larger target and resend; do not assume the recipient sees the same preview you do.</p>
+<p>For a one-off important send, include a plain-text fallback line explaining what is attached and why. Recipients on mobile often preview only the first image or none at all. A short description helps them decide whether to download the rest.</p>
+
+<h2>Frequently asked questions</h2>
+<h3>Does zipping a JPG make it much smaller?</h3>
+<p>Usually not. JPEG data is already compressed, so ZIP typically saves only a few percent. Converting to a smaller target with a JPEG encoder is far more effective.</p>
+<h3>Why did my email bounce even though the attachment was under the limit?</h3>
+<p>Base64 expansion, message headers, a lower server-side limit than the one advertised, or a recipient mailbox quota. Try a file 25% smaller or send a link.</p>
+<h3>Can I email a 20KB photo?</h3>
+<p>Yes, easily. The trade-off is detail: at 20KB a face or a document may be too soft to be useful. Use the smallest size that still communicates what the recipient needs.</p>
+<div class="cta-band"><p>Reduce a photo batch before attaching it. The compressor handles multiple JPGs and a ZIP download.</p><a data-funnel="try_start" href="/#compressor">Open the batch compressor</a></div>
+<div class="related"><h2>Related guides</h2><ul>
+<li><a href="/guides/compress-jpg-to-50kb-100kb.html">50KB vs 100KB</a></li>
+<li><a href="/guides/jpg-upload-size-limits.html">Upload size limits</a></li>
+<li><a href="/guides/batch-compress-jpg-for-websites.html">Batch compression workflow</a></li>
+<li><a href="/guides/phone-photos-too-large.html">Phone photos too large</a></li>
+</ul></div>
+</article>
+<aside class="aside">
+<div class="box"><h2>Try the main tool</h2><p>Compress several photos, then download them as a ZIP.</p><a class="btn" data-funnel="try_start" href="/#compressor">Compress JPG free</a></div>
+<div class="box"><h2>Planning numbers</h2><ul><li>Base64 adds ~33%.</li><li>25MB message ≈ 18.7MB raw.</li><li>Email preview: 1200px wide.</li><li>Photos for print: use a link.</li></ul></div>
+<div class="box"><h2>中文版</h2><p><a href="/zh/guides/email-attachment-jpg-size.html" hreflang="zh-Hans" lang="zh-Hans">阅读中文版：邮件附件大小 →</a></p></div>
+</aside>
+</div>
+<footer class="foot"><div class="container foot-inner">
+<div class="foot-brand"><svg aria-hidden="true" fill="none" viewbox="0 0 44 44"><rect fill="#e9f4ff" height="38" rx="5" stroke="#9cc4f4" stroke-width="2" width="38" x="3" y="3"></rect><path d="M14 12l14 10-14 10V12z" fill="#2487eb"></path><path d="M24 12l10 10-10 10V12z" fill="#5cd510"></path></svg><strong>PIXELPRESS</strong></div>
+<div class="foot-links"><a href="/">JPG compressor</a><a href="/guides/">Guides</a><a href="/zh/guides/" hreflang="zh-Hans" lang="zh-Hans">中文指南</a></div>
+<p>Browser-based JPG compression. No account, no payment, no server upload.</p>
+</div></footer>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>压缩 JPG 又不损失可见画质：正确顺序 | PixelPress</title>
+<meta content="让 JPG 变小的实用顺序：先裁剪、再缩放、最后只编码一次。了解压缩伪影、重复编码的代价，并在本地测试结果。" name="description"/>
+<meta content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" name="robots"/>
+<meta content="#2487eb" name="theme-color"/>
+<link href="https://compressimageto20kb.online/zh/guides/reduce-jpg-size-without-losing-quality.html" rel="canonical"/>
+<link href="https://compressimageto20kb.online/guides/reduce-jpg-size-without-losing-quality.html" hreflang="en" rel="alternate"/>
+<link href="https://compressimageto20kb.online/zh/guides/reduce-jpg-size-without-losing-quality.html" hreflang="zh-Hans" rel="alternate"/>
+<link href="https://compressimageto20kb.online/guides/reduce-jpg-size-without-losing-quality.html" hreflang="x-default" rel="alternate"/>
+<link href="/favicon.ico" rel="icon" sizes="48x48"/>
+<link href="/favicon.svg" rel="icon" sizes="any" type="image/svg+xml"/>
+<link href="/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="/manifest.webmanifest" rel="manifest"/>
+<meta content="article" property="og:type"/>
+<meta content="压缩 JPG 又不损失可见画质" property="og:title"/>
+<meta content="裁剪、缩放、只编码一次的可重复流程。" property="og:description"/>
+<meta content="https://compressimageto20kb.online/zh/guides/reduce-jpg-size-without-losing-quality.html" property="og:url"/>
+<meta content="PixelPress" property="og:site_name"/>
+<meta content="https://compressimageto20kb.online/og-image.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="JPG 画质工作流中文指南" property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://compressimageto20kb.online/og-image.png" name="twitter:image"/>
+<meta content="压缩 JPG 又不损失可见画质" name="twitter:title"/>
+<meta content="哪些伪影重要，如何避免叠加压缩代次。" name="twitter:description"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://compressimageto20kb.online/zh/guides/reduce-jpg-size-without-losing-quality.html#article",
+      "headline": "压缩 JPG 又不损失可见画质：正确顺序",
+      "description": "裁剪、缩放、只编码一次的可重复流程。",
+      "inLanguage": "zh-Hans",
+      "datePublished": "2026-11-14",
+      "dateModified": "2026-11-14",
+      "mainEntityOfPage": "https://compressimageto20kb.online/zh/guides/reduce-jpg-size-without-losing-quality.html",
+      "author": {"@type": "Organization", "name": "PixelPress", "url": "https://compressimageto20kb.online/"},
+      "publisher": {"@type": "Organization", "name": "PixelPress", "url": "https://compressimageto20kb.online/"},
+      "isPartOf": {"@id": "https://compressimageto20kb.online/#website"}
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://compressimageto20kb.online/zh/guides/reduce-jpg-size-without-losing-quality.html#breadcrumb",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "首页", "item": "https://compressimageto20kb.online/"},
+        {"@type": "ListItem", "position": 2, "name": "中文指南", "item": "https://compressimageto20kb.online/zh/guides/"},
+        {"@type": "ListItem", "position": 3, "name": "压缩又不损失可见画质", "item": "https://compressimageto20kb.online/zh/guides/reduce-jpg-size-without-losing-quality.html"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://compressimageto20kb.online/zh/guides/reduce-jpg-size-without-losing-quality.html#faq",
+      "mainEntity": [
+        {"@type": "Question", "name": "缩放和降低 JPEG 质量，哪个更伤画质？", "acceptedAnswer": {"@type": "Answer", "text": "缩放移除像素，但保留的像素更准确；降低质量保留全部像素，却让每个像素更不精确。对严格的字节目标，先缩放通常在正常观看尺寸下更干净。"}},
+        {"@type": "Question", "name": "JPEG 可以重复保存几次？", "acceptedAnswer": {"@type": "Answer", "text": "每次保存都是一代有损压缩。最理想是从原图只做一次最终编码。必须重存时，用可用的最高质量，并避免反复小修改。"}},
+        {"@type": "Question", "name": "锐化能救回压缩后的 JPEG 吗？", "acceptedAnswer": {"@type": "Answer", "text": "少量锐化能提升边缘对比，但也会增加高频细节和字节数。缩放后只做一次，导出前在 100% 下检查。"}}
+      ]
+    }
+  ]
+}
+</script>
+<link href="/guides/guide.css" rel="stylesheet"/>
+</head>
+<body>
+<a class="skip-link" href="#article">跳到正文</a>
+<header class="top">
+<div class="container nav">
+<a aria-label="PixelPress 首页" class="brand" href="/">
+<svg aria-hidden="true" fill="none" viewbox="0 0 44 44"><rect fill="#e9f4ff" height="38" rx="5" stroke="#9cc4f4" stroke-width="2" width="38" x="3" y="3"></rect><path d="M13 12l14 10-14 10V12z" fill="#2487eb"></path><path d="M24 12l10 10-10 10V12z" fill="#5cd510"></path></svg>
+<span><b>PIXELPRESS</b><small>中文 JPG 压缩指南</small></span></a>
+<nav aria-label="主导航" class="top-links"><a href="/">压缩器</a><a href="/zh/guides/">中文指南</a><a href="/guides/reduce-jpg-size-without-losing-quality.html" hreflang="en" lang="en">English</a><a class="top-cta" data-funnel="try_start" href="/#compressor">压缩 JPG</a></nav>
+</div>
+</header>
+<main>
+<div class="crumb"><div class="container"><ol><li><a href="/">首页</a></li><li><a href="/zh/guides/">中文指南</a></li><li>压缩又不损失可见画质</li></ol></div></div>
+<section class="hero"><div class="container">
+<p class="eyebrow">画质指南</p>
+<h1>压缩 JPG 又不损失可见画质：正确顺序</h1>
+<p class="lede">“完全不损失画质”在字面上不可能：JPEG 是有损格式，每次编码都会拿走一些东西。有用的目标是拿走观看者在实际尺寸下注意不到的部分。这个目标可以通过一致的顺序实现。</p>
+<div class="byline"><span>更新于 2026 年 11 月 14 日</span><span>阅读约 8 分钟</span><span>工具在本地运行</span></div>
+<div class="answer"><h2>快速回答</h2><p>先裁掉图片不需要的部分，再缩放到显示尺寸，最后用能达到字节目标的最高质量编码一次。不要叠加多次压缩。屏幕观看时，缩小尺寸通常比在大画布上硬压质量更能保住清晰感。</p></div>
+</div></section>
+<div class="container layout">
+<article class="article" id="article">
+<h2>先定义“质量”</h2>
+<p>质量不是一个属性。它包括锐度、色彩准确、色调平滑、没有块效应、边缘没有振铃。不同观看者权重不同。摄影师在意暗部细节；招聘方在意人脸是否清楚；买家在意商品颜色是否可信。压缩决策应服从用途，而不是服从一个抽象分数。</p>
+<p>这很重要，因为更小的文件在目标尺寸下可能更好看。4000×3000 的照片显示在 600×450 的屏幕上，像素远多于屏幕能呈现的。缩到 800×600 再用高质量编码，往往比保留 4000 像素却把质量压碎更小、也更锐利。多出来的像素从未被看见，低质量却被看见了。</p>
+
+<h2>最能保住细节的顺序</h2>
+<ol>
+<li><strong>从最好的源开始。</strong>相机原图或最高质量导出。不要从上次上传时压缩过的文件开始。</li>
+<li><strong>裁剪到最终构图。</strong>去掉空白边、无关背景和目的地不需要的内容。先裁剪能让主体在剩余像素里占更大比例。</li>
+<li><strong>一次缩放到显示尺寸。</strong>使用高质量重采样。目的地是 600 像素预览时，不要保留 4000 像素“以防万一”；原图另存，交付副本单独生成。</li>
+<li><strong>必要时轻度锐化。</strong>缩小会让边缘略软。少量反锐化掩模可以恢复清晰感，但过度会加噪和增加字节。</li>
+<li><strong>一次编码到目标。</strong>让压缩器同时搜索质量和尺寸。保存最终 JPEG 后，不要为了小修改再打开保存。</li>
+<li><strong>在 100% 下检查。</strong>看眼睛、文字、头发和商品边缘。不合格就回原图调整裁剪或尺寸，而不是再压输出文件。</li>
+</ol>
+
+<h2>真正的敌人是重复压缩</h2>
+<p>每次 JPEG 编码都会重新量化图像。第一遍产生的伪影会成为第二遍的输入，编码器要花位去表示原本不存在的块、振铃和颜色噪声。结果常常比预期更大，而且明显更差。先压到 100KB、再压到 50KB，和直接从原图编码 50KB 不是一回事。</p>
+<p>编辑同理。打开 JPEG、改亮度、保存、再打开、裁剪，就产生了多代损失。如果预计要继续编辑，用无损格式工作，最后导出一次 JPEG。如果只有 JPEG，尽量在一次会话里完成所有编辑，只保存一次。</p>
+<blockquote>一个源、一次裁剪、一次缩放、一次编码。其余都是你不需要的代次。</blockquote>
+
+<h2>尺寸与质量的视觉差别</h2>
+<p>降低 JPEG 质量影响每个 8×8 块。中等设置下，损失表现为纹理略软、平滑渐变里出现淡淡块影；激进设置下，边缘出现光晕、细线消失、平坦区域出现可见方块。缩小尺寸则产生更小但内部一致的图像。按目标尺寸观看时，它可能更锐利，因为剩下的每个像素分到了更多位。</p>
+<p>如果目的地要放大显示，这个取舍会反转。400 像素的图拉到 1200 像素头图，无论 JPEG 质量多高都会软。此时应保留足够像素并接受更大文件，或改用适合该尺寸的格式和交付方式。</p>
+<table>
+<caption>按观看方式选择第一个杠杆。以下是起点，不是通用规则。</caption>
+<thead><tr><th>场景</th><th>先动哪个</th><th>原因</th></tr></thead>
+<tbody>
+<tr><td>300px 以下头像或缩略图</td><td>缩小尺寸</td><td>多余像素看不见</td></tr>
+<tr><td>整宽网页照片</td><td>缩到布局宽度再编码</td><td>匹配显示尺寸</td></tr>
+<tr><td>6×4 英寸打印</td><td>保留 300 DPI 像素，轻度编码</td><td>打印会暴露发软</td></tr>
+<tr><td>文档扫描</td><td>保留像素，用 PNG 或高质量 JPEG</td><td>文字可读性优先</td></tr>
+<tr><td>严格 20KB 表单</td><td>先缩尺寸，再降质量</td><td>字节预算极端</td></tr>
+</tbody>
+</table>
+
+<h2>在本地测试结果</h2>
+<p>下面的压缩器让你在不上传图片的情况下尝试目标。先用你考虑的最小目标，下载后在 100% 下与原始文件比较。如果人脸或文字不合格，换一个不那么激进的目标，或者裁得更紧。</p>
+<div class="gtool" data-tool="compressor">
+<h3>压缩并检查 JPG</h3>
+<p class="gtool-sub">仅 JPG 或 JPEG，最大 50MB。文件留在这个标签页。</p>
+<div class="gtool-row">
+<div class="gtool-field"><label for="z8file">JPG 文件</label><input accept=".jpg,.jpeg,image/jpeg" data-file id="z8file" type="file"/></div>
+<div class="gtool-field"><label for="z8preset">目标大小</label><select data-preset id="z8preset"><option value="20kb">20KB</option><option value="30kb">30KB</option><option selected value="50kb">50KB</option><option value="100kb">100KB</option><option value="200kb">200KB</option><option value="500kb">500KB</option></select></div>
+<button data-run type="button">压缩</button>
+</div>
+<div class="gtool-result" data-result hidden><a data-download hidden href="#">下载</a></div>
+<p aria-live="polite" class="gtool-status" data-status role="status"></p>
+<p class="gtool-hint">在相同屏幕尺寸下比较下载文件和原图，不要放大到 400%。</p>
+</div>
+<script defer src="/guides/tools.js"></script>
+
+<h2>识别伪影：哪些要修，哪些可接受</h2>
+<ul>
+<li><strong>平滑渐变里的块影：</strong>质量对色调范围太低。缩小尺寸或提高目标。</li>
+<li><strong>文字和边缘的振铃：</strong>块变换难以处理锐利过渡。文字改用 PNG，或提高质量。</li>
+<li><strong>颜色渗漏：</strong>色度子采样丢弃颜色细节。照片通常可接受，饱和标志和细色线会明显。</li>
+<li><strong>高对比边缘的蚊状噪声：</strong>暗线附近的小斑点。质量越低越明显，编码前轻度降噪有帮助。</li>
+<li><strong>天空条带：</strong>平滑渐变缺少色调台阶。略高质量或编码前轻微微抖动能减轻。</li>
+<li><strong>人脸发软：</strong>人像最重要的失败。裁近并缩小，而不是继续压质量。</li>
+</ul>
+
+<h2>什么时候停止优化</h2>
+<p>当图片满足目的地规则，并在实际观看尺寸下看起来正确时就停止。追最后 10KB 通常会牺牲可见画质却没有实际收益。98KB 且干净的文件，比 80KB 且人脸发蜡的文件更好，即使两者都能通过门户。压缩的目的是交付，不是让数字越小越好。</p>
+<p>把原图和交付副本分开保存，命名清楚，例如 <code>portrait-original.jpg</code> 和 <code>portrait-600w.jpg</code>。以后有门户要求不同尺寸时，再从原图开始。</p>
+
+<h2>关于感知锐度</h2>
+<p>人眼对边缘比对细纹理更敏感。这就是为什么略缩小但边缘清晰的图，看起来可能比全尺寸但边缘发糊的图更锐利，即使后者文件更大。比较两个输出时，在屏幕上按相同物理尺寸观看。把 4000 像素文件和 600 像素文件都放到 100% 比较并不公平；前者被放大到远超显示尺寸。</p>
+<p>这也解释了为什么压缩前重度锐化会反噬。锐化增加高频细节，编码器要花位保留它，结果是更大的文件加更明显的振铃。缩放后少量锐化，并判断最终文件，而不是编辑预览。</p>
+
+<h2>常见问题</h2>
+<h3>质量 80 总是安全吗？</h3>
+<p>不是。质量数字在不同尺寸和内容下含义不同。600×600 的质量 80 可能很干净；3000×2000 时仍可能是大文件；200×200 时可能完全没必要。判断输出，而不是数字。</p>
+<h3>转成灰度能减小体积吗？</h3>
+<p>能，因为只编码一个通道。对文档和某些人像是合理选择，但它改变了图像。除非目的地允许或要求单色，否则不要这么做。</p>
+<h3>模糊的压缩 JPG 能修好吗？</h3>
+<p>基本不能。锐化能提升边缘对比，但无法恢复已丢弃的细节。图片重要时，换更好的源文件。</p>
+<div class="cta-band"><p>有原图？压一份交付副本，两份都保留。</p><a data-funnel="try_start" href="/#compressor">打开 JPG 压缩器</a></div>
+<div class="related"><h2>相关指南</h2><ul>
+<li><a href="/zh/guides/compress-jpg-to-20kb.html">压缩到 20KB</a></li>
+<li><a href="/zh/guides/jpg-vs-png-vs-webp.html">JPG、PNG、WebP 怎么选</a></li>
+<li><a href="/zh/guides/phone-photos-too-large.html">手机照片太大</a></li>
+<li><a href="/zh/guides/batch-compress-jpg-for-websites.html">网站批量压缩</a></li>
+</ul></div>
+</article>
+<aside class="aside">
+<div class="box"><h2>试试主工具</h2><p>批量模式、十个预设、ZIP 下载。</p><a class="btn" data-funnel="try_start" href="/#compressor">免费压缩 JPG</a></div>
+<div class="box"><h2>操作顺序</h2><ul><li>裁剪</li><li>缩放</li><li>轻度锐化</li><li>只编码一次</li><li>100% 检查</li></ul></div>
+<div class="box"><h2>English</h2><p><a href="/guides/reduce-jpg-size-without-losing-quality.html" hreflang="en" lang="en">Read in English →</a></p></div>
+</aside>
+</div>
+<footer class="foot"><div class="container foot-inner">
+<div class="foot-brand"><svg aria-hidden="true" fill="none" viewbox="0 0 44 44"><rect fill="#e9f4ff" height="38" rx="5" stroke="#9cc4f4" stroke-width="2" width="38" x="3" y="3"></rect><path d="M14 12l14 10-14 10V12z" fill="#2487eb"></path><path d="M24 12l10 10-10 10V12z" fill="#5cd510"></path></svg><strong>PIXELPRESS</strong></div>
+<div class="foot-links"><a href="/">JPG 压缩器</a><a href="/zh/guides/">中文指南</a><a href="/guides/" hreflang="en" lang="en">English guides</a></div>
+<p>浏览器本地 JPG 压缩。无账号、无付费、不上传服务器。</p>
+</div></footer>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>JPG Upload Size Limits: 20KB, 20,000 Bytes and Totals | PixelPress</title>
+<meta content="Understand JPG upload limits: KB vs bytes, per-file vs total caps, dimension rules and a working budget calculator for multi-file forms. No server upload." name="description"/>
+<meta content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" name="robots"/>
+<meta content="#2487eb" name="theme-color"/>
+<link href="https://compressimageto20kb.online/guides/jpg-upload-size-limits.html" rel="canonical"/>
+<link href="https://compressimageto20kb.online/guides/jpg-upload-size-limits.html" hreflang="en" rel="alternate"/>
+<link href="https://compressimageto20kb.online/zh/guides/jpg-upload-size-limits.html" hreflang="zh-Hans" rel="alternate"/>
+<link href="https://compressimageto20kb.online/guides/jpg-upload-size-limits.html" hreflang="x-default" rel="alternate"/>
+<link href="/favicon.ico" rel="icon" sizes="48x48"/>
+<link href="/favicon.svg" rel="icon" sizes="any" type="image/svg+xml"/>
+<link href="/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="/manifest.webmanifest" rel="manifest"/>
+<meta content="article" property="og:type"/>
+<meta content="JPG Upload Size Limits Explained" property="og:title"/>
+<meta content="Per-file and total limits, byte conventions, dimension rules and a budget calculator." property="og:description"/>
+<meta content="https://compressimageto20kb.online/guides/jpg-upload-size-limits.html" property="og:url"/>
+<meta content="PixelPress" property="og:site_name"/>
+<meta content="https://compressimageto20kb.online/og-image.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="JPG upload limits guide" property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://compressimageto20kb.online/og-image.png" name="twitter:image"/>
+<meta content="JPG Upload Size Limits Explained" name="twitter:title"/>
+<meta content="Why a file that looks under 20KB can still be rejected." name="twitter:description"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://compressimageto20kb.online/guides/jpg-upload-size-limits.html#article",
+      "headline": "JPG Upload Size Limits: 20KB, 20,000 Bytes and Totals",
+      "description": "Per-file and total limits, byte conventions, dimension rules and a budget calculator.",
+      "inLanguage": "en",
+      "datePublished": "2026-11-14",
+      "dateModified": "2026-11-14",
+      "mainEntityOfPage": "https://compressimageto20kb.online/guides/jpg-upload-size-limits.html",
+      "author": {"@type": "Organization", "name": "PixelPress", "url": "https://compressimageto20kb.online/"},
+      "publisher": {"@type": "Organization", "name": "PixelPress", "url": "https://compressimageto20kb.online/"},
+      "isPartOf": {"@id": "https://compressimageto20kb.online/#website"}
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://compressimageto20kb.online/guides/jpg-upload-size-limits.html#breadcrumb",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://compressimageto20kb.online/"},
+        {"@type": "ListItem", "position": 2, "name": "Guides", "item": "https://compressimageto20kb.online/guides/"},
+        {"@type": "ListItem", "position": 3, "name": "Upload size limits", "item": "https://compressimageto20kb.online/guides/jpg-upload-size-limits.html"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://compressimageto20kb.online/guides/jpg-upload-size-limits.html#faq",
+      "mainEntity": [
+        {"@type": "Question", "name": "Why is a 19.8KB file rejected by a 20KB form?", "acceptedAnswer": {"@type": "Answer", "text": "The form may count 20KB as 20,000 bytes, or it may measure the multipart upload including headers. Aim for 19KB and check the exact byte count in the file properties."}},
+        {"@type": "Question", "name": "Does a per-file limit also apply to the total upload?", "acceptedAnswer": {"@type": "Answer", "text": "Sometimes. A form can allow 1MB per file and 4MB total across all files. The budget calculator on this page subtracts reserved space and divides the usable limit by the number of files."}}
+      ]
+    }
+  ]
+}
+</script>
+<link href="/guides/guide.css" rel="stylesheet"/>
+</head>
+<body>
+<a class="skip-link" href="#article">Skip to article</a>
+<header class="top">
+<div class="container nav">
+<a aria-label="PixelPress homepage" class="brand" href="/">
+<svg aria-hidden="true" fill="none" viewbox="0 0 44 44"><rect fill="#e9f4ff" height="38" rx="5" stroke="#9cc4f4" stroke-width="2" width="38" x="3" y="3"></rect><path d="M13 12l14 10-14 10V12z" fill="#2487eb"></path><path d="M24 12l10 10-10 10V12z" fill="#5cd510"></path></svg>
+<span><b>PIXELPRESS</b><small>JPG compression guides</small></span></a>
+<nav aria-label="Primary" class="top-links"><a href="/">Compressor</a><a href="/guides/">Guides</a><a href="/zh/guides/jpg-upload-size-limits.html" hreflang="zh-Hans" lang="zh-Hans">中文</a><a class="top-cta" data-funnel="try_start" href="/#compressor">Compress JPG</a></nav>
+</div>
+</header>
+<main>
+<div class="crumb"><div class="container"><ol><li><a href="/">Home</a></li><li><a href="/guides/">Guides</a></li><li>Upload size limits</li></ol></div></div>
+<section class="hero"><div class="container">
+<p class="eyebrow">Upload rules guide</p>
+<h1>JPG upload size limits: 20KB, 20,000 bytes and totals</h1>
+<p class="lede">Most upload failures come from reading a limit as a single number when the form enforces several at once. This guide separates the byte convention, the per-file cap, the total cap and the dimension rule, then gives you a calculator for the combination.</p>
+<div class="byline"><span>Updated 14 November 2026</span><span>7 min read</span><span>Calculator runs locally</span></div>
+<div class="answer"><h2>Quick answer</h2><p>A 20KB limit usually means 20,480 bytes, but some portals mean 20,000. A per-file limit does not guarantee a total limit, and a size limit does not replace a dimension rule. Aim 5–10% below the stated cap, check the exact byte count, and calculate the total before uploading several files.</p></div>
+</div></section>
+<div class="container layout">
+<article class="article" id="article">
+<h2>Four limits that hide behind one sentence</h2>
+<p>A form might say “Upload a photo, maximum 20KB.” In practice the server can enforce any of the following: a maximum number of bytes per file, a maximum total number of bytes for the request, a minimum and maximum pixel dimension, a required aspect ratio, and an allowed MIME type. Passing one check does not imply passing the others. The fastest way to avoid a loop of rejections is to write all stated constraints down before touching the image.</p>
+<p>There is also a difference between what the interface says and what the server measures. A browser file picker may display “20KB” while the server compares the raw byte length of the uploaded part. Some servers include multipart boundaries and headers in the request size, which can add a few hundred bytes. That is why a file sitting exactly on the limit is fragile and a file 5–10% below it is not.</p>
+
+<h2>KB, kB and bytes</h2>
+<p>Strictly, kB means 1,000 bytes and KiB means 1,024 bytes. Consumer software rarely respects that distinction. Image tools usually display binary kilobytes, so 20KB means 20,480 bytes. Network and storage interfaces sometimes use decimal units, so 20KB means 20,000 bytes. The 480-byte difference is small in absolute terms but decisive at a hard boundary.</p>
+<table>
+<caption>Common limit labels and their byte equivalents. Check which convention the form actually uses when it rejects a borderline file.</caption>
+<thead><tr><th>Label</th><th>Binary (×1024)</th><th>Decimal (×1000)</th><th>Difference</th></tr></thead>
+<tbody>
+<tr><td>10KB</td><td>10,240 B</td><td>10,000 B</td><td>240 B</td></tr>
+<tr><td>20KB</td><td>20,480 B</td><td>20,000 B</td><td>480 B</td></tr>
+<tr><td>50KB</td><td>51,200 B</td><td>50,000 B</td><td>1,200 B</td></tr>
+<tr><td>100KB</td><td>102,400 B</td><td>100,000 B</td><td>2,400 B</td></tr>
+<tr><td>1MB</td><td>1,048,576 B</td><td>1,000,000 B</td><td>48,576 B</td></tr>
+</tbody>
+</table>
+
+<h2>Per-file limits versus total limits</h2>
+<p>A per-file limit caps each image independently. A total limit caps the sum of all files in the submission. Portals that accept a photo plus a signature plus a certificate often enforce both: “each file up to 100KB, total up to 250KB.” If you optimise each file to exactly 100KB, the total fails. The correct approach is to divide the total budget first, then compress each file to its share.</p>
+<p>Filenames, form fields and encoding overhead also consume space in some implementations. Base64 encoding, used by email and some APIs, adds roughly 33% to the binary size. A 100KB image becomes about 133KB of text before headers. Understanding which transport applies prevents a file that passes a local size check from failing after encoding.</p>
+
+<h2>Calculate a per-file budget</h2>
+<p>The calculator takes the total limit, the number of files, an overhead percentage and any reserved space. It returns the average bytes available per file. Use 0% overhead for a plain multipart form, 33% for base64 email or JSON transport, and reserve a little space when the form has other fields or filenames.</p>
+<div class="gtool" data-tool="upload-budget">
+<h3>Upload budget calculator</h3>
+<p class="gtool-sub">All arithmetic runs in this tab. Nothing is uploaded.</p>
+<div class="gtool-row">
+<div class="gtool-field"><label for="g3limit">Total limit (KB)</label><input data-limit id="g3limit" min="1" step="1" type="number" value="500"/></div>
+<div class="gtool-field"><label for="g3files">Number of files</label><input data-files id="g3files" min="1" step="1" type="number" value="5"/></div>
+<div class="gtool-field"><label for="g3overhead">Encoding overhead (%)</label><input data-overhead id="g3overhead" min="0" max="100" step="1" type="number" value="0"/></div>
+<div class="gtool-field"><label for="g3reserved">Reserved space (KB)</label><input data-reserved id="g3reserved" min="0" step="1" type="number" value="10"/></div>
+<button data-run type="button">Calculate</button>
+</div>
+<output aria-live="polite" data-output></output>
+<p class="gtool-hint">Result is an average. If one file must be larger, reduce the budget for the others and keep the total under the limit.</p>
+</div>
+<script defer src="/guides/tools.js"></script>
+
+<h2>Dimension rules are separate</h2>
+<p>A 20KB file can be 200×200 or 2000×2000. The byte limit says nothing about whether the face is large enough, whether the image is square, or whether the minimum resolution is met. Identity and application portals commonly require 600×600 pixels, 2×2 inches at 300 DPI, or a specific aspect ratio. Compressing first and discovering the dimension rule later wastes an upload.</p>
+<p>When a form states both a size and a dimension, check whether they are compatible. A 600×600 photo at 20KB is about 0.46 bits per pixel, which is extremely aggressive for a face. If the form also demands 20KB, it is effectively asking for a low-detail image. If it allows 100KB, the same dimensions are comfortable. The combination, not either number alone, determines whether the result will look acceptable.</p>
+
+<h2>Reading rejection messages correctly</h2>
+<ul>
+<li><strong>“File exceeds maximum size.”</strong> Reduce bytes. Check decimal versus binary and re-check the exact properties.</li>
+<li><strong>“Image dimensions too small.”</strong> Increase pixels. This conflicts with a tight byte cap; crop rather than lowering quality further.</li>
+<li><strong>“Image dimensions too large.”</strong> Resize down. Do not merely lower JPEG quality; the server checks width and height.</li>
+<li><strong>“Invalid file type.”</strong> Check the actual encoding, not the extension. A PNG renamed to .jpg is still a PNG.</li>
+<li><strong>“Total upload too large.”</strong> Recalculate the combined budget, not each file in isolation.</li>
+<li><strong>“Unexpected error.”</strong> Often a server-side size check before validation. Try a file 10% smaller to test the hypothesis.</li>
+</ul>
+
+<h2>A safe default strategy</h2>
+<p>For an unknown portal, prepare a 600-pixel-wide JPEG at roughly 70–80% of the stated byte cap. That combination passes most dimension and size checks and still looks like a photograph. Keep the original high-resolution file. If the portal rejects the dimensions, you can re-crop from the original rather than re-compressing a compressed copy. If it rejects the size, you have margin to go smaller without another generation of loss.</p>
+<p>For multi-file submissions, calculate the total first, assign a per-file budget, compress to 90% of each share, then verify the sum. This is slower than compressing everything to the stated per-file maximum, but it avoids the most common total-limit failure.</p>
+
+<h2>Server checks you cannot see</h2>
+<p>A form can validate the file in the browser and again on the server. The browser check may use the reported file size; the server check may count the entire request body, including headers and other fields. Some servers also decompress or transcode the image before storing it, then enforce a limit on the stored version. That is why the same file can pass one portal and fail another with an apparently identical rule.</p>
+<p>There is no reliable way to inspect those checks from the outside. The practical response is margin: stay 5–10% below the stated cap, avoid exactly-at-the-limit files, and retry with a clearly smaller file if an unexplained rejection occurs. If a portal rejects a file that is far below the limit, the cause is usually dimensions, format or a total-request cap rather than bytes.</p>
+
+<h2>ZIP files and combined uploads</h2>
+<p>A ZIP archive is convenient but not a compression shortcut for JPEGs. The images are already compressed, so the archive mainly bundles them and adds a small amount of metadata. A 5MB folder of JPEGs may become a 4.9MB ZIP. If the portal counts the archive against a total limit, zipping does not create meaningful headroom; you still need to reduce the images themselves.</p>
+<p>Some portals reject archives entirely, or accept them but do not preview the contents. Read the upload instructions before bundling. If individual files are required, submit them individually and keep the total under the cap.</p>
+
+<h2>Frequently asked questions</h2>
+<h3>Does the browser file picker show exact bytes?</h3>
+<p>Not usually. Operating systems display rounded sizes. Open the file’s properties or use the compressor’s reported byte count when the limit is strict.</p>
+<h3>Can I upload a JPG with a different extension?</h3>
+<p>The server usually inspects the file signature, not just the name. Renaming does not convert the format and can trigger a security rejection.</p>
+<h3>Why does the same file pass on one portal and fail on another?</h3>
+<p>Different servers, different byte conventions, different request overhead and different dimension rules. Treat each portal as its own contract.</p>
+<div class="cta-band"><p>Need to hit a specific per-file budget? Compress each JPG locally before uploading.</p><a data-funnel="try_start" href="/#compressor">Open the JPG compressor</a></div>
+<div class="related"><h2>Related guides</h2><ul>
+<li><a href="/guides/compress-jpg-to-20kb.html">Compress JPG to 20KB</a></li>
+<li><a href="/guides/compress-jpg-to-50kb-100kb.html">50KB vs 100KB targets</a></li>
+<li><a href="/guides/job-application-photo-upload.html">Job application uploads</a></li>
+<li><a href="/guides/email-attachment-jpg-size.html">Email attachment sizes</a></li>
+</ul></div>
+</article>
+<aside class="aside">
+<div class="box"><h2>Try the main tool</h2><p>Batch compression and ZIP download.</p><a class="btn" data-funnel="try_start" href="/#compressor">Compress JPG free</a></div>
+<div class="box"><h2>Checklist</h2><ul><li>Byte convention</li><li>Per-file cap</li><li>Total cap</li><li>Min/max dimensions</li><li>Allowed formats</li></ul></div>
+<div class="box"><h2>中文版</h2><p><a href="/zh/guides/jpg-upload-size-limits.html" hreflang="zh-Hans" lang="zh-Hans">阅读中文版：上传大小限制 →</a></p></div>
+</aside>
+</div>
+<footer class="foot"><div class="container foot-inner">
+<div class="foot-brand"><svg aria-hidden="true" fill="none" viewbox="0 0 44 44"><rect fill="#e9f4ff" height="38" rx="5" stroke="#9cc4f4" stroke-width="2" width="38" x="3" y="3"></rect><path d="M14 12l14 10-14 10V12z" fill="#2487eb"></path><path d="M24 12l10 10-10 10V12z" fill="#5cd510"></path></svg><strong>PIXELPRESS</strong></div>
+<div class="foot-links"><a href="/">JPG compressor</a><a href="/guides/">Guides</a><a href="/zh/guides/" hreflang="zh-Hans" lang="zh-Hans">中文指南</a></div>
+<p>Browser-based JPG compression. No account, no payment, no server upload.</p>
+</div></footer>
+</body>
+</html>
